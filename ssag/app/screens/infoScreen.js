@@ -41,22 +41,8 @@ const styles = StyleSheet.create({
 
 class InfoScreen extends Component {
 
-  bottomComponent(){
-    if(this.props.screenProps.bottomScreen){
-      return (
-        <View style={{height: 60}}>
-          <AudioPlayer
-            audio = {this.props.screenProps.currentAudio}
-            logo = {this.props.screenProps.logo}
-            changeLogo = {this.props.screenProps.changeLogo}
-          />
-      </View>
-      )
-    }
-  }
   render(){
     return(
-      <View style={{flex:1}}>
         <ScrollView>
           <Image style={{ height:cellHeight, width: cellWidth }} source={require('../Images/museum1.png')}/>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('Language')}>
@@ -109,9 +95,8 @@ class InfoScreen extends Component {
               <Image style={styles.image} source={require('../assets/DisclosureIndicator.png')}/>
             </View>
           </TouchableOpacity>
+          <View style={{height: 60}}/>
         </ScrollView>
-        { this.bottomComponent() }
-      </View>
     );
   }
 }

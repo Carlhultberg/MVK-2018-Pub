@@ -59,28 +59,28 @@ export const Tabs = TabNavigator({
     screen: NearMeStack,
     navigationOptions: {
       tabBarLabel: I18n.t('nearMeScreen_Title'),
-      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/nearTabSelected.png')}/>)
+      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/nearTab.png')}/>)
     },
   },
   Browser:{
     screen: BrowserStack,
     navigationOptions: {
       tabBarLabel: I18n.t('storiesScreen_Title'),
-      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/nearTabSelected.png')}/>),
+      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/storiesTab.png')}/>),
     },
   },
   Search:{
     screen: SearchByNumberScreen,
     navigationOptions: {
       tabBarLabel: I18n.t('searchScreen_Title'),
-      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/nearTabSelected.png')}/>),
+      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/searchTab.png')}/>),
     },
   },
   Info:{
     screen: InfoStack,
     navigationOptions: {
       tabBarLabel: I18n.t('museumScreen_Title'),
-      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/nearTabSelected.png')}/>),
+      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/museumTab.png')}/>),
     },
   },
 },{

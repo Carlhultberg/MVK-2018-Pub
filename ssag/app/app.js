@@ -4,6 +4,7 @@ import { Tabs } from './rootscreen';
 import { Player, MediaStates } from 'react-native-audio-toolkit';
 import SplashScreen from 'react-native-splash-screen';
 import RNRestart from 'react-native-restart';
+import AudioPlayer from './screens/audioPlayer';
 
 class App extends Component{
   constructor() {
@@ -39,18 +40,35 @@ class App extends Component{
     }
   }
 
+  bottomComponent(){
+    if(this.state.bottomScreen){
+      return (
+        <View style={{ height: 60, position: 'absolute', left: 0, right: 0, bottom: 60 }}>
+          <AudioPlayer
+            audio = {this.state.audio}
+            logo = {this.state.logo}
+            changeLogo = {this.changeLogo}
+          />
+        </View>
+      )
+    }
+  }
+
 
   render(){
     return (
-      <Tabs
-        screenProps = {{
-          currentAudio: this.state.audio,
-          bottomScreen: this.state.bottomScreen,
-          logo: this.state.logo,
-          createAudio: this.createAudio,
-          addAudioPlayer: this.addAudioPlayer,
-          changeLogo: this.changeLogo
-        }}/>
+      <View style={{flex: 1}}>
+        <Tabs
+          screenProps = {{
+            currentAudio: this.state.audio,
+            bottomScreen: this.state.bottomScreen,
+            logo: this.state.logo,
+            createAudio: this.createAudio,
+            addAudioPlayer: this.addAudioPlayer,
+            changeLogo: this.changeLogo
+          }}/>
+          { this.bottomComponent() }
+        </View>
     );
   }
 }

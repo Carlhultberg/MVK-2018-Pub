@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import AudioPlayer from './audioPlayer';
-import I18n from '../i18n/i18n';
+import I18n, { languageRealm, realm, languageR } from '../i18n/i18n';
 import RNRestart from 'react-native-restart';
+import Realm from 'realm';
 
 import {
   Text,
@@ -44,7 +45,9 @@ const styles = StyleSheet.create({
 class Language extends Component {
 
   restart(language){
-    AsyncStorage.setItem('key', language);
+    realm.write(() => {
+      languageR[0].name = language;
+    });
     RNRestart.Restart();
   }
 
@@ -64,7 +67,6 @@ class Language extends Component {
 
   render(){
     return(
-      <View style={{flex: 1}}>
         <View style={{flex: 1}}>
           <TouchableOpacity onPress={() => this.restart('en')}>
             <View style={styles.button}>
@@ -81,8 +83,6 @@ class Language extends Component {
             </View>
           </TouchableOpacity>
         </View>
-        { this.bottomComponent() }
-      </View>
     );
   }
 }

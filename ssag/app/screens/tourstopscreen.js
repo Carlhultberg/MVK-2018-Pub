@@ -188,20 +188,6 @@ class TourstopScreen extends React.Component {
       {text: "Audio16", audio: 'sampleaudio.mp3'}] };
   }
 
-  bottomComponent(){
-    if(this.props.screenProps.bottomScreen){
-      return (
-        <View style={{height: 60}}>
-          <AudioPlayer
-            audio = {this.props.screenProps.currentAudio}
-            logo = {this.props.screenProps.logo}
-            changeLogo = {this.props.screenProps.changeLogo}
-          />
-      </View>
-      )
-    }
-  }
-
   renderTourStops() {
     return this.state.tourstops.map(tourstops =>
       <TourStopDetails key={tourstops.text} text={tourstops.text} audio={tourstops.audio} addAudioPlayer={() => this.props.screenProps.addAudioPlayer(tourstops.audio)}/>
@@ -210,7 +196,6 @@ class TourstopScreen extends React.Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
         <ScrollView>
           <Image
               style={styles.headerImage}
@@ -255,9 +240,8 @@ class TourstopScreen extends React.Component {
                 }}>
           </View>
           { this.renderTourStops() }
+          <View style={{height: 60}}/>
         </ScrollView>
-        { this.bottomComponent() }
-      </View>
 
     );
   }

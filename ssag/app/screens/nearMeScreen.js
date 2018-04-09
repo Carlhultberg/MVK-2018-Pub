@@ -59,7 +59,6 @@ class NearMeScreen extends Component {
   }
   render(){
     return(
-      <View style={{flex:1}}>
         <View style={styles.mainView}>
           <Text style={styles.text}>
             {I18n.t('nearMeScreen_StoriesMessage')}
@@ -98,8 +97,6 @@ class NearMeScreen extends Component {
             </Text>
           </TouchableOpacity>
         </View>
-        { this.bottomComponent() }
-      </View>
     );
   }
 }

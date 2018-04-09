@@ -12,6 +12,7 @@ import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.avishayil.rnrestart.ReactNativeRestartPackage;
+import io.realm.react.RealmReactPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -32,7 +33,8 @@ public class MainApplication extends Application implements ReactApplication {
             new VectorIconsPackage(),
             new AudioPackage(),
             new RNI18nPackage(),
-            new ReactNativeRestartPackage()
+            new ReactNativeRestartPackage(),
+            new RealmReactPackage()
       );
     }
 

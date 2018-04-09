@@ -35,32 +35,16 @@ class HighlightScreen extends Component {
     );
   }
 
-  bottomComponent(){
-    if(this.props.screenProps.bottomScreen){
-      return (
-        <View style={{height: 60}}>
-          <AudioPlayer
-            audio = {this.props.screenProps.currentAudio}
-            logo = {this.props.screenProps.logo}
-            changeLogo = {this.props.screenProps.changeLogo}
-          />
-      </View>
-      )
-    }
-  }
-
   learnMore = (image) => {
     this.props.navigation.navigate('TourstopScreen');
   }
 
   render() {
     return(
-      <View style={{flex: 1}}>
         <ScrollView>
           { this.renderHighlights() }
+          <View style={{height: 60}}/>
         </ScrollView>
-        { this.bottomComponent() }
-      </View>
     );
   }
 }
