@@ -20,23 +20,37 @@ const cellHeight = height / 4;
 class HighlightScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {highlights: [
-      {title: "Stockholm1", image: require('../Images/stockholm1.png')},
-      {title: "Old Stockholm1", image: require('../Images/oldStockholm1.png')},
-      {title: "Stockholm2", image: require('../Images/stockholm2.png')},
-      {title: "Old Stockholm2", image: require('../Images/oldStockholm2.png')},
-      {title: "Stockholm3", image: require('../Images/stockholm3.png')},
-      {title: "Old Stockholm3", image: require('../Images/oldStockholm3.png')}] };
+
+    var json = require('../soundInfo/exhibitionInfo.json');
+    var array = [];
+    var json_length = Object.keys(json).length;
+    var required;
+    for(var i=0; i<json_length; i++){
+      switch(json[String(i)]["image"]){
+        case "0": 
+          required = require('../Images/stockholm1.png');
+          break;
+        case "1":
+          required = require('../Images/oldStockholm3.png');
+          break;
+        case "2": 
+          required = require('../Images/stockholm2.png');
+          break;
+      }
+      array.push({title: json[String(i)]["name"], image: required, duration: json[String(i)]["duration"],songs:json[String(i)]["sounds"],floor:json[String(i)]["floor"]});
+    }
+    this.state = {highlights: array};
+
   }
 
   renderHighlights() {
     return this.state.highlights.map(highlights =>
-      <HighlightScreenDetails key={highlights.title} title={highlights.title} image={highlights.image} learnMore={this.learnMore}/>
+      <HighlightScreenDetails key={highlights.title} title={highlights.title} image={highlights.image} duration={highlights.duration} songs={highlights.songs} floor={highlights.floor} learnMore={this.learnMore}/>
     );
   }
 
-  learnMore = (image) => {
-    this.props.navigation.navigate('TourstopScreen');
+  learnMore = (title,image,duration,floor,songs) => {
+    this.props.navigation.navigate('TourstopScreen', { title,image,duration,floor,songs});
   }
 
   render() {

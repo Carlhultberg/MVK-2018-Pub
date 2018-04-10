@@ -49,7 +49,7 @@ class HighlightScreenDetails extends Component {
           height: cellHeight+2,
           width: cellWidth,
             }}>
-        <TouchableOpacity onPress={() => this.props.learnMore(this.props.image)}>
+        <TouchableOpacity onPress={() => this.props.learnMore(this.props.title,this.props.image,this.props.duration,this.props.floor,this.props.songs)}>
           <ImageBackground style={styles.image}
                 source={ this.props.image }>
             <View style={styles.textBox}>
@@ -62,7 +62,7 @@ class HighlightScreenDetails extends Component {
                   source={require('../Images/ClockIcon.png')}
                 />
               <Text style={styles.text2}>
-                  77 min
+                {this.props.duration}
                 </Text>
               </View>
             </View>

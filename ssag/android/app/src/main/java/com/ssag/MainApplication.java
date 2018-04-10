@@ -3,6 +3,18 @@ package com.ssag;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.realm.react.RealmReactPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
+import com.futurice.rctaudiotoolkit.AudioPackage;
+import io.realm.react.RealmReactPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.avishayil.rnrestart.ReactNativeRestartPackage;
+import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
+import com.futurice.rctaudiotoolkit.AudioPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.futurice.rctaudiotoolkit.AudioPackage;
@@ -29,12 +41,12 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new SplashScreenReactPackage(),
+            new RealmReactPackage(),
             new VectorIconsPackage(),
-            new AudioPackage(),
-            new RNI18nPackage(),
+            new SplashScreenReactPackage(),
             new ReactNativeRestartPackage(),
-            new RealmReactPackage()
+            new RNI18nPackage(),
+            new AudioPackage()
       );
     }
 

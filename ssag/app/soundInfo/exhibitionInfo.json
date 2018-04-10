@@ -1,0 +1,24 @@
+{
+    "0": {
+        "name": "Hamnen",
+        "duration": "37 min",
+        "floor":"Våning 0 ",
+        "sounds": {
+            "0": "001",
+            "1": "002",
+            "2": "003"
+        },
+        "image": "0"
+    },
+    "1": {
+        "name": "Stallet",
+        "duration": "23 min",
+        "floor":"Våning 1 ",
+        "sounds": {
+            "0":"001",
+            "1":"002",
+            "2":"003"
+        },
+        "image": "1"
+    }
+}

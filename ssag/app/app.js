@@ -12,11 +12,16 @@ class App extends Component{
     this.state = {
       audio: '',
       bottomScreen: false,
-      logo: require('./assets/PlayButton.png')
+      logo: require('./assets/PlayButton.png'),
+      array: null,
+      index: 0,
+      maxIndex: 0,
     };
     this.createAudio = this.createAudio.bind(this);
     this.addAudioPlayer = this.addAudioPlayer.bind(this);
     this.changeLogo = this.changeLogo.bind(this);
+    this.nextSong = this.nextSong.bind(this);
+    this.previousSong = this.previousSong.bind(this);
   }
 
   componentDidMount(){
@@ -24,12 +29,15 @@ class App extends Component{
   }
 
   createAudio(newAudio){
-    this.setState({ audio: new Player(newAudio) });
+    this.setState({ audio: new Player(newAudio).prepare() });
   }
 
-  addAudioPlayer(audio){
-    this.createAudio(audio);
-    this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png') });
+  addAudioPlayer(path, array, index, maxIndex){
+    if(this.state.audio !== ''){
+      this.state.audio.destroy();
+    }
+    this.createAudio(path);
+    this.setState({ bottomScreen: true, logo: require('./assets/PlayButton.png'), array: array, index: index, maxIndex: maxIndex});
   }
 
   changeLogo(){
@@ -48,9 +56,34 @@ class App extends Component{
             audio = {this.state.audio}
             logo = {this.state.logo}
             changeLogo = {this.changeLogo}
+            nextSong = {this.nextSong}
+            previousSong = {this.previousSong}
           />
         </View>
       )
+    }
+  }
+
+  nextSong(){
+    if(this.state.index==this.state.maxIndex){
+      this.state.audio.destroy();
+      this.setState({ bottomScreen: false });
+    }else{
+      let newFilePath = this.state.array[String(this.state.index+1)].filePath;
+      this.state.audio.destroy();
+      this.addAudioPlayer(newFilePath, this.state.array, this.state.index+1, this.state.maxIndex);
+    }
+  }
+
+  previousSong(){
+
+    if(this.state.index==0){
+      this.state.audio.destroy();
+      this.setState({ bottomScreen: false });
+    }else{
+      let newFilePath = this.state.array[String(this.state.index-1)].filePath;
+      this.state.audio.destroy();
+      this.addAudioPlayer(newFilePath, this.state.array, this.state.index-1, this.state.maxIndex);
     }
   }
 
@@ -65,7 +98,9 @@ class App extends Component{
             logo: this.state.logo,
             createAudio: this.createAudio,
             addAudioPlayer: this.addAudioPlayer,
-            changeLogo: this.changeLogo
+            changeLogo: this.changeLogo,
+            nextSong: this.nextSong,
+            previousSong: this.previousSong,
           }}/>
           { this.bottomComponent() }
         </View>

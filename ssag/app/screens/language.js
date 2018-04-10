@@ -59,6 +59,8 @@ class Language extends Component {
             audio = {this.props.screenProps.currentAudio}
             logo = {this.props.screenProps.logo}
             changeLogo = {this.props.screenProps.changeLogo}
+            nextSong = {this.props.screenProps.nextSong}
+            previousSong = {this.props.screenProps.previousSong}
           />
       </View>
       )

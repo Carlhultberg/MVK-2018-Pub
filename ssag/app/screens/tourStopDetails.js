@@ -19,7 +19,7 @@ class TourStopDetails extends Component {
           height: cellHeight+2,
           width: cellWidth,
             }}>
-        <TouchableOpacity onPress={() => this.props.addAudioPlayer(this.props.audio)}>
+        <TouchableOpacity onPress={() => this.props.addAudioPlayer()}>
           <View style={{
               height: cellHeight,
               width: cellWidth,

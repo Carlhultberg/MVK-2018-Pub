@@ -22,6 +22,15 @@ class AudioPlayer extends Component {
     }
   }
 
+  Next = () => {
+    console.log("Microcuts");
+    this.props.nextSong();
+  }
+
+  Previous = () => {
+    this.props.previousSong();
+  }
+
   render(){
     return (
       <View style={{flex: 1, justifyContent: 'flex-end'}}>
@@ -39,13 +48,13 @@ class AudioPlayer extends Component {
               position: 'relative',
               flexDirection: 'row'
             }}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.Previous}>
             <Image style={{height: 30, width: 30, transform: [{rotate: '180deg'}]}} source={require('../assets/SkipButton.png')} />
           </TouchableOpacity>
           <TouchableOpacity onPress={ this.PlayPause }>
             <Image style={{height: 30, width: 30}} source={ this.props.logo } />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={this.Next}>
             <Image style={{height: 30, width: 30}} source={require('../assets/SkipButton.png')} />
           </TouchableOpacity>
         </View>

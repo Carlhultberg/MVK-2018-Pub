@@ -169,29 +169,23 @@ const cellHeight = height / 4;
 class TourstopScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {tourstops: [
-      {text: "Audio1", audio: 'sampleaudio.mp3'},
-      {text: "Audio2", audio: 'sampleaudio.mp3'},
-      {text: "Audio3", audio: 'sampleaudio.mp3'},
-      {text: "Audio4", audio: 'sampleaudio.mp3'},
-      {text: "Audio5", audio: 'sampleaudio.mp3'},
-      {text: "Audio6", audio: 'sampleaudio.mp3'},
-      {text: "Audio7", audio: 'sampleaudio.mp3'},
-      {text: "Audio8", audio: 'sampleaudio.mp3'},
-      {text: "Audio9", audio: 'sampleaudio.mp3'},
-      {text: "Audio10", audio: 'sampleaudio.mp3'},
-      {text: "Audio11", audio: 'sampleaudio.mp3'},
-      {text: "Audio12", audio: 'sampleaudio.mp3'},
-      {text: "Audio13", audio: 'sampleaudio.mp3'},
-      {text: "Audio14", audio: 'sampleaudio.mp3'},
-      {text: "Audio15", audio: 'sampleaudio.mp3'},
-      {text: "Audio16", audio: 'sampleaudio.mp3'}] };
   }
 
-  renderTourStops() {
+  renderTourStops(songs) {
+    var lang = "sv";
+    var array = [];
+    var json = require('../soundInfo/soundInfo.json');
+    var array = [];
+    var maxIndex = 0;
+    for(var i=0;i<Object.keys(songs.songs).length;i++){
+      array.push({text: json.language[lang][songs.songs[String(i)]].name, thisIndex: i, filePath: json.language[lang][songs.songs[String(i)]].filepath});
+      maxIndex++;
+    }
+    maxIndex--;
+    this.state={tourstops:array}
     return this.state.tourstops.map(tourstops =>
-      <TourStopDetails key={tourstops.text} text={tourstops.text} audio={tourstops.audio} addAudioPlayer={() => this.props.screenProps.addAudioPlayer(tourstops.audio)}/>
-    );
+       <TourStopDetails key={tourstops.text} text={tourstops.text} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, array, tourstops.thisIndex, maxIndex)} array={array}/>
+     );
   }
 
   render() {
@@ -199,12 +193,12 @@ class TourstopScreen extends React.Component {
         <ScrollView>
           <Image
               style={styles.headerImage}
-              source={require('../Images/stockholm1.png')}/>
+              source={this.props.navigation.state.params.image}/>
 
           <View style={styles.playAllButtonContainer}>
             <TouchableOpacity
               style={[styles.playAllButton, { width: 0.65 * width }]}
-              onPress={() => this.props.screenProps.addAudioPlayer()}>
+              onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex)}>
               <Image
                 style={styles.playAllButtonIcon}
                 source={require('../Images/PlayButton.png')}/>
@@ -220,6 +214,7 @@ class TourstopScreen extends React.Component {
                 <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')} />
                 <Text style={styles.floorText}>
                   {I18n.t('floor')}
+                    {/*{this.props.navigation.state.params.floor}*/}
                 </Text>
               </View>
               <View style={styles.audioContent}>
@@ -229,6 +224,7 @@ class TourstopScreen extends React.Component {
                 />
                 <Text style={styles.durationText}>
                   5 {I18n.t('min')}
+                    {/*{this.props.navigation.state.params.floor}*/}
                 </Text>
               </View>
             </View>
@@ -239,7 +235,7 @@ class TourstopScreen extends React.Component {
               backgroundColor: '#0000',
                 }}>
           </View>
-          { this.renderTourStops() }
+          {  this.renderTourStops({songs:this.props.navigation.state.params.songs}) }
           <View style={{height: 60}}/>
         </ScrollView>
 
