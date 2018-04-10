@@ -17,14 +17,29 @@ export default class SearchByNumberScreen extends Component {
     }
 
     addDigit(digit) {
-        if (this.state.text1 === " "){
+        if (this.state.text1 === ' '){
             this.setState({text1: digit});
-        }else if (this.state.text2 === " ") {
+        }else if (this.state.text2 === ' ') {
             this.setState({text2: digit});
-        }else if (this.state.text3 === " "){
+        }else if (this.state.text3 === ' '){
             this.setState({text3: digit})
             this.setState({searchString: this.state.text1 + this.state.text2 + digit})
+            this.searchForTrack(this.state.text1 + this.state.text2 + digit);
         }
+    }
+
+    searchForTrack(searchString){
+        var json = require('../soundInfo/soundInfo.json');
+        var lang = 'sv';
+        var track = json.language[lang][String(searchString)];
+        console.log(track);
+        console.log("hej");
+        if(typeof track === 'undefined'){
+            alert('Detta ljudspår hittas inte!');
+        }else{
+            this.props.screenProps.addAudioPlayer(track.filepath, {}, 0,0);
+        }
+
     }
 
     removeDigit() {
