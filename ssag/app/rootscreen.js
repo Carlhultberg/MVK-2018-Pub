@@ -5,6 +5,7 @@ import { Image } from 'react-native';
 
 import HighlightScreen from './screens/highlightscreen';
 import TourstopScreen from './screens/tourstopscreen';
+import TourstopScreenSearch from './screens/tourstopscreenSearch';
 import SearchByNumberScreen from './screens/searchByNumberScreen';
 import NearMeScreen from './screens/nearMeScreen';
 import InfoScreen from './screens/infoScreen';
@@ -53,6 +54,22 @@ export const InfoStack = StackNavigator({
     },
   },
 });
+export const SearchByNumberStack = StackNavigator({
+  Browser: {
+    screen: SearchByNumberScreen,
+    navigationOptions:{
+      title: I18n.t('searchScreen_Title'),
+      headerTitleStyle:{alignSelf: 'center'},
+    },
+  },
+  TourstopScreenSearch:{
+    screen: TourstopScreenSearch,
+    navigationOptions:{
+      title: I18n.t('Traditions_shortTitle'),
+      headerTitleStyle:{alignSelf: 'center'},
+    },
+  },
+});
 
 export const Tabs = TabNavigator({
   NearMe:{
@@ -70,7 +87,7 @@ export const Tabs = TabNavigator({
     },
   },
   Search:{
-    screen: SearchByNumberScreen,
+    screen: SearchByNumberStack,
     navigationOptions: {
       tabBarLabel: I18n.t('searchScreen_Title'),
       tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/searchTab.png')}/>),

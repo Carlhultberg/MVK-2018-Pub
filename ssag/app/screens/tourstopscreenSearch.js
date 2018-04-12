@@ -1,7 +1,7 @@
 import React from 'react';
 import AudioPlayer from './audioPlayer';
 import { Player, MediaStates } from 'react-native-audio-toolkit';
-import TourStopDetails from './tourStopDetails';
+import TourStopDetailsSearch from './tourStopDetailsSearch';
 import I18n from '../i18n/i18n';
 
 import {
@@ -166,7 +166,7 @@ const cellWidth = width;
 const cellHeight = height / 4;
 
 
-class TourstopScreen extends React.Component {
+class TourstopScreenSearch extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -184,7 +184,7 @@ class TourstopScreen extends React.Component {
     maxIndex--;
     this.state={tourstops:array}
     return this.state.tourstops.map(tourstops =>
-       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, array, tourstops.thisIndex, maxIndex)} array={array}/>
+       <TourStopDetailsSearch key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, array, tourstops.thisIndex, maxIndex)} array={array}/>
      );
   }
 
@@ -213,7 +213,7 @@ class TourstopScreen extends React.Component {
               <View style={styles.audioContent}>
                 <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')} />
                 <Text style={styles.floorText}>
-                  {I18n.t('floor')} {this.props.navigation.state.params.floor}
+                  {this.props.navigation.state.params.floor} {I18n.t('floor')}
                 </Text>
               </View>
               <View style={styles.audioContent}>
@@ -242,4 +242,4 @@ class TourstopScreen extends React.Component {
 
 }
 
-export default TourstopScreen;
+export default TourstopScreenSearch;
