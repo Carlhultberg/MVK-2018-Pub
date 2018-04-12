@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
-import { Image } from 'react-native';
+import { Image, View} from 'react-native';
 
 import HighlightScreen from './screens/highlightscreen';
 import TourstopScreen from './screens/tourstopscreen';
@@ -17,14 +17,21 @@ export const BrowserStack = StackNavigator({
     screen: HighlightScreen,
     navigationOptions:{
       title: I18n.t('storiesScreen_Title'),
-      headerTitleStyle:{alignSelf: 'center'},
+      headerTitleStyle:{textAlign: 'center',
+        flexGrow: 1
+        },
+
     },
   },
   TourstopScreen:{
     screen: TourstopScreen,
     navigationOptions:{
       title: I18n.t('Traditions_shortTitle'),
-      headerTitleStyle:{alignSelf: 'center'},
+      headerTitleStyle:{alignSelf: 'center',
+          textAlign: 'center',
+          flexGrow: 1
+        },
+        headerRight: (<View />)
     },
   },
 });
@@ -33,7 +40,11 @@ export const NearMeStack = StackNavigator({
     screen: NearMeScreen,
     navigationOptions:{
       title: I18n.t('settingsScreen_NearMeHeader'),
-      headerTitleStyle:{alignSelf: 'center'},
+      headerTitleStyle:{
+        textAlign: 'center',
+        flexGrow: 1
+      },
+
     },
   },
 });
@@ -42,14 +53,21 @@ export const InfoStack = StackNavigator({
     screen: InfoScreen,
     navigationOptions:{
       title: I18n.t('museumScreen_Title'),
-      headerTitleStyle:{alignSelf: 'center'},
+      headerTitleStyle:{textAlign: 'center',
+      flexGrow: 1
+      },
+
     },
   },
   Language: {
     screen: Language,
     navigationOptions:{
       title: I18n.t('settingsScreen_Title'),
-      headerTitleStyle:{alignSelf: 'center'},
+      headerTitleStyle:{alignSelf: 'center',
+      textAlign: 'center',
+      flexGrow: 1
+      },
+      headerRight: (<View />)
     },
   },
 });
