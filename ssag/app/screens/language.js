@@ -16,6 +16,8 @@ import {
 } from 'react-native';
 
 
+
+
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
 const cellHeight = height * 2/3 ;
@@ -25,24 +27,50 @@ import { OFF_BLACK, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styl
 
 const styles = StyleSheet.create({
   button: {
-    height: buttonHeight,
-    width: cellWidth,
+    height: 50,
+    width: width,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
+    marginBottom: 10,
+    backgroundColor: '#F7F7F7',
   },
   text:{
+    fontWeight: 'bold',
     fontSize: 20,
     color: OFF_BLACK
   },
   image:{
     width: 50,
     height:50,
-  //  tintColor: OFF_BLACK
+    //tintColor: OFF_BLACK
   },
 });
 
 class Language extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  componentDidMount(){
+    this.languageSelectBG(2);
+  }
+
+  languageSelectBG(isSelected) {
+    var isSelected = String(I18n.locale);
+    if(isSelected === 'en'){
+      this.setState({bgColorSelectedEn: '#FAE3E7'});
+      this.setState({bgColorSelectedSv: '#EFEFF4'});
+    }else if(isSelected === 'sv'){
+      this.setState({bgColorSelectedEn: '#EFEFF4'});
+      this.setState({bgColorSelectedSv: '#FAE3E7'});
+    }
+    
+  }
+
 
   restart(language){
     realm.write(() => {
@@ -51,34 +79,18 @@ class Language extends Component {
     RNRestart.Restart();
   }
 
-  bottomComponent(){
-    if(this.props.screenProps.bottomScreen){
-      return (
-        <View style={{height: 60}}>
-          <AudioPlayer
-            audio = {this.props.screenProps.currentAudio}
-            logo = {this.props.screenProps.logo}
-            changeLogo = {this.props.screenProps.changeLogo}
-            nextSong = {this.props.screenProps.nextSong}
-            previousSong = {this.props.screenProps.previousSong}
-          />
-      </View>
-      )
-    }
-  }
-
   render(){
     return(
         <View style={{flex: 1}}>
-          <TouchableOpacity onPress={() => this.restart('en')}>
-            <View style={styles.button}>
+          <TouchableOpacity onPress={() =>  this.restart('en')  }>
+            <View style={[styles.button, { backgroundColor: this.state.bgColorSelectedEn }]}>
               <Text style={styles.text}>
                 English
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.restart('sv')}>
-            <View style={styles.button}>
+          <TouchableOpacity onPress={() => this.restart('sv') }>
+            <View style={[styles.button, { backgroundColor: this.state.bgColorSelectedSv }]}>
               <Text style={styles.text}>
                 Svenska
               </Text>
