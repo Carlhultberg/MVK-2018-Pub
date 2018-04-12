@@ -76,7 +76,6 @@ class App extends Component{
   }
 
   previousSong(){
-
     if(this.state.index==0){
       this.state.audio.destroy();
       this.setState({ bottomScreen: false });
