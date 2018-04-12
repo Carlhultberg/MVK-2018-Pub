@@ -38,7 +38,7 @@ class AudioPlayer extends Component {
           style={{
             backgroundColor: '#000000',
             alignItems: 'center',
-            height: 30,
+            height: 20,
             justifyContent: 'flex-end',
             elevation: 2,
             position: 'relative'
