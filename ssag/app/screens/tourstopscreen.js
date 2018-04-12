@@ -172,7 +172,7 @@ class TourstopScreen extends React.Component {
   }
 
   renderTourStops(songs) {
-    var lang = "sv";
+    var lang = String(I18n.locale);
     var array = [];
     var json = require('../soundInfo/soundInfo.json');
     var array = [];
@@ -222,7 +222,7 @@ class TourstopScreen extends React.Component {
                   source={require('../Images/ClockIcon.png')}
                 />
                 <Text style={styles.durationText}>
-                  {this.props.navigation.state.params.duration} {I18n.t('min')}
+                {this.props.navigation.state.params.duration} {I18n.t('min')} 
                 </Text>
               </View>
             </View>

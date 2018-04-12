@@ -27,7 +27,7 @@ export const BrowserStack = StackNavigator({
   TourstopScreen:{
     screen: TourstopScreen,
     navigationOptions:{
-      title: I18n.t('Traditions_shortTitle'),
+      title: I18n.t('storiesScreen_Title'),
       headerTitleStyle:{alignSelf: 'center',
           textAlign: 'center',
           flexGrow: 1
@@ -82,7 +82,7 @@ export const SearchByNumberStack = StackNavigator({
   TourstopScreenSearch:{
     screen: TourstopScreenSearch,
     navigationOptions:{
-      title: I18n.t('Traditions_shortTitle'),
+      title: I18n.t('storiesScreen_Title'),
       headerTitleStyle:{alignSelf: 'center',
       textAlign: 'center',
       flexGrow: 1

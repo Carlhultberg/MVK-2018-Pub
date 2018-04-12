@@ -19,13 +19,17 @@ const styles = StyleSheet.create({
     height: cellHeight,
     width: cellWidth,
     alignItems: 'center',
-    justifyContent:'flex-end',
+    justifyContent: 'flex-end',
   },
   durationIcon: {
-    marginRight: 10,
+    marginRight: 5,
     tintColor: '#ffffff'
   },
-  textBox:{
+  floorIcon: {
+    marginRight: 5,
+    tintColor: '#ffffff'
+  },
+  textBox: {
     width: cellWidth,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -35,7 +39,12 @@ const styles = StyleSheet.create({
     color: '#ffffff'
   },
   text2: {
-    color: '#ffffff'
+    color: '#ffffff',
+    paddingRight:5
+  },
+  text3: {
+    color: '#ffffff',
+    paddingRight:5
   },
   timeBox: {
     flexDirection: 'row',
@@ -43,15 +52,15 @@ const styles = StyleSheet.create({
 });
 
 class HighlightScreenDetails extends Component {
-  render(){
-    return(
+  render() {
+    return (
       <View style={{
-          height: cellHeight+2,
-          width: cellWidth,
-            }}>
-        <TouchableOpacity onPress={() => this.props.learnMore(this.props.title,this.props.image,this.props.duration,this.props.floor,this.props.songs)}>
+        height: cellHeight + 2,
+        width: cellWidth,
+      }}>
+        <TouchableOpacity onPress={() => this.props.learnMore(this.props.title, this.props.image, this.props.duration, this.props.floor, this.props.songs)}>
           <ImageBackground style={styles.image}
-                source={ this.props.image }>
+            source={this.props.image}>
             <View style={styles.textBox}>
               <Text style={styles.text1}>
                 {this.props.title}
@@ -61,18 +70,25 @@ class HighlightScreenDetails extends Component {
                   style={styles.durationIcon}
                   source={require('../Images/ClockIcon.png')}
                 />
-              <Text style={styles.text2}>
-                {this.props.duration}
+                <Text style={styles.text2}>
+                  {this.props.duration}
+                </Text>
+                <Image
+                  style={styles.floorIcon}
+                  source={require('../Images/FloorIcon.png')}
+                />
+                <Text style={styles.text3}>
+                  {this.props.floor}
                 </Text>
               </View>
             </View>
           </ImageBackground>
         </TouchableOpacity>
         <View style={{
-            height: 2,
-            width: cellWidth,
-            backgroundColor: '#0000',
-              }}>
+          height: 2,
+          width: cellWidth,
+          backgroundColor: '#0000',
+        }}>
         </View>
       </View>
     );
