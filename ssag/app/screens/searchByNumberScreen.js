@@ -25,6 +25,8 @@ export default class SearchByNumberScreen extends Component {
             this.setState({text3: digit})
             this.setState({searchString: this.state.text1 + this.state.text2 + digit})
             this.searchForTrack(this.state.text1 + this.state.text2 + digit);
+            //this.searchForTrack(readyToSearch());
+
         }
     }
 
@@ -36,10 +38,25 @@ export default class SearchByNumberScreen extends Component {
         console.log("hej");
         if(typeof track === 'undefined'){
             alert('Detta ljudspår hittas inte!');
+            this.clearDigitWithDelay();
         }else{
             this.props.screenProps.addAudioPlayer(track.filepath, {}, 0,0);
+            this.clearDigitWithDelay();
         }
 
+    }
+
+
+    clearDigitWithDelay(){
+        setTimeout(() => {
+            this.clearDigit(); 
+          }, 1000)
+    }
+
+    clearDigit() {
+        this.setState({text3: ' '});
+        this.setState({text2: ' '});
+        this.setState({text1: ' '});
     }
 
     removeDigit() {
