@@ -14,12 +14,8 @@ export default class SearchByNumberScreen extends Component {
             text1: ' ',
             text2: ' ',
             text3: ' ',
-<<<<<<< HEAD
             searchString: ' ',
             headerText: I18n.t('searchScreen_Title'),
-=======
-            searchString: ' '
->>>>>>> d88fe99ef9975ebb995748771142c7e863c5b233
         };
     }
 
@@ -84,13 +80,8 @@ export default class SearchByNumberScreen extends Component {
 
     clearDigitWithDelay(){
         setTimeout(() => {
-<<<<<<< HEAD
             this.clearDigit(); 
           }, 1500)
-=======
-            this.clearDigit();
-          }, 1000)
->>>>>>> d88fe99ef9975ebb995748771142c7e863c5b233
     }
 
     clearDigit() {
