@@ -27,13 +27,13 @@ class HighlightScreen extends Component {
     var required;
     for(var i=0; i<json_length; i++){
       switch(json[String(i)]["image"]){
-        case "0": 
+        case "0":
           required = require('../Images/stockholm1.png');
           break;
         case "1":
           required = require('../Images/oldStockholm3.png');
           break;
-        case "2": 
+        case "2":
           required = require('../Images/stockholm2.png');
           break;
       }

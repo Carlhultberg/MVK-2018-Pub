@@ -1,37 +1,49 @@
 {
     "language": {
-        "eng": {
+        "en": {
             "001": {
                 "name": "Paintings",
                 "filepath": "en_001.mp3",
-                "duration": "2m3s"
+                "duration": "2m3s",
+                "theme":"0",
+                "number":"001"
             },
             "002": {
                 "name": "Statues",
                 "filepath": "en_002.mp3",
-                "duration": "4m2s"
+                "duration": "4m2s",
+                "theme":"1",
+                "number":"002"
             },
             "003": {
                 "name": "Ceramics",
                 "filepath": "en_003.mp3",
-                "duration": "3m7s"
+                "duration": "3m7s",
+                "theme":"1",
+                "number":"003"
             }
         },
         "sv": {
             "001": {
                 "name": "Tavlor",
                 "filepath": "sv_001.mp3",
-                "duration": "212"
+                "duration": "212",
+                "theme":"0",
+                "number":"001"
             },
             "002": {
                 "name": "Statyer",
                 "filepath": "sv_002.mp3",
-                "duration": "213"
+                "duration": "213",
+                "theme":"1",
+                "number":"002"
             },
             "003": {
                 "name": "Keramik",
                 "filepath": "sv_003.mp3",
-                "duration": "214"
+                "duration": "214",
+                "theme":"1",
+                "number":"003"
             }
         }
     }

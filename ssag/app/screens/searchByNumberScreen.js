@@ -9,12 +9,17 @@ export default class SearchByNumberScreen extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
             text1: ' ',
             text2: ' ',
             text3: ' ',
+<<<<<<< HEAD
             searchString: ' ',
             headerText: I18n.t('searchScreen_Title'),
+=======
+            searchString: ' '
+>>>>>>> d88fe99ef9975ebb995748771142c7e863c5b233
         };
     }
 
@@ -32,6 +37,24 @@ export default class SearchByNumberScreen extends Component {
         }
     }
 
+    learnMore = (title,image,duration,floor,songs) => {
+      this.props.navigation.navigate('TourstopScreenSearch', { title,image,duration,floor,songs});
+    }
+
+    renderTourStop(theme) {
+      var json = require('../soundInfo/exhibitionInfo.json');
+      var json_length = Object.keys(json).length;
+      var required;
+      if(json[String(theme)]["image"] == "0"){
+        required = require('../Images/stockholm1.png');
+      }else if(json[String(theme)]["image"] == "1"){
+        required = require('../Images/oldStockholm3.png');
+      }else if(json[String(theme)]["image"] == "2"){
+        required = require('../Images/stockholm2.png');
+      }
+      this.learnMore(json[String(theme)]["name"],required,json[String(theme)]["duration"],json[String(theme)]["floor"],json[String(theme)]["sounds"]);
+    }
+
     searchForTrack(searchString){
         var json = require('../soundInfo/soundInfo.json');
         var lang = 'sv';
@@ -43,8 +66,10 @@ export default class SearchByNumberScreen extends Component {
             this.resetHeaderWithDelay();
             this.clearDigitWithDelay();
         }else{
+            var theme = track.theme;
             this.props.screenProps.addAudioPlayer(track.filepath, {}, 0,0);
             this.clearDigitWithDelay();
+            this.renderTourStop(theme);
         }
 
     }
@@ -59,8 +84,13 @@ export default class SearchByNumberScreen extends Component {
 
     clearDigitWithDelay(){
         setTimeout(() => {
+<<<<<<< HEAD
             this.clearDigit(); 
           }, 1500)
+=======
+            this.clearDigit();
+          }, 1000)
+>>>>>>> d88fe99ef9975ebb995748771142c7e863c5b233
     }
 
     clearDigit() {

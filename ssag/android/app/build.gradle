@@ -137,18 +137,6 @@ android {
 }
 
 dependencies {
-    compile project(':realm')
-    compile project(':react-native-vector-icons')
-    compile project(':react-native-splash-screen')
-    compile project(':react-native-restart')
-    compile project(':react-native-i18n')
-    compile project(':react-native-audio-toolkit')
-    compile project(':realm')
-    compile project(':react-native-vector-icons')
-    compile project(':react-native-splash-screen')
-    compile project(':react-native-restart')
-    compile project(':react-native-i18n')
-    compile project(':react-native-audio-toolkit')
     compile project(':react-native-vector-icons')
     compile project(':react-native-restart')
     compile project(':react-native-i18n')

@@ -11,7 +11,7 @@ const { width, height } = Dimensions.get('window');
 const cellWidth = width;
 const cellHeight = height / 11;
 
-class TourStopDetails extends Component {
+class TourStopDetailsSearch extends Component {
 
   render(){
     return(
@@ -38,4 +38,4 @@ class TourStopDetails extends Component {
     );
   }
 }
-export default TourStopDetails;
+export default TourStopDetailsSearch;
