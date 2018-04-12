@@ -74,17 +74,20 @@ export const InfoStack = StackNavigator({
 });
 export const SearchByNumberStack = StackNavigator({
   SearchByNumberScreen: {
-    screen: SearchByNumberScreen
-    //navigationOptions:{
-      //title: I18n.t('searchScreen_Title'),
-      //headerTitleStyle:{alignSelf: 'center'},
-  //  },
+    screen: SearchByNumberScreen,
+    navigationOptions:{
+      header: null,
+    },
   },
   TourstopScreenSearch:{
     screen: TourstopScreenSearch,
     navigationOptions:{
       title: I18n.t('Traditions_shortTitle'),
-      headerTitleStyle:{alignSelf: 'center'},
+      headerTitleStyle:{alignSelf: 'center',
+      textAlign: 'center',
+      flexGrow: 1
+      },
+      headerRight: (<View />)
     },
   },
 });

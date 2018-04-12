@@ -1,6 +1,7 @@
 import React, { Component } from  'react';
 import {StyleSheet, View, Text, TouchableOpacity, TextInput, Image,} from 'react-native';
 import AudioPlayer from './audioPlayer';
+import I18n from '../i18n/i18n';
 //import App from "../App";
 
 export default class SearchByNumberScreen extends Component {
@@ -13,7 +14,8 @@ export default class SearchByNumberScreen extends Component {
             text1: ' ',
             text2: ' ',
             text3: ' ',
-            searchString: ' '
+            searchString: ' ',
+            headerText: I18n.t('searchScreen_Title'),
         };
     }
 
@@ -56,7 +58,8 @@ export default class SearchByNumberScreen extends Component {
         console.log(track);
         console.log("hej");
         if(typeof track === 'undefined'){
-            alert('Detta ljudspår hittas inte!');
+            this.setState({headerText: I18n.t('tryAgain')});
+            this.resetHeaderWithDelay();
             this.clearDigitWithDelay();
         }else{
             var theme = track.theme;
@@ -67,11 +70,18 @@ export default class SearchByNumberScreen extends Component {
 
     }
 
+    
+
+    resetHeaderWithDelay(){
+        setTimeout(() => {
+            this.setState({headerText: I18n.t('searchScreen_Title')}); 
+          }, 1500)
+    }
 
     clearDigitWithDelay(){
         setTimeout(() => {
-            this.clearDigit();
-          }, 1000)
+            this.clearDigit(); 
+          }, 1500)
     }
 
     clearDigit() {
@@ -100,7 +110,7 @@ export default class SearchByNumberScreen extends Component {
             <View style={s.container}>
 
                 <Text style={s.textHeader}>
-                    Search #
+                    {this.state.headerText}
                 </Text>
 
 
