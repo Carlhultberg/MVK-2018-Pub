@@ -54,23 +54,22 @@ export default class SearchByNumberScreen extends Component {
     searchForTrack(searchString){
         var jsonExh = require('../soundInfo/exhibitionInfo.json');
         var json = require('../soundInfo/soundInfo.json');
-        var lang = 'sv';
+        var lang = String(I18n.locale);
         var array = [];
         var maxIndex = -1;
-        var theme = json.language[lang][String(searchString)].theme;
-        var exhibitionAudios = jsonExh[String(theme)].sounds;
         var track = json.language[lang][String(searchString)];
-        var json_length = Object.keys(exhibitionAudios).length;
-        for(var i=0;i<json_length;i++){
-          array.push({text: json.language[lang][String(exhibitionAudios[String(i)])].name, number: json.language[lang][String(exhibitionAudios[String(i)])].number, thisIndex: i, filePath: json.language[lang][String(exhibitionAudios[String(i)])].filepath});
-          maxIndex++;
-        }
         if(typeof track === 'undefined'){
             this.setState({headerText: I18n.t('tryAgain')});
             this.resetHeaderWithDelay();
             this.clearDigitWithDelay();
         }else{
-            var theme = track.theme;
+          var theme = json.language[lang][String(searchString)].theme;
+          var exhibitionAudios = jsonExh[String(theme)].sounds;
+          var json_length = Object.keys(exhibitionAudios).length;
+          for(var i=0;i<json_length;i++){
+            array.push({text: json.language[lang][String(exhibitionAudios[String(i)])].name, number: json.language[lang][String(exhibitionAudios[String(i)])].number, thisIndex: i, filePath: json.language[lang][String(exhibitionAudios[String(i)])].filepath});
+            maxIndex++;
+          }
             this.props.screenProps.addAudioPlayer(track.filepath, array, 0, maxIndex, track.name, track.number);
             this.clearDigitWithDelay();
             this.renderTourStop(theme);
