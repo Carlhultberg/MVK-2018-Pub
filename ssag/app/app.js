@@ -29,7 +29,7 @@ class App extends Component{
   }
 
   createAudio(newAudio){
-    this.setState({ audio: new Player(newAudio).prepare() });
+    this.setState({ audio: new Player(newAudio,{continuesToPlayInBackground:true}).prepare() });
   }
 
   addAudioPlayer(path, array, index, maxIndex){
@@ -37,8 +37,10 @@ class App extends Component{
       this.state.audio.destroy();
     }
     this.createAudio(path);
-    this.setState({ bottomScreen: true, logo: require('./assets/PlayButton.png'), array: array, index: index, maxIndex: maxIndex});
+    this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex});
+    setTimeout(()=>this.state.audio.play(),20);
   }
+
 
   changeLogo(){
     if(this.state.logo == require('./assets/PauseButton.png')){
@@ -67,10 +69,9 @@ class App extends Component{
   nextSong(){
     if(this.state.index==this.state.maxIndex){
       this.state.audio.destroy();
-      this.setState({ bottomScreen: false });
+      this.setState({ bottomScreen: false, audio: ''  });
     }else{
       let newFilePath = this.state.array[String(this.state.index+1)].filePath;
-      this.state.audio.destroy();
       this.addAudioPlayer(newFilePath, this.state.array, this.state.index+1, this.state.maxIndex);
     }
   }
@@ -79,10 +80,9 @@ class App extends Component{
 
     if(this.state.index==0){
       this.state.audio.destroy();
-      this.setState({ bottomScreen: false });
+      this.setState({ bottomScreen: false, audio: ''  });
     }else{
       let newFilePath = this.state.array[String(this.state.index-1)].filePath;
-      this.state.audio.destroy();
       this.addAudioPlayer(newFilePath, this.state.array, this.state.index-1, this.state.maxIndex);
     }
   }
