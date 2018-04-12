@@ -73,12 +73,12 @@ export const InfoStack = StackNavigator({
   },
 });
 export const SearchByNumberStack = StackNavigator({
-  Browser: {
-    screen: SearchByNumberScreen,
-    navigationOptions:{
-      title: I18n.t('searchScreen_Title'),
-      headerTitleStyle:{alignSelf: 'center'},
-    },
+  SearchByNumberScreen: {
+    screen: SearchByNumberScreen
+    //navigationOptions:{
+      //title: I18n.t('searchScreen_Title'),
+      //headerTitleStyle:{alignSelf: 'center'},
+  //  },
   },
   TourstopScreenSearch:{
     screen: TourstopScreenSearch,
