@@ -29,7 +29,7 @@ class App extends Component{
   }
 
   createAudio(newAudio){
-    this.setState({ audio: new Player(newAudio,{continuesToPlayInBackground:true}).prepare() });
+    this.setState({ audio: new Player(newAudio,{continuesToPlayInBackground:true}).prepare().on('ended', () =>{this.nextSong()})});
   }
 
   addAudioPlayer(path, array, index, maxIndex){

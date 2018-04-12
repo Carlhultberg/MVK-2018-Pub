@@ -28,7 +28,7 @@
                 "name": "Tavlor",
                 "filepath": "sv_001.mp3",
                 "duration": "212",
-                "theme":"0",
+                "theme":"1",
                 "number":"001"
             },
             "002": {
@@ -42,8 +42,22 @@
                 "name": "Keramik",
                 "filepath": "sv_003.mp3",
                 "duration": "214",
-                "theme":"1",
+                "theme":"0",
                 "number":"003"
+            },
+            "004": {
+                "name": "Animal",
+                "filepath": "sv_004.wav",
+                "duration": "214",
+                "theme":"0",
+                "number":"004"
+            },
+            "005": {
+                "name": "Beep",
+                "filepath": "sv_005.mp3",
+                "duration": "214",
+                "theme":"0",
+                "number":"005"
             }
         }
     }
