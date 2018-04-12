@@ -172,7 +172,7 @@ class TourstopScreenSearch extends React.Component {
   }
 
   renderTourStops(songs) {
-    var lang = "sv";
+    var lang = String(I18n.locale);
     var array = [];
     var json = require('../soundInfo/soundInfo.json');
     var array = [];
