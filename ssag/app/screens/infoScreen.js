@@ -73,7 +73,7 @@ class InfoScreen extends Component {
               backgroundColor: LIGHT_GRAY,
                 }}>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('AboutMuseum')}>
             <View style={styles.button}>
               <Text style={styles.text}>
                 {I18n.t('museumScreen_ListItem1Label')}
@@ -87,7 +87,7 @@ class InfoScreen extends Component {
               backgroundColor: LIGHT_GRAY,
                 }}>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('AboutApp')}>
             <View style={styles.button}>
               <Text style={styles.text}>
                 {I18n.t('aboutTheAppScreen_Title')}

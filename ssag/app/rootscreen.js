@@ -10,6 +10,8 @@ import SearchByNumberScreen from './screens/searchByNumberScreen';
 import NearMeScreen from './screens/nearMeScreen';
 import InfoScreen from './screens/infoScreen';
 import Language from './screens/language';
+import AboutApp from './screens/aboutApp';
+import AboutMuseum from './screens/aboutMuseum';
 import I18n from './i18n/i18n';
 
 
@@ -64,6 +66,28 @@ export const InfoStack = StackNavigator({
     screen: Language,
     navigationOptions:{
       title: I18n.t('settingsScreen_Title'),
+      headerTitleStyle:{alignSelf: 'center',
+      textAlign: 'center',
+      flexGrow: 1
+      },
+      headerRight: (<View />)
+    },
+  },
+  AboutApp: {
+    screen: AboutApp,
+    navigationOptions:{
+      title: I18n.t('aboutTheAppScreen_Title'),
+      headerTitleStyle:{alignSelf: 'center',
+      textAlign: 'center',
+      flexGrow: 1
+      },
+      headerRight: (<View />)
+    },
+  },
+  AboutMuseum: {
+    screen: AboutMuseum,
+    navigationOptions:{
+      title: I18n.t('museumScreen_ListItem1Label'),
       headerTitleStyle:{alignSelf: 'center',
       textAlign: 'center',
       flexGrow: 1
