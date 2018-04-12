@@ -184,7 +184,7 @@ class TourstopScreen extends React.Component {
     maxIndex--;
     this.state={tourstops:array}
     return this.state.tourstops.map(tourstops =>
-       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, array, tourstops.thisIndex, maxIndex)} array={array}/>
+       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, array, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number)} array={array}/>
      );
   }
 
@@ -198,7 +198,7 @@ class TourstopScreen extends React.Component {
           <View style={styles.playAllButtonContainer}>
             <TouchableOpacity
               style={[styles.playAllButton, { width: 0.65 * width }]}
-              onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex)}>
+              onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number)}>
               <Image
                 style={styles.playAllButtonIcon}
                 source={require('../Images/PlayButton.png')}/>

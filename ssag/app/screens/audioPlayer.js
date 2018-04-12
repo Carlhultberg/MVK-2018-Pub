@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, TouchableOpacity } from 'react-native';
+import { Image, View, TouchableOpacity, Text } from 'react-native';
 import { Player, MediaStates } from 'react-native-audio-toolkit';
 
 class AudioPlayer extends Component {
@@ -36,10 +36,21 @@ class AudioPlayer extends Component {
       <View style={{flex: 1, justifyContent: 'flex-end'}}>
         <View
           style={{
+            backgroundColor: '#000000',
+            alignItems: 'center',
+            height: 30,
+            justifyContent: 'flex-end',
+            elevation: 2,
+            position: 'relative'
+          }}>
+          <Text style={{color: '#ffffff', fontSize: 15}}>{this.props.audioNumber} {this.props.audioName}</Text>
+        </View>
+        <View
+          style={{
               backgroundColor: '#000000',
               justifyContent: 'space-around',
               alignItems: 'center',
-              height: 60,
+              height: 40,
               paddingTop: 15,
               shadowColor: '#0000',
               shadowOffset: {width: 0, height: 2},
