@@ -115,11 +115,11 @@ export default class SearchByNumberScreen extends Component {
     render() {
         return (
             <View style={s.container}>
-
-                <Text style={s.textHeader}>
-                    {this.state.headerText}
-                </Text>
-
+                <View style={s.headerBorder}>
+                    <Text style={s.textHeader}>
+                        {this.state.headerText}
+                    </Text>
+                </View>
 
                 <View style={[s.digitRow,  { flexDirection: 'row' }, {marginBottom: 30} ]}>
                   <Text style={s.input}>
@@ -132,7 +132,6 @@ export default class SearchByNumberScreen extends Component {
                       {this.state.text3}
                   </Text>
                 </View>
-
 
                 <View style={[s.digitRow,  { flexDirection: 'row' }]}>
                   <TouchableOpacity onPress={() => { this.addDigit("1"); }} style={s.buttonContainer}>
@@ -210,16 +209,26 @@ export default class SearchByNumberScreen extends Component {
 const s = StyleSheet.create({
 
     textHeader: {
-        fontSize: 25,
+        fontSize: 20,
+        fontWeight: 'bold',
         color: '#000000',
+        //justifyContent: 'center',
+        //alignItems: 'center',
+    },
+    headerBorder: {
+        width: 450,
+        height: 56,
+        backgroundColor: '#EDEDED',
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
+        elevation: 2,
     },
+
     container: {
         flex: 1,
         backgroundColor: '#F7F7F7',
-        justifyContent: 'center',
+        //justifyContent: 'center',
         alignItems: 'center',
     },
     input: {
