@@ -1,7 +1,8 @@
 import React, { Component } from  'react';
-import {StyleSheet, View, Text, TouchableOpacity, TextInput, Image,} from 'react-native';
+import {StyleSheet, View, Text, TouchableOpacity, TextInput, Image, TouchableHighlight} from 'react-native';
 import AudioPlayer from './audioPlayer';
 import I18n from '../i18n/i18n';
+import { OFF_BLACK, OFF_WHITE, SELECTED, NAV_BAR_BACKGROUND, NAV_BAR_TEXT, BORDERCOLOR } from '../styles';
 //import App from "../App";
 
 export default class SearchByNumberScreen extends Component {
@@ -26,9 +27,8 @@ export default class SearchByNumberScreen extends Component {
             this.setState({text2: digit});
         }else if (this.state.text3 === ' '){
             this.setState({text3: digit})
-            this.setState({searchString: this.state.text1 + this.state.text2 + digit})
+            //this.setState({searchString: this.state.text1 + this.state.text2 + digit})
             this.searchForTrack(this.state.text1 + this.state.text2 + digit);
-            //this.searchForTrack(readyToSearch());
 
         }
     }
@@ -134,69 +134,69 @@ export default class SearchByNumberScreen extends Component {
                 </View>
 
                 <View style={[s.digitRow,  { flexDirection: 'row' }]}>
-                  <TouchableOpacity onPress={() => { this.addDigit("1"); }} style={s.buttonContainer}>
+                  <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("1"); }} style={s.buttonContainer}>
                       <Text style={s.buttonText}>
                           1
                       </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => { this.addDigit("2"); }} style={s.buttonContainer}>
+                  </TouchableHighlight>
+                  <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("2"); }} style={s.buttonContainer}>
                       <Text style={s.buttonText}>
                           2
                       </Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => { this.addDigit("3"); }} style={s.buttonContainer}>
+                  </TouchableHighlight>
+                  <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("3"); }} style={s.buttonContainer}>
                       <Text style={s.buttonText}>
                           3
                       </Text>
-                  </TouchableOpacity>
+                  </TouchableHighlight>
                 </View>
 
 
                 <View style={[s.digitRow,  { flexDirection: 'row' } ]}>
-                    <TouchableOpacity onPress={() => { this.addDigit("4"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("4"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             4
                         </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { this.addDigit("5"); }} style={s.buttonContainer}>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("5"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             5
                         </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { this.addDigit("6"); }} style={s.buttonContainer}>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("6"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             6
                         </Text>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
                 </View>
 
 
                 <View style={[s.digitRow,  { flexDirection: 'row' } ]}>
-                    <TouchableOpacity onPress={() => { this.addDigit("7"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("7"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             7
                         </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { this.addDigit("8"); }} style={s.buttonContainer}>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("8"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             8
                         </Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => { this.addDigit("9"); }} style={s.buttonContainer}>
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("9"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             9
                         </Text>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
                 </View>
 
 
                 <View style={[s.notDigitRow,  { flexDirection: 'row' } ]}>
                     <View style={[s.filler]} />
-                    <TouchableOpacity onPress={() => { this.addDigit("0"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("0"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             0
                         </Text>
-                    </TouchableOpacity>
+                    </TouchableHighlight>
                     <TouchableOpacity onPress={() => { this.removeDigit(); }} style={s.buttonNoContainer}>
                         <Image source={require('../assets/DeleteButton.png')} style={s.deleteButton} />
                     </TouchableOpacity>
@@ -211,14 +211,14 @@ const s = StyleSheet.create({
     textHeader: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#000000',
+        color: NAV_BAR_TEXT,
         //justifyContent: 'center',
         //alignItems: 'center',
     },
     headerBorder: {
         width: 450,
         height: 56,
-        backgroundColor: '#EDEDED',
+        backgroundColor: NAV_BAR_BACKGROUND,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
@@ -227,14 +227,14 @@ const s = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#F7F7F7',
+        backgroundColor: OFF_WHITE,
         //justifyContent: 'center',
         alignItems: 'center',
     },
     input: {
         width: 40,
         height: 50,
-        color: '#000000',
+        color: OFF_BLACK,
         fontSize: 40,
         textAlign: 'center',
         margin: 10,
@@ -246,7 +246,7 @@ const s = StyleSheet.create({
         width: 70,
         justifyContent: 'center',
         borderRadius: 35,
-        borderColor: '#808080',
+        borderColor: BORDERCOLOR,
         borderWidth: 1,
         margin: 8,
     },
@@ -260,7 +260,7 @@ const s = StyleSheet.create({
     },
 
     buttonText:{
-        color: '#000000',
+        color: OFF_BLACK,
         fontSize: 35,
         textAlign: 'center',
     },
@@ -289,14 +289,7 @@ const s = StyleSheet.create({
         width: 70,
         height: 70,
         margin: 10,
-        backgroundColor: '#F7F7F7'
+        backgroundColor: OFF_WHITE,
     },
-
-    mediaContainer: {
-        flex: 1,
-        backgroundColor: '#ffffff',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
+    
 });

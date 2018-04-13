@@ -23,9 +23,14 @@ const cellWidth = width;
 const cellHeight = height * 2/3 ;
 const buttonHeight = height * 1/18;
 
-import { OFF_BLACK, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
+import { OFF_BLACK, OFF_WHITE, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS, SELECTED } from '../styles';
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: OFF_WHITE,
+  },
+
   button: {
     height: 50,
     width: width,
@@ -33,7 +38,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: OFF_WHITE,
   },
   text:{
     fontWeight: 'bold',
@@ -62,11 +67,11 @@ class Language extends Component {
   languageSelectBG(isSelected) {
     var isSelected = String(I18n.locale);
     if(isSelected === 'en'){
-      this.setState({bgColorSelectedEn: '#FAE3E7'});
-      this.setState({bgColorSelectedSv: '#EFEFF4'});
+      this.setState({bgColorSelectedEn: SELECTED});
+      this.setState({bgColorSelectedSv: OFF_WHITE});
     }else if(isSelected === 'sv'){
-      this.setState({bgColorSelectedEn: '#EFEFF4'});
-      this.setState({bgColorSelectedSv: '#FAE3E7'});
+      this.setState({bgColorSelectedEn: OFF_WHITE});
+      this.setState({bgColorSelectedSv: SELECTED});
     }
     
   }
@@ -81,7 +86,7 @@ class Language extends Component {
 
   render(){
     return(
-        <View style={{flex: 1}}>
+        <View style={styles.container}>
           <TouchableOpacity onPress={() =>  this.restart('en')  }>
             <View style={[styles.button, { backgroundColor: this.state.bgColorSelectedEn }]}>
               <Text style={styles.text}>

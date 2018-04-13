@@ -17,6 +17,7 @@ export const HEADER_BACKGROUND_COLOR = '#bab6ba';
 export const HIGHLIGHTS = '#FFC200';
 export const ACTION = '#E52484';
 export const SELECTED = '#FAE3E7';
+export const BORDERCOLOR = '#808080';
 
 export const globalStyles = StyleSheet.create({
   body: {
