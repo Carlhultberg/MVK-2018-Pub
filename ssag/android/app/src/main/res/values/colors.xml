@@ -5,4 +5,5 @@
     <color name="primary_dark">#FF69B4</color>
     <color name="background">#ffffff</color>
     <color name="background_splash">#FF69B4</color>
+    <color name="statusBar">#EDEDED</color>
 </resources>
