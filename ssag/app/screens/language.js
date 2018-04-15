@@ -61,10 +61,10 @@ class Language extends Component {
   }
 
   componentDidMount(){
-    this.languageSelectBG(2);
+    this.languageSelectBG();
   }
 
-  languageSelectBG(isSelected) {
+  languageSelectBG() {
     var isSelected = String(I18n.locale);
     if(isSelected === 'en'){
       this.setState({bgColorSelectedEn: SELECTED});
