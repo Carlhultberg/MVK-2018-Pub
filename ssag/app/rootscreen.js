@@ -13,6 +13,7 @@ import Language from './screens/language';
 import AboutApp from './screens/aboutApp';
 import AboutMuseum from './screens/aboutMuseum';
 import I18n from './i18n/i18n';
+import { OFF_BLACK, OFF_WHITE, SELECTED, NAV_BAR_BACKGROUND, NAV_BAR_TEXT, BORDERCOLOR } from './styles';
 
 
 export const BrowserStack = StackNavigator({
@@ -147,7 +148,11 @@ export const Tabs = TabNavigator({
   },
 },{
   tabBarPosition: 'bottom',
-  tabBarOptions : {
+  //swipeEnabled: false,
+  initialRouteName : 'Browser',
+  tabBarOptions: {
+    //showLabel: false,
+    showIcon: true,
     style: {
       backgroundColor: '#000000',
       height: 60,
