@@ -2,13 +2,16 @@ package com.ssag;
 
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen;
+
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
     @Override
    protected void onCreate(Bundle savedInstanceState) {
-       SplashScreen.show(this);
-       super.onCreate(savedInstanceState);
+        super.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        SplashScreen.show(this);
+        super.onCreate(savedInstanceState);
    }
     /**
      * Returns the name of the main component registered from JavaScript.
