@@ -148,14 +148,26 @@ export const Tabs = TabNavigator({
   },
 },{
   tabBarPosition: 'bottom',
-  //swipeEnabled: false,
-  initialRouteName : 'Browser',
+  swipeEnabled: false,
+  animationEnabled: false,
+  initialRouteName: 'Browser',
   tabBarOptions: {
     //showLabel: false,
     showIcon: true,
+    upperCaseLabel: false,
+    indicatorStyle:  {
+      backgroundColor: '#000000',
+    },
     style: {
       backgroundColor: '#000000',
       height: 60,
-    }
+    },
+    labelStyle: {
+      fontSize: 12,
+    },
+    iconStyle: {
+      height: 25,
+      width: 25,
+    },
   }
 });
