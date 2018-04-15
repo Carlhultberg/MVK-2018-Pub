@@ -289,7 +289,6 @@ const s = StyleSheet.create({
         width: 70,
         height: 70,
         margin: 10,
-        backgroundColor: OFF_WHITE,
     },
     
 });

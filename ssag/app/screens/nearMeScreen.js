@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-import { OFF_BLACK, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
+import { OFF_BLACK, OFF_WHITE, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
 
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
@@ -17,83 +17,57 @@ const cellWidth = width;
 const styles = StyleSheet.create({
 
   Button: {
-    backgroundColor: '#E52484',
+    backgroundColor: ACTION,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     height: 48,
+    width: cellWidth *0.9,
     borderRadius: 5,
+    //marginRight: 16,
+    //marginLeft: 16,
+    marginBottom: 10,
   },
-
   ButtonText: {
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   mainView:{
     flex:1,
     alignItems: 'center',
+    backgroundColor: OFF_WHITE,
   },
   text:{
     fontSize: 18,
     color: OFF_BLACK,
-    backgroundColor: '#ffffff',
     textAlign: 'center',
+    marginRight: 16,
+    marginLeft: 16,
+    marginBottom: 16,
   },
 });
 
 class NearMeScreen extends Component {
 
-  bottomComponent(){
-    if(this.props.screenProps.bottomScreen){
-      return (
-        <View style={{height: 60}}>
-          <AudioPlayer
-            audio = {this.props.screenProps.currentAudio}
-            logo = {this.props.screenProps.logo}
-            changeLogo = {this.props.screenProps.changeLogo}
-            nextSong = {this.props.screenProps.nextSong}
-            previousSong = {this.props.screenProps.previousSong}
-          />
-      </View>
-      )
-    }
-  }
+  
   render(){
     return(
         <View style={styles.mainView}>
-          <Text style={styles.text}>
+          <Text style={[styles.text, {marginTop: 16}]}>
             {I18n.t('nearMeScreen_StoriesMessage')}
-          </Text>
-          <View style={{
-              height: 20,
-              width: cellWidth,
-              backgroundColor: '#ffffff',
-                }}>
-          </View>
+          </Text>       
           <Text style={styles.text}>
             {I18n.t('nearMeScreen_LocationNeeds')}
           </Text>
-          <View style={{
-              height: 20,
-              width: cellWidth,
-              backgroundColor: '#ffffff',
-                }}>
-          </View>
           <TouchableOpacity
-            style={[styles.Button, { width: 0.90 * width }]}>
+            style={styles.Button}>
             <Text style={styles.ButtonText}>
               {I18n.t('locationServicesButton_Label')}
             </Text>
           </TouchableOpacity>
-          <View style={{
-              height: 10,
-              width: cellWidth,
-              backgroundColor: '#ffffff',
-                }}>
-          </View>
           <TouchableOpacity
-            style={[styles.Button, { width: 0.90 * width }]}>
+            style={styles.Button}>
             <Text style={styles.ButtonText}>
               {I18n.t('bluetoothButton_OffLabel')}
             </Text>

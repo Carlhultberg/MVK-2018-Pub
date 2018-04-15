@@ -15,7 +15,7 @@ import {
   Text,
 } from 'react-native';
 
-import { OFF_BLACK, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
+import { OFF_BLACK, OFF_WHITE, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
 
 const styles = StyleSheet.create({
   container: {
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     zIndex: 5,
   },
   playAllButton: {
-    backgroundColor: '#E52484',
+    backgroundColor: ACTION,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
@@ -81,14 +81,14 @@ const styles = StyleSheet.create({
   playAllButtonText: {
     color: '#ffffff',
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
   },
   scrollableContent: {
     paddingTop: 10,
   },
   audioContentInfo: {
     //flexDirection: 'row',
-    backgroundColor: '#EDEDED',
+    backgroundColor: LIGHT_GRAY,
     height: 60,
     // position: 'absolute',
     //top: 50,
@@ -102,13 +102,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   audioContentBox: {
-    backgroundColor: '#EDEDED',
+    backgroundColor: LIGHT_GRAY,
     width: 170,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   audioContent: {
-    backgroundColor: '#EDEDED',
+    backgroundColor: LIGHT_GRAY,
     flexDirection: 'row',
   },
   audioContentQuickInfo: {
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     color: OFF_BLACK,
   },
   audioContentDuration: {
-    backgroundColor: '#EDEDED',
+    backgroundColor: LIGHT_GRAY,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -159,6 +159,9 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     fontSize: 17,
   },
+  filler: {
+    height: 60,
+},
 });
 
 const { width, height } = Dimensions.get('window');
@@ -190,7 +193,7 @@ class TourstopScreen extends React.Component {
 
   render() {
     return (
-        <ScrollView>
+        <ScrollView style={styles.container}>
           <Image
               style={styles.headerImage}
               source={this.props.navigation.state.params.image}/>
@@ -234,7 +237,7 @@ class TourstopScreen extends React.Component {
                 }}>
           </View>
           {  this.renderTourStops({songs:this.props.navigation.state.params.songs}) }
-          <View style={{height: 60}}/>
+          <View style={styles.filler}/>
         </ScrollView>
 
     );
