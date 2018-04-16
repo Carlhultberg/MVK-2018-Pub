@@ -13,6 +13,7 @@ import {
   View,
   containerMargin,
   Text,
+  ImageBackground,
 } from 'react-native';
 
 import { OFF_BLACK, OFF_WHITE, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     right: 0,
     height: 167,
     width: cellWidth,
-    resizeMode: 'cover',
+    //resizeMode: 'cover',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -194,9 +195,15 @@ class TourstopScreen extends React.Component {
   render() {
     return (
         <ScrollView style={styles.container}>
-          <Image
+          <ImageBackground
               style={styles.headerImage}
-              source={this.props.navigation.state.params.image}/>
+              source={this.props.navigation.state.params.image}>
+              <View>
+                <Text style={{fontSize: 25, color: '#ffffff'}}>
+                  {this.props.navigation.state.params.title}
+                </Text>
+              </View>
+          </ImageBackground>
 
           <View style={styles.playAllButtonContainer}>
             <TouchableOpacity
@@ -225,7 +232,7 @@ class TourstopScreen extends React.Component {
                   source={require('../Images/ClockIcon.png')}
                 />
                 <Text style={styles.durationText}>
-                {this.props.navigation.state.params.duration} {I18n.t('min')} 
+                {this.props.navigation.state.params.duration} {I18n.t('min')}
                 </Text>
               </View>
             </View>

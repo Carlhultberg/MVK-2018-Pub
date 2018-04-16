@@ -1,6 +1,6 @@
 {
     "0": {
-        "name": "Hamnen",
+        "name": "HAMNEN",
         "duration": "37",
         "floor":"0",
         "sounds": {
@@ -11,7 +11,7 @@
         "image": "0"
     },
     "1": {
-        "name": "Stallet",
+        "name": "STALLET",
         "duration": "23",
         "floor":"1",
         "sounds": {
