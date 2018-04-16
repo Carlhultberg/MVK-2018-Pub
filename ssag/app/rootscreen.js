@@ -12,6 +12,7 @@ import InfoScreen from './screens/infoScreen';
 import Language from './screens/language';
 import AboutApp from './screens/aboutApp';
 import AboutMuseum from './screens/aboutMuseum';
+import AmenitiesScreen from './screens/amenitiesScreen';
 import I18n from './i18n/i18n';
 import { OFF_BLACK, OFF_WHITE, SELECTED, NAV_BAR_BACKGROUND, NAV_BAR_TEXT, BORDERCOLOR } from './styles';
 
@@ -89,6 +90,17 @@ export const InfoStack = StackNavigator({
     screen: AboutMuseum,
     navigationOptions:{
       title: I18n.t('museumScreen_ListItem1Label'),
+      headerTitleStyle:{alignSelf: 'center',
+      textAlign: 'center',
+      flexGrow: 1
+      },
+      headerRight: (<View />)
+    },
+  },
+  AmenitiesScreen: {
+    screen: AmenitiesScreen,
+    navigationOptions:{
+      title: I18n.t('amenitiesScreen_Title'),
       headerTitleStyle:{alignSelf: 'center',
       textAlign: 'center',
       flexGrow: 1

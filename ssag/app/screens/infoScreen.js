@@ -59,7 +59,7 @@ class InfoScreen extends Component {
               backgroundColor: LIGHT_GRAY,
                 }}>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('AmenitiesScreen')}>
             <View style={styles.button}>
               <Text style={styles.text}>
                 {I18n.t('amenitiesScreen_Title')}
