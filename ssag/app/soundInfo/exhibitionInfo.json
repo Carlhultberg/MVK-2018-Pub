@@ -1,4 +1,5 @@
 {
+  "sv":{
     "0": {
         "name": "HAMNEN",
         "duration": "37",
@@ -20,4 +21,28 @@
         },
         "image": "1"
     }
+  },
+  "en":{
+    "0": {
+        "name": "THE HARBOR",
+        "duration": "37",
+        "floor":"0",
+        "sounds": {
+            "0": "003",
+            "1": "004",
+            "2": "005"
+        },
+        "image": "0"
+    },
+    "1": {
+        "name": "THE STABLE",
+        "duration": "23",
+        "floor":"1",
+        "sounds": {
+            "0": "001",
+            "1": "002"
+        },
+        "image": "1"
+    }
+  }
 }

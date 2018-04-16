@@ -22,11 +22,12 @@ class HighlightScreen extends Component {
     super(props);
 
     var json = require('../soundInfo/exhibitionInfo.json');
+    var lang = String(I18n.locale);
     var array = [];
     var json_length = Object.keys(json).length;
     var required;
     for(var i=0; i<json_length; i++){
-      switch(json[String(i)]["image"]){
+      switch(json[lang][String(i)]["image"]){
         case "0":
           required = require('../Images/stockholm1.png');
           break;
@@ -37,7 +38,7 @@ class HighlightScreen extends Component {
           required = require('../Images/stockholm2.png');
           break;
       }
-      array.push({title: json[String(i)]["name"], image: required, duration: json[String(i)]["duration"],songs:json[String(i)]["sounds"],floor:json[String(i)]["floor"]});
+      array.push({title: json[lang][String(i)]["name"], image: required, duration: json[lang][String(i)]["duration"],songs:json[lang][String(i)]["sounds"],floor:json[lang][String(i)]["floor"]});
     }
     this.state = {highlights: array};
 

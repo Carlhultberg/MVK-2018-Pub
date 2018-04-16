@@ -5,7 +5,7 @@
                 "name": "Paintings",
                 "filepath": "en_001.mp3",
                 "duration": "2m3s",
-                "theme":"0",
+                "theme":"1",
                 "number":"001"
             },
             "002": {
@@ -19,7 +19,7 @@
                 "name": "Ceramics",
                 "filepath": "en_003.mp3",
                 "duration": "3m7s",
-                "theme":"1",
+                "theme":"0",
                 "number":"003"
             },
             "004": {

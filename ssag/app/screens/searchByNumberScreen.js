@@ -39,16 +39,17 @@ export default class SearchByNumberScreen extends Component {
 
     renderTourStop(theme) {
       var json = require('../soundInfo/exhibitionInfo.json');
+      var lang = String(I18n.locale);
       var json_length = Object.keys(json).length;
       var required;
-      if(json[String(theme)]["image"] == "0"){
+      if(json[lang][String(theme)]["image"] == "0"){
         required = require('../Images/stockholm1.png');
-      }else if(json[String(theme)]["image"] == "1"){
+      }else if(json[lang][String(theme)]["image"] == "1"){
         required = require('../Images/oldStockholm3.png');
-      }else if(json[String(theme)]["image"] == "2"){
+      }else if(json[lang][String(theme)]["image"] == "2"){
         required = require('../Images/stockholm2.png');
       }
-      this.learnMore(json[String(theme)]["name"],required,json[String(theme)]["duration"],json[String(theme)]["floor"],json[String(theme)]["sounds"]);
+      this.learnMore(json[lang][String(theme)]["name"], required, json[lang][String(theme)]["duration"], json[lang][String(theme)]["floor"], json[lang][String(theme)]["sounds"]);
     }
 
     searchForTrack(searchString){
@@ -64,7 +65,7 @@ export default class SearchByNumberScreen extends Component {
             this.clearDigitWithDelay();
         }else{
           var theme = json.language[lang][String(searchString)].theme;
-          var exhibitionAudios = jsonExh[String(theme)].sounds;
+          var exhibitionAudios = jsonExh[lang][String(theme)].sounds;
           var json_length = Object.keys(exhibitionAudios).length;
           for(var i=0;i<json_length;i++){
             array.push({text: json.language[lang][String(exhibitionAudios[String(i)])].name, number: json.language[lang][String(exhibitionAudios[String(i)])].number, thisIndex: i, filePath: json.language[lang][String(exhibitionAudios[String(i)])].filepath});
@@ -290,5 +291,5 @@ const s = StyleSheet.create({
         height: 70,
         margin: 10,
     },
-    
+
 });
