@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import I18n from '../i18n/i18n';
+import AmenitiesScreenDetails from './amenitiesScreenDetails'
 
 import {
   Text,
@@ -23,26 +24,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: OFF_WHITE,
   },
-
-  button: {
-    height: 50,
-    width: width,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 10,
-    backgroundColor: OFF_WHITE,
-  },
-  text:{
-    fontWeight: 'bold',
-    fontSize: 20,
-    color: OFF_BLACK
-  },
-  image:{
-    width: 50,
-    height:50,
-    //tintColor: OFF_BLACK
-  },
 });
 
 class AmenitiesScreen extends Component {
@@ -62,54 +43,18 @@ class AmenitiesScreen extends Component {
 
   renderAmenities() {
     return this.state.amenities.map(amenity =>
-      this.toiletsFunction( amenity )
+      <AmenitiesScreenDetails key={amenity.number} number={amenity.number} string={amenity.string} floors={amenity.floors} dropDown={amenity.dropDown}/>
     );
-  }
-
-  updateArray(b, number, amenity){
-    var array = this.state.array;
-  //  amenity.dropDown = b;
-    array[number].dropDown = b;
-    this.setState({ array: array });
-  }
-
-  toiletsFunction(amenity){
-    if(amenity.dropDown){
-      return(
-        <View>
-          <TouchableOpacity onPress = {() => this.updateArray(false, amenity.number, amenity)}>
-            <View style={styles.button}>
-              <Text style={styles.text}>
-                {I18n.t('amenities_ToiletsTitle')}
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <View style={styles.button}>
-            <Text style={styles.text}>
-              {I18n.t('floor')}
-            </Text>
-          </View>
-        </View>
-      )
-    }else{
-      return(
-        <TouchableOpacity onPress = {() => this.updateArray(true, amenity.number, amenity)}>
-          <View style={styles.button}>
-            <Text style={styles.text}>
-              {I18n.t('amenities_ToiletsTitle')}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      )
-    }
-
   }
 
   render(){
     return(
-      <View style={styles.container}>
-        { this.renderAmenities() }
-      </View>
+      <ScrollView style={styles.container}>
+        <View>
+          { this.renderAmenities() }
+        </View>
+        <View style={{height: 60}}/>
+      </ScrollView>
 
     );
   }

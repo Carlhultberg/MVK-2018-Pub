@@ -73,7 +73,7 @@ class Language extends Component {
       this.setState({bgColorSelectedEn: OFF_WHITE});
       this.setState({bgColorSelectedSv: SELECTED});
     }
-    
+
   }
 
 
@@ -86,7 +86,8 @@ class Language extends Component {
 
   render(){
     return(
-        <View style={styles.container}>
+      <ScrollView style={styles.container}>
+        <View>
           <TouchableOpacity onPress={() =>  this.restart('en')  }>
             <View style={[styles.button, { backgroundColor: this.state.bgColorSelectedEn }]}>
               <Text style={styles.text}>
@@ -102,6 +103,8 @@ class Language extends Component {
             </View>
           </TouchableOpacity>
         </View>
+        <View style={{height: 60}}/>
+      </ScrollView>
     );
   }
 }

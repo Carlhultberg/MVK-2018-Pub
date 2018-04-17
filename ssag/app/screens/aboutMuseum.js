@@ -16,6 +16,8 @@ import {
 } from 'react-native';
 
 
+
+
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
 const cellHeight = height * 2/3 ;
@@ -23,47 +25,64 @@ const buttonHeight = height * 1/18;
 
 import { OFF_BLACK, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
 
-const styles = StyleSheet.create({
-  button: {
-    height: buttonHeight,
-    width: cellWidth,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+const s = StyleSheet.create({
+  container: {
+    marginLeft: 16,
+    marginRight: 16,
+  },
+  textHeader:{
+    marginTop: 16,
+    fontSize: 20,
+    color: OFF_BLACK,
+    fontWeight: 'bold',
   },
   text:{
     fontSize: 20,
     color: OFF_BLACK
   },
-  image:{
-    width: 50,
-    height:50,
-  //  tintColor: OFF_BLACK
+  filler: {
+    height: 60,
   },
 });
 
-class AboutMuseum extends Component {
+class AboutApp extends Component {
 
   render(){
     return(
-        <View style={{flex: 1}}>
-          <TouchableOpacity>
-            <View style={styles.button}>
-              <Text style={styles.text}>
-                English
-              </Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <View style={styles.button}>
-              <Text style={styles.text}>
-                Svenska
-              </Text>
-            </View>
-          </TouchableOpacity>
+      <ScrollView>
+        <View style={s.container}>
+          <Text style={s.text}>
+            {I18n.t('aboutScreen_Overview')}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutScreen_AboutHeader')}
+          </Text>
+          <Text style={s.text}>
+            {I18n.t('aboutScreen_AboutBody')}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutScreen_HoursHeader')}
+          </Text>
+          <Text style={s.text}>
+            {I18n.t('aboutScreen_HoursBody1')}
+          </Text>
+          <Text style={s.text}>
+            {I18n.t('aboutScreen_HoursBody2')}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutScreen_AdmissionHeader')}
+          </Text>
+          <Text style={s.text}>
+            {I18n.t('aboutScreen_AdmissionBody1')}
+          </Text>
+          <Text style={s.text}>
+            {I18n.t('aboutScreen_AdmissionBody2')}
+          </Text>
+          <View style={s.filler}/>
         </View>
+      </ScrollView>
     );
   }
 }
 
-export default AboutMuseum;
+export default AboutApp;

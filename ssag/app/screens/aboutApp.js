@@ -16,6 +16,8 @@ import {
 } from 'react-native';
 
 
+
+
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
 const cellHeight = height * 2/3 ;
@@ -23,37 +25,95 @@ const buttonHeight = height * 1/18;
 
 import { OFF_BLACK, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
 
-const styles = StyleSheet.create({
-  button: {
-    height: buttonHeight,
-    width: cellWidth,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+const s = StyleSheet.create({
+  container: {
+    marginLeft: 16,
+    marginRight: 16,
+  },
+  textHeader:{
+    marginTop: 16,
+    fontSize: 20,
+    color: OFF_BLACK,
+    fontWeight: 'bold',
   },
   text:{
     fontSize: 20,
     color: OFF_BLACK
   },
-  image:{
-    width: 50,
-    height:50,
-  //  tintColor: OFF_BLACK
+  filler: {
+    height: 60,
   },
 });
 
 class AboutApp extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+        aboutTheAppProjectManagerNordicMuseumBody: '[Project Manager name here]',
+        aboutTheAppDevelopmentAndDesignBody: 'Maria Lindblad\nTommy Samuelsson\nCarl Hultberg\nDiar Sabari\nLars Lundin\nBurhan Hashi',
+        aboutTheAppAdvisoryTeamBody: '[Advisory name here]',
+        aboutTheAppAppIconBody: 'Ann-Sofia Marminge Design',
+        aboutTheAppTranslationsBody: 'BTI Studios'
+    };
+}
+
   render(){
     return(
-      <View>
-
-        <Text>
-          Om appen
-        </Text>
-
-      </View>
-
+      <ScrollView>
+        <View style={s.container}>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutTheAppAudioContentHeader')}
+          </Text>
+          <Text style={s.text}>
+            {I18n.t('aboutTheAppAudioContentBody')}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutTheAppTheAppHeader')}
+          </Text>
+          <Text style={s.text}>
+            {I18n.t('aboutTheAppTheAppBody')}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutTheAppProjectManagerNordicMuseumHeader')}
+          </Text>
+          <Text style={s.text}>
+            {this.state.aboutTheAppProjectManagerNordicMuseumBody}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutTheAppDevelopmentAndDesignHeader')}
+          </Text>
+          <Text style={s.text}>
+            {this.state.aboutTheAppDevelopmentAndDesignBody}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutTheAppAdvisoryTeamHeader')}
+          </Text>
+          <Text style={s.text}>
+            {this.state.aboutTheAppAdvisoryTeamBody}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutTheAppAppIconHeader')}
+          </Text>
+          <Text style={s.text}>
+            {this.state.aboutTheAppAppIconBody}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutTheAppTranslationsHeader')}
+          </Text>
+          <Text style={s.text}>
+            {this.state.aboutTheAppTranslationsBody}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutTheAppPhotoCreditsHeader')}
+          </Text>
+          <Text style={s.text}>
+            {I18n.t('aboutTheAppPhotoCreditsBody')}
+          </Text>
+          <View style={s.filler}/>
+        </View>
+      </ScrollView>
     );
   }
 }
