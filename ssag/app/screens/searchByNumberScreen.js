@@ -58,17 +58,17 @@ export default class SearchByNumberScreen extends Component {
         var lang = String(I18n.locale);
         var array = [];
         var maxIndex = -1;
-        var track = json.language[lang][String(searchString)];
+        var track = json[lang][String(searchString)];
         if(typeof track === 'undefined'){
             this.setState({headerText: I18n.t('tryAgain')});
             this.resetHeaderWithDelay();
             this.clearDigitWithDelay();
         }else{
-          var theme = json.language[lang][String(searchString)].theme;
+          var theme = json[lang][String(searchString)].theme;
           var exhibitionAudios = jsonExh[lang][String(theme)].sounds;
           var json_length = Object.keys(exhibitionAudios).length;
           for(var i=0;i<json_length;i++){
-            array.push({text: json.language[lang][String(exhibitionAudios[String(i)])].name, number: json.language[lang][String(exhibitionAudios[String(i)])].number, thisIndex: i, filePath: json.language[lang][String(exhibitionAudios[String(i)])].filepath});
+            array.push({text: json[lang][String(exhibitionAudios[String(i)])].name, number: json[lang][String(exhibitionAudios[String(i)])].number, thisIndex: i, filePath: json[lang][String(exhibitionAudios[String(i)])].filepath});
             maxIndex++;
           }
             this.props.screenProps.addAudioPlayer(track.filepath, array, 0, maxIndex, track.name, track.number);

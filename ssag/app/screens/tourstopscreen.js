@@ -183,17 +183,17 @@ class TourstopScreen extends React.Component {
     var highlightArray = [];
     var maxIndex = 0;
     var indexKeeper = 0;
+    console.log(songs.songs[0]);
     for(var i=0;i<Object.keys(songs.songs).length;i++){
-      if(json.language[lang][songs.songs[String(i)]].highlight==="1"){
-        highlightArray.push({text: json.language[lang][songs.songs[String(i)]].name, number: json.language[lang][songs.songs[String(i)]].number, thisIndex: indexKeeper, filePath: json.language[lang][songs.songs[String(i)]].filepath, highlight: json.language[lang][songs.songs[String(i)]].highlight});
+      if(json[lang][songs.songs[String(i)]].highlight==="1"){
+        highlightArray.push({text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight});
         indexKeeper++;
       }
       maxIndex++;
     }
-
     for(var i=0;i<Object.keys(songs.songs).length;i++){
-      if(json.language[lang][songs.songs[String(i)]].highlight==="0"){
-        array.push({text: json.language[lang][songs.songs[String(i)]].name, number: json.language[lang][songs.songs[String(i)]].number, thisIndex: indexKeeper, filePath: json.language[lang][songs.songs[String(i)]].filepath, highlight: json.language[lang][songs.songs[String(i)]].highlight});
+      if(json[lang][songs.songs[String(i)]].highlight==="0"){
+        array.push({text: json[lang][songs.songs[String(i)]].name, number:songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight});
         indexKeeper++;
       }
     }

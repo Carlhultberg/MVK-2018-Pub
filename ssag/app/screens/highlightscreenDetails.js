@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
 });
 
 class HighlightScreenDetails extends Component {
-  styleFunc = function(highlight){
-    if(highlight==1){
+  styleFunc = function(floor){
+    if(floor===''){
       return {
         fontSize: 19,
         color: '#ffffff',
@@ -77,11 +77,11 @@ class HighlightScreenDetails extends Component {
         height: cellHeight + 2,
         width: cellWidth,
       }}>
-        <TouchableOpacity onPress={() => this.props.learnMore(this.props.title, this.props.image, this.props.duration, this.props.floor, this.props.songs, this.props.highlight)}>
+        <TouchableOpacity onPress={() => this.props.learnMore(this.props.title, this.props.image, this.props.duration, this.props.floor, this.props.songs)}>
           <ImageBackground style={styles.image}
             source={this.props.image}>
             <View style={styles.textBox}>
-              <Text style={this.styleFunc(this.props.highlight)}>
+              <Text style={this.styleFunc(this.props.floor)}>
                 {this.props.title}
               </Text>
               <View style={styles.timeBox}>
