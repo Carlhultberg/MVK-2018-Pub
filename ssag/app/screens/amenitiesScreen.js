@@ -48,30 +48,52 @@ const styles = StyleSheet.create({
 class AmenitiesScreen extends Component {
   constructor() {
     super();
+
+    var json = require('../amenities/amenities.json');
+    var array = [];
+    var json_length = Object.keys(json).length;
+    for(var i=0; i<json_length; i++){
+      array.push({number: String(i), string: json[String(i)]["string"], floors: json[String(i)]["floors"], dropDown: false});
+    }
     this.state = {
-      toiletsDropDown: false,
+      amenities: array,
     };
   }
 
-  toiletsFunction(){
-    if(this.state.toiletsDropDown){
+  renderAmenities() {
+    return this.state.amenities.map(amenity =>
+      this.toiletsFunction( amenity )
+    );
+  }
+
+  updateArray(b, number, amenity){
+    var array = this.state.array;
+  //  amenity.dropDown = b;
+    array[number].dropDown = b;
+    this.setState({ array: array });
+  }
+
+  toiletsFunction(amenity){
+    if(amenity.dropDown){
       return(
-        <TouchableOpacity onPress = {() => this.setState({ toiletsDropDown: false })}>
+        <View>
+          <TouchableOpacity onPress = {() => this.updateArray(false, amenity.number, amenity)}>
+            <View style={styles.button}>
+              <Text style={styles.text}>
+                {I18n.t('amenities_ToiletsTitle')}
+              </Text>
+            </View>
+          </TouchableOpacity>
           <View style={styles.button}>
             <Text style={styles.text}>
-              {I18n.t('amenities_ToiletsTitle')}
+              {I18n.t('floor')}
             </Text>
           </View>
-          <View style={styles.button}>
-            <Text style={styles.text}>
-              {I18n.t('amenities_ToiletsTitle')}
-            </Text>
-          </View>
-        </TouchableOpacity>
+        </View>
       )
     }else{
       return(
-        <TouchableOpacity onPress = {() => this.setState({ toiletsDropDown: true })}>
+        <TouchableOpacity onPress = {() => this.updateArray(true, amenity.number, amenity)}>
           <View style={styles.button}>
             <Text style={styles.text}>
               {I18n.t('amenities_ToiletsTitle')}
@@ -86,7 +108,7 @@ class AmenitiesScreen extends Component {
   render(){
     return(
       <View style={styles.container}>
-        { this.toiletsFunction() }
+        { this.renderAmenities() }
       </View>
 
     );

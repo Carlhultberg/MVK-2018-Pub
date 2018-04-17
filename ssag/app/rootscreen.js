@@ -5,7 +5,6 @@ import { Image, View} from 'react-native';
 
 import HighlightScreen from './screens/highlightscreen';
 import TourstopScreen from './screens/tourstopscreen';
-import TourstopScreenSearch from './screens/tourstopscreenSearch';
 import SearchByNumberScreen from './screens/searchByNumberScreen';
 import NearMeScreen from './screens/nearMeScreen';
 import InfoScreen from './screens/infoScreen';
@@ -126,7 +125,7 @@ export const SearchByNumberStack = StackNavigator({
     },
   },
   TourstopScreenSearch:{
-    screen: TourstopScreenSearch,
+    screen: TourstopScreen,
     navigationOptions:{
       headerStyle: {backgroundColor: NAV_BAR_BACKGROUND},
       title: I18n.t('storiesScreen_Title'),
