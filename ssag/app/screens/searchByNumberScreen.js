@@ -223,7 +223,7 @@ const s = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
-        elevation: 2,
+        elevation: 4,
     },
 
     container: {

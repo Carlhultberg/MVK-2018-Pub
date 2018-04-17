@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
   },
   filler: {
     height: 60,
-},
+  },
 });
 
 const { width, height } = Dimensions.get('window');
