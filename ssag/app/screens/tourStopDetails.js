@@ -11,9 +11,14 @@ import { OFF_BLACK, OFF_WHITE, LIGHT_GRAY } from '../styles';
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
 const cellHeight = height / 11;
+//var bgColorHighlight = LIGHT_GRAY;
 
 
 const s = StyleSheet.create({
+  container: {
+    height: cellHeight+2,
+    width: cellWidth,
+  },
   audioListContainer: {
     height: cellHeight,
     width: cellWidth,
@@ -21,43 +26,73 @@ const s = StyleSheet.create({
     borderBottomColor: OFF_WHITE,
     backgroundColor: LIGHT_GRAY,
   },
+  highlightContainer: {
+    borderRadius: 4,
+    marginTop: 8,
+    marginLeft: 16,
+    marginRight: 16,
+  },
+  textNumber: {
+    color: OFF_BLACK, 
+    fontSize: 18,
+    //marginTop: 8,
+    marginLeft: 4,
+    marginRight: 4,
+    //backgroundColor: bgColorHighlight,
+  },
+  textName: {
+    marginTop: 8,
+    fontSize: 18,
+    color: OFF_BLACK,
+  },
+  row: {
+    //justifyContent: 'center',
+    flexDirection: 'row',
+    //height: 60,
+    //width: 100,
+},
 });
 
 
 class TourStopDetails extends Component {
-  styleFunc = function(highlight){
-    if(highlight==1){
-      return {
-        color: '#FFFFFF', 
-        fontSize: 16,
-        backgroundColor: '#e5e500',
-      }
-    }else{
-      return{
-        color: '#000000', 
-        fontSize: 16
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  componentDidMount(){
+    this.highlighted(this.props.highlight);
+  }
+
+  highlighted (h){
+    if(h==1){
+      this.setState({textColorHighlight: OFF_WHITE});
+      this.setState({bgColorHighlight: '#e5e500'});
+    }
+    else{
+      this.setState({textColorHighlight: OFF_BLACK});
     }
   }
+
+
   render(){
     return(
-      <View style={{
-          height: cellHeight+2,
-          width: cellWidth,
-            }}>
+      <View style={s.container}>
         <TouchableOpacity onPress={() => this.props.addAudioPlayer()}>
           <View style={s.audioListContainer}>
-              <View>
-                <Text style={this.styleFunc(this.props.highlight)}>{this.props.number}  {this.props.text}</Text>
+              <View style={s.row}>
+                <View style={[s.highlightContainer, {backgroundColor: this.state.bgColorHighlight }]}>
+                  <Text style={[s.textNumber, {color: this.state.textColorHighlight }]}>
+                    {this.props.number}
+                  </Text>
+                </View>
+                <Text style={s.textName}>
+                  {this.props.text}
+                </Text>
               </View>
           </View>
         </TouchableOpacity>
-        <View style={{
-            height: 2,
-            width: cellWidth,
-            backgroundColor: '#0000',
-              }}>
-        </View>
       </View>
     );
   }
