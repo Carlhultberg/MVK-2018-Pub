@@ -46,23 +46,42 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     paddingRight:5
   },
+  text4: {
+    fontSize: 19,
+    color: '#ffffff',
+    backgroundColor: 'yellow'
+  },
   timeBox: {
     flexDirection: 'row',
   },
 });
 
 class HighlightScreenDetails extends Component {
+  styleFunc = function(highlight){
+    if(highlight==1){
+      return {
+        fontSize: 19,
+        color: '#ffffff',
+        backgroundColor: '#e5e500'
+      }
+    }else{
+      return{
+        fontSize: 19,
+        color: '#ffffff'
+      }
+    }
+  }
   render() {
     return (
       <View style={{
         height: cellHeight + 2,
         width: cellWidth,
       }}>
-        <TouchableOpacity onPress={() => this.props.learnMore(this.props.title, this.props.image, this.props.duration, this.props.floor, this.props.songs)}>
+        <TouchableOpacity onPress={() => this.props.learnMore(this.props.title, this.props.image, this.props.duration, this.props.floor, this.props.songs, this.props.highlight)}>
           <ImageBackground style={styles.image}
             source={this.props.image}>
             <View style={styles.textBox}>
-              <Text style={styles.text1}>
+              <Text style={this.styleFunc(this.props.highlight)}>
                 {this.props.title}
               </Text>
               <View style={styles.timeBox}>

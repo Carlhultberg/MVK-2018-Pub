@@ -22,9 +22,10 @@ class HighlightScreen extends Component {
     super(props);
 
     var json = require('../soundInfo/exhibitionInfo.json');
+    console.log(json);
     var lang = String(I18n.locale);
     var array = [];
-    var json_length = Object.keys(json).length;
+    var json_length = Object.keys(json[lang]).length;
     var required;
     for(var i=0; i<json_length; i++){
       switch(json[lang][String(i)]["image"]){
@@ -38,7 +39,7 @@ class HighlightScreen extends Component {
           required = require('../Images/stockholm2.png');
           break;
       }
-      array.push({title: json[lang][String(i)]["name"], image: required, duration: json[lang][String(i)]["duration"],songs:json[lang][String(i)]["sounds"],floor:json[lang][String(i)]["floor"]});
+      array.push({title: json[lang][String(i)]["name"], image: required, duration: json[lang][String(i)]["duration"],songs:json[lang][String(i)]["sounds"],floor:json[lang][String(i)]["floor"],highlight:json[lang][String(i)]["highlight"]});
     }
     this.state = {highlights: array};
 
@@ -46,7 +47,7 @@ class HighlightScreen extends Component {
 
   renderHighlights() {
     return this.state.highlights.map(highlights =>
-      <HighlightScreenDetails key={highlights.title} title={highlights.title} image={highlights.image} duration={highlights.duration} songs={highlights.songs} floor={highlights.floor} learnMore={this.learnMore}/>
+      <HighlightScreenDetails key={highlights.title} title={highlights.title} image={highlights.image} duration={highlights.duration} songs={highlights.songs} floor={highlights.floor} learnMore={this.learnMore} highlight={highlights.highlight}/>
     );
   }
 

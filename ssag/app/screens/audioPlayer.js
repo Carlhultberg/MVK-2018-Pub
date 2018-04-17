@@ -23,7 +23,6 @@ class AudioPlayer extends Component {
   }
 
   Next = () => {
-    console.log("Microcuts");
     this.props.nextSong();
   }
 

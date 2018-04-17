@@ -180,15 +180,42 @@ class TourstopScreen extends React.Component {
     var array = [];
     var json = require('../soundInfo/soundInfo.json');
     var array = [];
+    var highlightArray = [];
     var maxIndex = 0;
+    var indexKeeper = 0;
     for(var i=0;i<Object.keys(songs.songs).length;i++){
-      array.push({text: json.language[lang][songs.songs[String(i)]].name, number: json.language[lang][songs.songs[String(i)]].number, thisIndex: i, filePath: json.language[lang][songs.songs[String(i)]].filepath});
+      if(json.language[lang][songs.songs[String(i)]].highlight==="1"){
+        highlightArray.push({text: json.language[lang][songs.songs[String(i)]].name, number: json.language[lang][songs.songs[String(i)]].number, thisIndex: indexKeeper, filePath: json.language[lang][songs.songs[String(i)]].filepath, highlight: json.language[lang][songs.songs[String(i)]].highlight});
+        indexKeeper++;
+      }
       maxIndex++;
     }
+
+    for(var i=0;i<Object.keys(songs.songs).length;i++){
+      if(json.language[lang][songs.songs[String(i)]].highlight==="0"){
+        array.push({text: json.language[lang][songs.songs[String(i)]].name, number: json.language[lang][songs.songs[String(i)]].number, thisIndex: indexKeeper, filePath: json.language[lang][songs.songs[String(i)]].filepath, highlight: json.language[lang][songs.songs[String(i)]].highlight});
+        indexKeeper++;
+      }
+    }
+    
+
     maxIndex--;
-    this.state={tourstops:array}
+    var finalArray;
+    if(highlightArray.length===0){
+      finalArray = array;
+    } else {
+      finalArray = highlightArray.concat(array);
+    }
+    //var finalArray = highlightArray.concat(array);
+    console.log('finalArray:');
+    console.log(finalArray);
+    console.log('highlightArray:');
+    console.log(highlightArray);
+    console.log('array:');
+    console.log(array);
+    this.state={tourstops:finalArray,maxIndex:maxIndex}
     return this.state.tourstops.map(tourstops =>
-       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, array, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number)} array={array}/>
+       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number)} array={finalArray} highlight={tourstops.highlight}/>
      );
   }
 

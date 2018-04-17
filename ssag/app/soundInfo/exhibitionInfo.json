@@ -1,17 +1,30 @@
 {
   "sv":{
     "0": {
+        "name": "HÖJDPUNKTER",
+        "duration": "37",
+        "floor":"0",
+        "sounds": {
+            "0": "001",
+            "1": "002"
+        },
+        "image": "0",
+        "highlight":"1"
+    },
+    "1": {
         "name": "HAMNEN",
         "duration": "37",
         "floor":"0",
         "sounds": {
             "0": "003",
             "1": "004",
-            "2": "005"
+            "2": "005",
+            "3": "001"
         },
-        "image": "0"
+        "image": "0",
+        "highlight":"0"
     },
-    "1": {
+    "2": {
         "name": "STALLET",
         "duration": "23",
         "floor":"1",
@@ -19,11 +32,23 @@
             "0": "001",
             "1": "002"
         },
-        "image": "1"
+        "image": "1",
+        "highlight":"0"
     }
   },
   "en":{
     "0": {
+        "name": "HIGHLIGHT",
+        "duration": "37",
+        "floor":"0",
+        "sounds": {
+            "0": "001",
+            "1": "002"
+        },
+        "image": "0",
+        "highlight":"1"
+    },
+    "1": {
         "name": "THE HARBOR",
         "duration": "37",
         "floor":"0",
@@ -32,9 +57,10 @@
             "1": "004",
             "2": "005"
         },
-        "image": "0"
+        "image": "0",
+        "highlight":"0"
     },
-    "1": {
+    "2": {
         "name": "THE STABLE",
         "duration": "23",
         "floor":"1",
@@ -42,7 +68,8 @@
             "0": "001",
             "1": "002"
         },
-        "image": "1"
+        "image": "1",
+        "highlight":"0"
     }
   }
 }

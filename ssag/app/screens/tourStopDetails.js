@@ -25,7 +25,20 @@ const s = StyleSheet.create({
 
 
 class TourStopDetails extends Component {
-
+  styleFunc = function(highlight){
+    if(highlight==1){
+      return {
+        color: '#FFFFFF', 
+        fontSize: 16,
+        backgroundColor: '#e5e500',
+      }
+    }else{
+      return{
+        color: '#000000', 
+        fontSize: 16
+      }
+    }
+  }
   render(){
     return(
       <View style={{
@@ -34,7 +47,9 @@ class TourStopDetails extends Component {
             }}>
         <TouchableOpacity onPress={() => this.props.addAudioPlayer()}>
           <View style={s.audioListContainer}>
-                <Text style={{color: '#000000', fontSize: 16}}>{this.props.number}  {this.props.text}</Text>
+              <View>
+                <Text style={this.styleFunc(this.props.highlight)}>{this.props.number}  {this.props.text}</Text>
+              </View>
           </View>
         </TouchableOpacity>
         <View style={{
