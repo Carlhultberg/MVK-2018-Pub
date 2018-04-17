@@ -52,7 +52,7 @@ class AboutApp extends Component {
 
     this.state = {
         aboutTheAppProjectManagerNordicMuseumBody: '[Project Manager name here]',
-        aboutTheAppDevelopmentAndDesignBody: 'Maria Lindblad\nTommy Samuelsson\nCarl Hultberg\nDiar Sabri(cool guy)\nLars Lundin(coolest guy)\nBurhan Hashi',
+        aboutTheAppDevelopmentAndDesignBody: 'Maria Lindblad\nTommy Samuelsson\nCarl Hultberg\nDiar Sabri\nLars Lundin\nBurhan Hashi',
         aboutTheAppAdvisoryTeamBody: '[Advisory name here]',
         aboutTheAppAppIconBody: 'Ann-Sofia Marminge Design',
         aboutTheAppTranslationsBody: 'BTI Studios'
