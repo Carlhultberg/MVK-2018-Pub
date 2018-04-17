@@ -5,7 +5,7 @@
                 "name": "Paintings",
                 "filepath": "en_001.mp3",
                 "duration": "2m3s",
-                "theme":"1",
+                "theme":"2",
                 "number":"001",
                 "highlight":"1"
             },
@@ -21,7 +21,7 @@
                 "name": "Ceramics",
                 "filepath": "en_003.mp3",
                 "duration": "3m7s",
-                "theme":"0",
+                "theme":"1",
                 "number":"003",
                 "highlight":"0"
             },
@@ -29,7 +29,7 @@
                 "name": "Animal",
                 "filepath": "sv_004.wav",
                 "duration": "214",
-                "theme":"0",
+                "theme":"1",
                 "number":"004",
                 "highlight":"0"
             },
@@ -37,7 +37,7 @@
                 "name": "Beep",
                 "filepath": "sv_005.mp3",
                 "duration": "214",
-                "theme":"0",
+                "theme":"2",
                 "number":"005",
                 "highlight":"0"
             }
@@ -47,7 +47,7 @@
                 "name": "Tavlor",
                 "filepath": "sv_001.mp3",
                 "duration": "212",
-                "theme":"1",
+                "theme":"2",
                 "number":"001",
                 "highlight":"1"
             },
@@ -55,7 +55,7 @@
                 "name": "Statyer",
                 "filepath": "sv_002.mp3",
                 "duration": "213",
-                "theme":"1",
+                "theme":"2",
                 "number":"002",
                 "highlight":"1"
             },
@@ -63,7 +63,7 @@
                 "name": "Keramik",
                 "filepath": "sv_003.mp3",
                 "duration": "214",
-                "theme":"0",
+                "theme":"1",
                 "number":"003",
                 "highlight":"0"
             },
@@ -71,7 +71,7 @@
                 "name": "Animal",
                 "filepath": "sv_004.wav",
                 "duration": "214",
-                "theme":"0",
+                "theme":"1",
                 "number":"004",
                 "highlight":"0"
             },
@@ -79,7 +79,7 @@
                 "name": "Beep",
                 "filepath": "sv_005.mp3",
                 "duration": "214",
-                "theme":"0",
+                "theme":"2",
                 "number":"005",
                 "highlight":"0"
             }
