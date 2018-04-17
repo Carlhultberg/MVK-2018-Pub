@@ -58,6 +58,7 @@ export default class SearchByNumberScreen extends Component {
         var lang = String(I18n.locale);
         var array = [];
         var maxIndex = -1;
+        var startIndex = 0;
         var track = json[lang][String(searchString)];
         if(typeof track === 'undefined'){
             this.setState({headerText: I18n.t('tryAgain')});
@@ -68,10 +69,13 @@ export default class SearchByNumberScreen extends Component {
           var exhibitionAudios = jsonExh[lang][String(theme)].sounds;
           var json_length = Object.keys(exhibitionAudios).length;
           for(var i=0;i<json_length;i++){
-            array.push({text: json[lang][String(exhibitionAudios[String(i)])].name, number: json[lang][String(exhibitionAudios[String(i)])].number, thisIndex: i, filePath: json[lang][String(exhibitionAudios[String(i)])].filepath});
+            if(String(exhibitionAudios[String(i)]) == searchString){
+              startIndex = i;
+            }
+            array.push({text: json[lang][String(exhibitionAudios[String(i)])].name, number: String(exhibitionAudios[String(i)]), thisIndex: i, filePath: json[lang][String(exhibitionAudios[String(i)])].filepath});
             maxIndex++;
           }
-            this.props.screenProps.addAudioPlayer(track.filepath, array, 0, maxIndex, track.name, track.number);
+            this.props.screenProps.addAudioPlayer(track.filepath, array, startIndex, maxIndex, track.name, searchString);
             this.clearDigitWithDelay();
             this.renderTourStop(theme);
         }
