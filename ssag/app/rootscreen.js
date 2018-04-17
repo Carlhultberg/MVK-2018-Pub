@@ -126,7 +126,7 @@ export const SearchByNumberStack = StackNavigator({
   },
   TourstopScreenSearch:{
     screen: TourstopScreen,
-    navigationOptions:{
+      navigationOptions:{
       headerStyle: {backgroundColor: NAV_BAR_BACKGROUND},
       title: I18n.t('storiesScreen_Title'),
       headerTitleStyle:{alignSelf: 'center',
@@ -175,25 +175,29 @@ export const Tabs = TabNavigator({
   tabBarPosition: 'bottom',
   swipeEnabled: false,
   animationEnabled: false,
+  lazyLoad: true,
+
   initialRouteName: 'Browser',
   tabBarOptions: {
     //showLabel: false,
     showIcon: true,
     upperCaseLabel: false,
-    //pressColor: '#d5dcea',
+    pressColor: '#d5dcea',
     indicatorStyle:  {
       backgroundColor: '#000000',
     },
     style: {
       backgroundColor: '#000000',
       height: 60,
+      //padding: 10,
     },
     labelStyle: {
       fontSize: 12,
     },
     iconStyle: {
-      height: 25,
-      width: 25,
+      height: 30,
+      width: 30,
+      
     },
   }
 });
