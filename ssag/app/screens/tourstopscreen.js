@@ -206,13 +206,6 @@ class TourstopScreen extends React.Component {
     } else {
       finalArray = highlightArray.concat(array);
     }
-    //var finalArray = highlightArray.concat(array);
-    console.log('finalArray:');
-    console.log(finalArray);
-    console.log('highlightArray:');
-    console.log(highlightArray);
-    console.log('array:');
-    console.log(array);
     this.state={tourstops:finalArray,maxIndex:maxIndex}
     return this.state.tourstops.map(tourstops =>
        <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number)} array={finalArray} highlight={tourstops.highlight}/>
