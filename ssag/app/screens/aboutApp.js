@@ -23,9 +23,13 @@ const cellWidth = width;
 const cellHeight = height * 2/3 ;
 const buttonHeight = height * 1/18;
 
-import { OFF_BLACK, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
+import { TEXT_COLOR, BACKGROUND_COLOR, AUDIO_PLAYER_HIGHT } from '../styles';
 
 const s = StyleSheet.create({
+  
+  scrollContainer: {
+    backgroundColor: BACKGROUND_COLOR,
+  },
   container: {
     marginLeft: 16,
     marginRight: 16,
@@ -33,15 +37,15 @@ const s = StyleSheet.create({
   textHeader:{
     marginTop: 16,
     fontSize: 20,
-    color: OFF_BLACK,
+    color: TEXT_COLOR,
     fontWeight: 'bold',
   },
   text:{
     fontSize: 20,
-    color: OFF_BLACK
+    color: TEXT_COLOR
   },
   filler: {
-    height: 60,
+    height: AUDIO_PLAYER_HIGHT,
   },
 });
 
@@ -61,7 +65,7 @@ class AboutApp extends Component {
 
   render(){
     return(
-      <ScrollView>
+      <ScrollView style={s.scrollContainer}>
         <View style={s.container}>
           <Text style={s.textHeader}>
             {I18n.t('aboutTheAppAudioContentHeader')}

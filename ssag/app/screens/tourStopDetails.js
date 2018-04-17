@@ -6,7 +6,7 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
-import { OFF_BLACK, OFF_WHITE, LIGHT_GRAY } from '../styles';
+import { OFF_BLACK, OFF_WHITE, LIGHT_GRAY, HIGHLIGHTS } from '../styles';
 
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
@@ -68,7 +68,7 @@ class TourStopDetails extends Component {
   highlighted (h){
     if(h==1){
       this.setState({textColorHighlight: OFF_WHITE});
-      this.setState({bgColorHighlight: '#e5e500'});
+      this.setState({bgColorHighlight: HIGHLIGHTS});
     }
     else{
       this.setState({textColorHighlight: OFF_BLACK});

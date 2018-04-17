@@ -2,7 +2,7 @@ import React, { Component } from  'react';
 import {StyleSheet, View, Text, TouchableOpacity, TextInput, Image, TouchableHighlight} from 'react-native';
 import AudioPlayer from './audioPlayer';
 import I18n from '../i18n/i18n';
-import { OFF_BLACK, OFF_WHITE, SELECTED, NAV_BAR_BACKGROUND, NAV_BAR_TEXT, BORDERCOLOR } from '../styles';
+import { HEADER_TEXT_COLOR, HEADER_BACKGROUND_COLOR, BACKGROUND_COLOR, TEXT_COLOR, BORDER_COLOR_1, BUTTON_ON_PRESS_COLOR_1 } from '../styles';
 //import App from "../App";
 
 export default class SearchByNumberScreen extends Component {
@@ -135,17 +135,17 @@ export default class SearchByNumberScreen extends Component {
                 </View>
 
                 <View style={[s.digitRow,  { flexDirection: 'row' }]}>
-                  <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("1"); }} style={s.buttonContainer}>
+                  <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("1"); }} style={s.buttonContainer}>
                       <Text style={s.buttonText}>
                           1
                       </Text>
                   </TouchableHighlight>
-                  <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("2"); }} style={s.buttonContainer}>
+                  <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("2"); }} style={s.buttonContainer}>
                       <Text style={s.buttonText}>
                           2
                       </Text>
                   </TouchableHighlight>
-                  <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("3"); }} style={s.buttonContainer}>
+                  <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("3"); }} style={s.buttonContainer}>
                       <Text style={s.buttonText}>
                           3
                       </Text>
@@ -154,17 +154,17 @@ export default class SearchByNumberScreen extends Component {
 
 
                 <View style={[s.digitRow,  { flexDirection: 'row' } ]}>
-                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("4"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("4"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             4
                         </Text>
                     </TouchableHighlight>
-                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("5"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("5"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             5
                         </Text>
                     </TouchableHighlight>
-                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("6"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("6"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             6
                         </Text>
@@ -173,17 +173,17 @@ export default class SearchByNumberScreen extends Component {
 
 
                 <View style={[s.digitRow,  { flexDirection: 'row' } ]}>
-                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("7"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("7"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             7
                         </Text>
                     </TouchableHighlight>
-                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("8"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("8"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             8
                         </Text>
                     </TouchableHighlight>
-                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("9"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("9"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             9
                         </Text>
@@ -193,7 +193,7 @@ export default class SearchByNumberScreen extends Component {
 
                 <View style={[s.notDigitRow,  { flexDirection: 'row' } ]}>
                     <View style={[s.filler]} />
-                    <TouchableHighlight underlayColor={SELECTED} onPress={() => { this.addDigit("0"); }} style={s.buttonContainer}>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("0"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             0
                         </Text>
@@ -212,14 +212,14 @@ const s = StyleSheet.create({
     textHeader: {
         fontSize: 20,
         fontWeight: 'bold',
-        color: NAV_BAR_TEXT,
+        color: HEADER_TEXT_COLOR,
         //justifyContent: 'center',
         //alignItems: 'center',
     },
     headerBorder: {
         width: 450,
         height: 56,
-        backgroundColor: NAV_BAR_BACKGROUND,
+        backgroundColor: HEADER_BACKGROUND_COLOR,
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: 10,
@@ -228,14 +228,14 @@ const s = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: OFF_WHITE,
+        backgroundColor: BACKGROUND_COLOR,
         //justifyContent: 'center',
         alignItems: 'center',
     },
     input: {
         width: 40,
         height: 50,
-        color: OFF_BLACK,
+        color: TEXT_COLOR,
         fontSize: 40,
         textAlign: 'center',
         margin: 10,
@@ -247,7 +247,7 @@ const s = StyleSheet.create({
         width: 70,
         justifyContent: 'center',
         borderRadius: 35,
-        borderColor: BORDERCOLOR,
+        borderColor: BORDER_COLOR_1,
         borderWidth: 1,
         margin: 8,
     },
@@ -261,7 +261,7 @@ const s = StyleSheet.create({
     },
 
     buttonText:{
-        color: OFF_BLACK,
+        color: TEXT_COLOR,
         fontSize: 35,
         textAlign: 'center',
     },

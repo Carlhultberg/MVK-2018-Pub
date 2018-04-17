@@ -16,12 +16,12 @@ const cellWidth = width;
 const cellHeight = height * 2/3 ;
 const buttonHeight = height * 1/18;
 
-import { OFF_BLACK, OFF_WHITE, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS, SELECTED, GRAY } from '../styles';
+import { TEXT_COLOR, BACKGROUND_COLOR, DROPDOW_BORDER_BACKGROUND_COLOR, AUDIO_PLAYER_HIGHT } from '../styles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: OFF_WHITE,
+    backgroundColor: BACKGROUND_COLOR,
   },
 
   button: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: LIGHT_GRAY,
+    backgroundColor: DROPDOW_BORDER_BACKGROUND_COLOR,
   },
   dropDown: {
     height: 50,
@@ -38,21 +38,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    //backgroundColor: LIGHT_GRAY,
+    //backgroundColor: DROPDOW_BORDER_BACKGROUND_COLOR,
   },
   text:{
     fontWeight: 'bold',
     fontSize: 20,
-    color: OFF_BLACK
+    color: TEXT_COLOR
   },
   dropDownText:{
     fontSize: 18,
-    color: OFF_BLACK
+    color: TEXT_COLOR
   },
   image:{
     width: 50,
     height:50,
-    //tintColor: OFF_BLACK
+    //tintColor: TEXT_COLOR
   },
   inBetween:{
     height: 4,

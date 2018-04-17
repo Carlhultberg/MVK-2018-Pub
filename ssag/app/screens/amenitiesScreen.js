@@ -17,12 +17,15 @@ const cellWidth = width;
 const cellHeight = height * 2/3 ;
 const buttonHeight = height * 1/18;
 
-import { OFF_BLACK, OFF_WHITE, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS, SELECTED } from '../styles';
+import {BACKGROUND_COLOR, AUDIO_PLAYER_HIGHT } from '../styles';
 
-const styles = StyleSheet.create({
+const s = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: OFF_WHITE,
+    backgroundColor: BACKGROUND_COLOR,
+  },
+  filler: {
+    height: AUDIO_PLAYER_HIGHT,
   },
 });
 
@@ -49,11 +52,11 @@ class AmenitiesScreen extends Component {
 
   render(){
     return(
-      <ScrollView style={styles.container}>
+      <ScrollView style={s.container}>
         <View>
           { this.renderAmenities() }
         </View>
-        <View style={{height: 60}}/>
+        <View style={s.filler}/>
       </ScrollView>
 
     );

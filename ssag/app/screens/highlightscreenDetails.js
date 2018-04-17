@@ -10,6 +10,8 @@ import {
   Text
 } from 'react-native';
 
+import { TEXT_COLOR_2, BACKGROUND_COLOR, AUDIO_PLAYER_HIGHT } from '../styles';
+
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
 const cellHeight = height / 4;
@@ -36,19 +38,19 @@ const styles = StyleSheet.create({
   },
   text1: {
     fontSize: 19,
-    color: '#ffffff'
+    color: TEXT_COLOR_2
   },
   text2: {
-    color: '#ffffff',
+    color: TEXT_COLOR_2,
     paddingRight:5
   },
   text3: {
-    color: '#ffffff',
+    color: TEXT_COLOR_2,
     paddingRight:5
   },
   text4: {
     fontSize: 19,
-    color: '#ffffff',
+    color: TEXT_COLOR_2,
     backgroundColor: 'yellow'
   },
   timeBox: {

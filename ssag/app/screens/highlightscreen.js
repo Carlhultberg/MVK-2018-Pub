@@ -13,6 +13,8 @@ import {
   Text
 } from 'react-native';
 
+import { AUDIO_PLAYER_HIGHT } from '../styles';
+
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
 const cellHeight = height / 4;
@@ -58,7 +60,7 @@ class HighlightScreen extends Component {
     return(
         <ScrollView>
           { this.renderHighlights() }
-          <View style={{height: 60}}/>
+          <View style={{height: AUDIO_PLAYER_HIGHT}}/>
         </ScrollView>
     );
   }
