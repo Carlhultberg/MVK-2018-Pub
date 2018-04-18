@@ -10,18 +10,30 @@ import {
   Text
 } from 'react-native';
 
-import { TEXT_COLOR_2, BACKGROUND_COLOR, AUDIO_PLAYER_HIGHT } from '../styles';
+import {TEXT_COLOR_2, HIGHLIGHTS_TEXT, BACKGROUND_COLOR, HIGHLIGHTS, BORDER_COLOR_3 } from '../styles';
 
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
 const cellHeight = height / 4;
 
 const styles = StyleSheet.create({
+  
+  container: {
+    height: 170,
+    width: cellWidth,
+  },
+  highlightContainer: {
+    borderRadius: 4,
+    marginLeft: 16,
+    marginBottom: 4,
+  },
   image: {
-    height: cellHeight,
+    height: 170,
     width: cellWidth,
     alignItems: 'center',
     justifyContent: 'flex-end',
+    borderBottomWidth: 2,
+    borderBottomColor: BORDER_COLOR_3,
   },
   durationIcon: {
     marginRight: 5,
@@ -36,22 +48,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  text1: {
+  textTitle: {
+    marginLeft: 4,
+    marginRight: 4,
     fontSize: 19,
+    //fontWeight: 'bold',
     color: TEXT_COLOR_2
   },
-  text2: {
+  textDuration: {
     color: TEXT_COLOR_2,
     paddingRight:5
   },
-  text3: {
+  textFloor: {
     color: TEXT_COLOR_2,
     paddingRight:5
-  },
-  text4: {
-    fontSize: 19,
-    color: TEXT_COLOR_2,
-    backgroundColor: 'yellow'
   },
   timeBox: {
     flexDirection: 'row',
@@ -59,58 +69,54 @@ const styles = StyleSheet.create({
 });
 
 class HighlightScreenDetails extends Component {
-  styleFunc = function(floor){
-    if(floor===''){
-      return {
-        fontSize: 19,
-        color: '#ffffff',
-        backgroundColor: '#e5e500'
-      }
-    }else{
-      return{
-        fontSize: 19,
-        color: '#ffffff'
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      text1: 'hej'+ cellHeight,
+    };
+  }
+
+
+
+  componentDidMount(){
+    this.highlighted(this.props.floor);
+  }
+
+  highlighted (h){
+    if(h===''){
+      this.setState({textColorHighlight: HIGHLIGHTS_TEXT});
+      this.setState({bgColorHighlight: HIGHLIGHTS});
+    }
+    else{
+      this.setState({textColorHighlight: TEXT_COLOR_2});
     }
   }
+
+
   render() {
     return (
-      <View style={{
-        height: cellHeight + 2,
-        width: cellWidth,
-      }}>
+      <View style={styles.container}>
         <TouchableOpacity onPress={() => this.props.learnMore(this.props.title, this.props.image, this.props.duration, this.props.floor, this.props.songs)}>
-          <ImageBackground style={styles.image}
-            source={this.props.image}>
+          <ImageBackground style={styles.image} source={this.props.image}>
             <View style={styles.textBox}>
-              <Text style={this.styleFunc(this.props.floor)}>
-                {this.props.title}
-              </Text>
+              <View style={[styles.highlightContainer, {backgroundColor: this.state.bgColorHighlight }]}>
+                <Text style={[styles.textTitle, {color: this.state.textColorHighlight}]}>
+                  {this.props.title}
+                </Text>
+              </View>
               <View style={styles.timeBox}>
-                <Image
-                  style={styles.durationIcon}
-                  source={require('../Images/ClockIcon.png')}
-                />
-                <Text style={styles.text2}>
+                <Image style={styles.durationIcon} source={require('../Images/ClockIcon.png')}/>
+                <Text style={styles.textDuration}>
                   {this.props.duration}
                 </Text>
-                <Image
-                  style={styles.floorIcon}
-                  source={require('../Images/FloorIcon.png')}
-                />
-                <Text style={styles.text3}>
+                <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')}/>
+                <Text style={styles.textFloor}>
                   {this.props.floor}
                 </Text>
               </View>
             </View>
           </ImageBackground>
         </TouchableOpacity>
-        <View style={{
-          height: 2,
-          width: cellWidth,
-          backgroundColor: '#0000',
-        }}>
-        </View>
       </View>
     );
   }

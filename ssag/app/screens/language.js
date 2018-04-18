@@ -23,12 +23,12 @@ const cellWidth = width;
 const cellHeight = height * 2/3 ;
 const buttonHeight = height * 1/18;
 
-import { OFF_BLACK, OFF_WHITE, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS, SELECTED } from '../styles';
+import { OFF_BLACK, BACKGROUND_COLOR, TEXT_COLOR, SELECTED, AUDIO_PLAYER_HIGHT } from '../styles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: OFF_WHITE,
+    backgroundColor: BACKGROUND_COLOR,
   },
 
   button: {
@@ -38,17 +38,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 10,
-    backgroundColor: OFF_WHITE,
+    backgroundColor: BACKGROUND_COLOR,
   },
   text:{
     fontWeight: 'bold',
     fontSize: 20,
-    color: OFF_BLACK
+    color: TEXT_COLOR
   },
   image:{
     width: 50,
     height:50,
-    //tintColor: OFF_BLACK
+    //tintColor: TEXT_COLOR
   },
 });
 
@@ -68,9 +68,9 @@ class Language extends Component {
     var isSelected = String(I18n.locale);
     if(isSelected === 'en'){
       this.setState({bgColorSelectedEn: SELECTED});
-      this.setState({bgColorSelectedSv: OFF_WHITE});
+      this.setState({bgColorSelectedSv: BACKGROUND_COLOR});
     }else if(isSelected === 'sv'){
-      this.setState({bgColorSelectedEn: OFF_WHITE});
+      this.setState({bgColorSelectedEn: BACKGROUND_COLOR});
       this.setState({bgColorSelectedSv: SELECTED});
     }
 
@@ -103,7 +103,7 @@ class Language extends Component {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{height: 60}}/>
+        <View style={{height: AUDIO_PLAYER_HIGHT}}/>
       </ScrollView>
     );
   }

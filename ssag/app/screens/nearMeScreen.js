@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 
-import { OFF_BLACK, OFF_WHITE, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
+import { TEXT_COLOR, BACKGROUND_COLOR, ACTION, AUDIO_PLAYER_HIGHT} from '../styles';
 
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
@@ -36,11 +36,11 @@ const styles = StyleSheet.create({
   mainView:{
     flex:1,
     alignItems: 'center',
-    backgroundColor: OFF_WHITE,
+    backgroundColor: BACKGROUND_COLOR,
   },
   text:{
     fontSize: 18,
-    color: OFF_BLACK,
+    color: TEXT_COLOR,
     textAlign: 'center',
     marginRight: 16,
     marginLeft: 16,
@@ -72,6 +72,7 @@ class NearMeScreen extends Component {
               {I18n.t('bluetoothButton_OffLabel')}
             </Text>
           </TouchableOpacity>
+          <View style={{height: AUDIO_PLAYER_HIGHT}}/>
         </View>
     );
   }

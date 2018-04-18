@@ -6,25 +6,21 @@ import {
   TouchableOpacity,
   Dimensions
 } from 'react-native';
-import { OFF_BLACK, OFF_WHITE, LIGHT_GRAY, HIGHLIGHTS } from '../styles';
+import { TEXT_COLOR, BORDER_COLOR_3, BACKGROUND_COLOR_2, HIGHLIGHTS, HIGHLIGHTS_TEXT, } from '../styles';
 
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
 const cellHeight = height / 11;
-//var bgColorHighlight = LIGHT_GRAY;
 
 
 const s = StyleSheet.create({
-  container: {
-    height: cellHeight+2,
-    width: cellWidth,
-  },
+  
   audioListContainer: {
-    height: cellHeight,
+    height: 62,
     width: cellWidth,
     borderBottomWidth: 1,
-    borderBottomColor: OFF_WHITE,
-    backgroundColor: LIGHT_GRAY,
+    borderBottomColor: BORDER_COLOR_3,
+    backgroundColor: BACKGROUND_COLOR_2,
   },
   highlightContainer: {
     borderRadius: 4,
@@ -33,17 +29,16 @@ const s = StyleSheet.create({
     marginRight: 16,
   },
   textNumber: {
-    color: OFF_BLACK, 
+    color: TEXT_COLOR, 
     fontSize: 18,
     //marginTop: 8,
     marginLeft: 4,
     marginRight: 4,
-    //backgroundColor: bgColorHighlight,
   },
   textName: {
     marginTop: 8,
     fontSize: 18,
-    color: OFF_BLACK,
+    color: TEXT_COLOR,
   },
   row: {
     //justifyContent: 'center',
@@ -67,18 +62,18 @@ class TourStopDetails extends Component {
 
   highlighted (h){
     if(h==1){
-      this.setState({textColorHighlight: OFF_WHITE});
+      this.setState({textColorHighlight: HIGHLIGHTS_TEXT});
       this.setState({bgColorHighlight: HIGHLIGHTS});
     }
     else{
-      this.setState({textColorHighlight: OFF_BLACK});
+      this.setState({textColorHighlight: TEXT_COLOR});
     }
   }
 
 
   render(){
     return(
-      <View style={s.container}>
+      <View>
         <TouchableOpacity onPress={() => this.props.addAudioPlayer()}>
           <View style={s.audioListContainer}>
               <View style={s.row}>
