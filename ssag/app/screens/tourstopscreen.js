@@ -16,43 +16,32 @@ import {
   ImageBackground,
 } from 'react-native';
 
-import { OFF_BLACK, OFF_WHITE, ACTION, LIGHT_GRAY, NAV_BAR_TEXT, HIGHLIGHTS } from '../styles';
+import { BACKGROUND_COLOR_2, TEXT_COLOR, TEXT_COLOR_2, ACTION, BORDER_COLOR_3, AUDIO_PLAYER_HIGHT } from '../styles';
+
+
+const { width, height } = Dimensions.get('window');
+const cellWidth = width;
+const cellHeight = height / 4;
+
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: LIGHT_GRAY,
+    backgroundColor: BACKGROUND_COLOR_2,
   },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width,
-  },
-  headerImage: {
+    headerImage: {
     // position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
-    height: 167,
+    height: 170,
     width: cellWidth,
     //resizeMode: 'cover',
     justifyContent: 'center',
     alignItems: 'center',
   },
-  headerTitle: {
-    backgroundColor: 'transparent',
-    position: 'absolute',
-    top: 20,
-    left: 0,
-    right: 0,
-    height: 147,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  headerTitleText: {
-    backgroundColor: 'transparent',
-    color: '#FFFFFF',
-    fontSize: 22,
-    textAlign: 'center',
+  headerImageText: {
+    fontSize: 25, 
+    color: TEXT_COLOR_2,
   },
   playAllButtonContainer: {
     position: 'absolute',
@@ -70,6 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 48,
+    width: 0.65 * width,
     borderRadius: 9,
   },
   playAllButtonIcon: {
@@ -89,7 +79,6 @@ const styles = StyleSheet.create({
   },
   audioContentInfo: {
     //flexDirection: 'row',
-    backgroundColor: LIGHT_GRAY,
     height: 60,
     // position: 'absolute',
     //top: 50,
@@ -99,17 +88,15 @@ const styles = StyleSheet.create({
     paddingBottom: 0,
     alignItems: 'center',
     justifyContent: 'flex-end',
-    borderBottomColor: '#ffffff',
+    borderBottomColor: BORDER_COLOR_3,
     borderBottomWidth: 1,
   },
   audioContentBox: {
-    backgroundColor: LIGHT_GRAY,
     width: 170,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   audioContent: {
-    backgroundColor: LIGHT_GRAY,
     flexDirection: 'row',
   },
   audioContentQuickInfo: {
@@ -123,27 +110,24 @@ const styles = StyleSheet.create({
   },
   floorIcon: {
     marginRight: 10,
-    tintColor: OFF_BLACK,
+    tintColor: TEXT_COLOR,
   },
   floorText: {
     fontSize: 16,
-    color: OFF_BLACK,
+    color: TEXT_COLOR,
   },
   audioContentDuration: {
-    backgroundColor: LIGHT_GRAY,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
   },
   durationIcon: {
-    backgroundColor: '#EDEDED',
     marginRight: 10,
-    tintColor: OFF_BLACK,
+    tintColor: TEXT_COLOR,
   },
   durationText: {
-    backgroundColor: '#EDEDED',
     fontSize: 16,
-    color: OFF_BLACK,
+    color: TEXT_COLOR,
   },
   imageTitle: {
     fontStyle: 'italic',
@@ -156,18 +140,14 @@ const styles = StyleSheet.create({
   },
   stickyHeaderTitleText: {
     backgroundColor: 'transparent',
-    color: OFF_BLACK,
+    color: TEXT_COLOR,
     fontWeight: '600',
     fontSize: 17,
   },
   filler: {
-    height: 60,
+    height: AUDIO_PLAYER_HIGHT,
   },
 });
-
-const { width, height } = Dimensions.get('window');
-const cellWidth = width;
-const cellHeight = height / 4;
 
 
 class TourstopScreen extends React.Component {
@@ -215,29 +195,20 @@ class TourstopScreen extends React.Component {
   render() {
     return (
         <ScrollView style={styles.container}>
-          <ImageBackground
-              style={styles.headerImage}
-              source={this.props.navigation.state.params.image}>
-              <View>
-                <Text style={{fontSize: 25, color: '#ffffff'}}>
-                  {this.props.navigation.state.params.title}
-                </Text>
-              </View>
+          <ImageBackground style={styles.headerImage} source={this.props.navigation.state.params.image}>
+            <Text style={styles.headerImageText}>
+              {this.props.navigation.state.params.title}
+            </Text> 
           </ImageBackground>
 
           <View style={styles.playAllButtonContainer}>
-            <TouchableOpacity
-              style={[styles.playAllButton, { width: 0.65 * width }]}
-              onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number)}>
-              <Image
-                style={styles.playAllButtonIcon}
-                source={require('../Images/PlayButton.png')}/>
+            <TouchableOpacity style={styles.playAllButton} onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number)}>
+              <Image style={styles.playAllButtonIcon} source={require('../Images/PlayButton.png')}/>
               <Text style={styles.playAllButtonText}>
                 {I18n.t('playAll')}
               </Text>
             </TouchableOpacity>
           </View>
-
           <View style={styles.audioContentInfo}>
             <View style={styles.audioContentBox}>
               <View style={styles.audioContent}>
@@ -247,23 +218,14 @@ class TourstopScreen extends React.Component {
                 </Text>
               </View>
               <View style={styles.audioContent}>
-                <Image
-                  style={styles.durationIcon}
-                  source={require('../Images/ClockIcon.png')}
-                />
+                <Image style={styles.durationIcon} source={require('../Images/ClockIcon.png')} />
                 <Text style={styles.durationText}>
-                {this.props.navigation.state.params.duration} {I18n.t('min')}
+                  {this.props.navigation.state.params.duration} {I18n.t('min')}
                 </Text>
               </View>
             </View>
           </View>
-          <View style={{
-              height: 2,
-              width: cellWidth,
-              backgroundColor: '#0000',
-                }}>
-          </View>
-          {  this.renderTourStops({songs:this.props.navigation.state.params.songs}) }
+            {this.renderTourStops({songs:this.props.navigation.state.params.songs})}
           <View style={styles.filler}/>
         </ScrollView>
 

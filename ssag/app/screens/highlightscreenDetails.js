@@ -72,7 +72,6 @@ class HighlightScreenDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text1: 'hej'+ cellHeight,
     };
   }
 

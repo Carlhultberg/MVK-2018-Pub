@@ -16,7 +16,7 @@ const cellHeight = height / 11;
 const s = StyleSheet.create({
   
   audioListContainer: {
-    height: 62,
+    height: 60,
     width: cellWidth,
     borderBottomWidth: 1,
     borderBottomColor: BORDER_COLOR_3,

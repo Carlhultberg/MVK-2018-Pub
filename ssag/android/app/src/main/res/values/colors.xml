@@ -2,6 +2,7 @@
 <resources>
     <color name="pink">#FF69B4</color>
     <color name="black">#000000</color>
+    <color name="navigationBar">#1A1A1A</color>
     <color name="primary_dark">#FF69B4</color>
     <color name="background">#ffffff</color>
     <color name="background_splash">#FF69B4</color>
