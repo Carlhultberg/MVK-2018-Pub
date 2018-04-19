@@ -5,6 +5,7 @@ import { Player, MediaStates } from 'react-native-audio-toolkit';
 import SplashScreen from 'react-native-splash-screen';
 import RNRestart from 'react-native-restart';
 import AudioPlayer from './screens/audioPlayer';
+import { NAV_BAR_HIGHT, AUDIO_PLAYER_HIGHT } from './styles';
 
 class App extends Component{
   constructor() {
@@ -55,7 +56,7 @@ class App extends Component{
   bottomComponent(){
     if(this.state.bottomScreen){
       return (
-        <View style={{ height: 60, position: 'absolute', left: 0, right: 0, bottom: 60 }}>
+        <View style={{ height: AUDIO_PLAYER_HIGHT, position: 'absolute', left: 0, right: 0, bottom: NAV_BAR_HIGHT }}>
           <AudioPlayer
             audio = {this.state.audio}
             logo = {this.state.logo}

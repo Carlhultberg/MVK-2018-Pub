@@ -13,7 +13,7 @@ import AboutApp from './screens/aboutApp';
 import AboutMuseum from './screens/aboutMuseum';
 import AmenitiesScreen from './screens/amenitiesScreen';
 import I18n from './i18n/i18n';
-import {HEADER_BACKGROUND_COLOR, NAV_BAR_TEXT, NAV_BAR_BACKGROUND, ACTION } from './styles';
+import {HEADER_BACKGROUND_COLOR, NAV_BAR_TEXT, NAV_BAR_BACKGROUND, ACTION, NAV_BAR_HIGHT } from './styles';
 
 
 export const BrowserStack = StackNavigator({
@@ -160,6 +160,7 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       headerStyle: {backgroundColor: HEADER_BACKGROUND_COLOR},
       tabBarLabel: I18n.t('searchScreen_Title'),
+      //tabBarOnPress: {scene: { SearchByNumberStack, SearchByNumberStack }},
       tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/searchTab.png')}/>),
     },
   },
@@ -185,8 +186,7 @@ export const Tabs = TabNavigator({
     renderIndicator: () => null,
     style: {
       backgroundColor: NAV_BAR_BACKGROUND,
-      height: 60,
-      //padding: 10,
+      height: NAV_BAR_HIGHT,
     },
     labelStyle: {
       color: NAV_BAR_TEXT,
@@ -195,8 +195,8 @@ export const Tabs = TabNavigator({
     iconStyle: {
       height: 32,
       width: 32,
-      marginTop: 4,
-      marginBottom: -10,
+      marginTop: -4,
+      marginBottom: -8,
     },
   }
 });
