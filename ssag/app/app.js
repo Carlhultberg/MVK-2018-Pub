@@ -19,6 +19,7 @@ class App extends Component{
       maxIndex: 0,
       audioName: '',
       audioNumber: '',
+      highlight: '',
     };
     this.createAudio = this.createAudio.bind(this);
     this.addAudioPlayer = this.addAudioPlayer.bind(this);
@@ -35,12 +36,12 @@ class App extends Component{
     this.setState({ audio: new Player(newAudio,{continuesToPlayInBackground:true}).prepare().on('ended', () =>{this.nextSong()})});
   }
 
-  addAudioPlayer(path, array, index, maxIndex, text, number){
+  addAudioPlayer(path, array, index, maxIndex, text, number, highlightNum){
     if(this.state.audio !== ''){
       this.state.audio.destroy();
     }
     this.createAudio(path);
-    this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex, audioName: text, audioNumber: number});
+    this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex, audioName: text, audioNumber: number, highlight: highlightNum});
     setTimeout(()=>this.state.audio.play(),20);
   }
 
@@ -65,6 +66,7 @@ class App extends Component{
             previousSong = {this.previousSong}
             audioName = {this.state.audioName}
             audioNumber = {this.state.audioNumber}
+            highlight = {this.state.highlight}
           />
         </View>
       )
@@ -79,7 +81,8 @@ class App extends Component{
       let newFilePath = this.state.array[String(this.state.index+1)].filePath;
       let audioName = this.state.array[String(this.state.index+1)].text;
       let audioNumber = this.state.array[String(this.state.index+1)].number;
-      this.addAudioPlayer(newFilePath, this.state.array, this.state.index+1, this.state.maxIndex, audioName, audioNumber);
+      let highlight = this.state.array[String(this.state.index+1)].highlight;
+      this.addAudioPlayer(newFilePath, this.state.array, this.state.index+1, this.state.maxIndex, audioName, audioNumber, highlight);
     }
   }
 
@@ -91,7 +94,8 @@ class App extends Component{
       let newFilePath = this.state.array[String(this.state.index-1)].filePath;
       let audioName = this.state.array[String(this.state.index-1)].text;
       let audioNumber = this.state.array[String(this.state.index-1)].number;
-      this.addAudioPlayer(newFilePath, this.state.array, this.state.index-1, this.state.maxIndex, audioName, audioNumber);
+      let highlight = this.state.array[String(this.state.index-1)].highlight;
+      this.addAudioPlayer(newFilePath, this.state.array, this.state.index-1, this.state.maxIndex, audioName, audioNumber, highlight);
     }
   }
 

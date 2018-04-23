@@ -7,7 +7,7 @@ const s = StyleSheet.create({
 
 
   container: {
-    flex: 1, 
+    flex: 1,
     justifyContent: 'flex-end',
     backgroundColor: AUDIO_PLAYER_COLOR,
     borderColor: '#000000',
@@ -21,13 +21,13 @@ const s = StyleSheet.create({
     //backgroundColor: 'red',
   },
   audioTitleNumber: {
-    color: TEXT_COLOR_2, 
+    color: TEXT_COLOR_2,
     fontSize: 15,
     marginLeft: 4,
     marginRight: 4,
   },
   audioTitleName: {
-    color: TEXT_COLOR_2, 
+    color: TEXT_COLOR_2,
     fontSize: 15,
   },
   audioPlayer: {
@@ -39,11 +39,11 @@ const s = StyleSheet.create({
     shadowOpacity: 0.2,
     elevation: 2,
     position: 'relative',
-    flexDirection: 'row'            
+    flexDirection: 'row'
   },
   audioIcon: {
-    height: 30, 
-    width: 30,            
+    height: 30,
+    width: 30,
   },
   highlightContainer: {
     borderRadius: 4,
@@ -65,6 +65,7 @@ class AudioPlayer extends Component {
     if (this.props.logo == require('../assets/PauseButton.png')){
       this.props.audio.play();
     }
+    this.highlighted(this.props.highlight);
   }
 
   PlayPause = () => {
@@ -79,10 +80,12 @@ class AudioPlayer extends Component {
 
   Next = () => {
     this.props.nextSong();
+    this.highlighted(this.props.highlight);
   }
 
   Previous = () => {
     this.props.previousSong();
+    this.highlighted(this.props.highlight);
   }
 
   componentDidMount(){
@@ -99,7 +102,7 @@ class AudioPlayer extends Component {
       this.setState({textColorHighlight: TEXT_COLOR_2});
     }
   }
-  
+
   render(){
     return (
       <View style={s.container}>

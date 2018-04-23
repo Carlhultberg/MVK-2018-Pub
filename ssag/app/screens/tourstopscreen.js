@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerImageText: {
-    fontSize: 25, 
+    fontSize: 25,
     color: TEXT_COLOR_2,
   },
   playAllButtonContainer: {
@@ -177,7 +177,7 @@ class TourstopScreen extends React.Component {
         indexKeeper++;
       }
     }
-    
+
 
     maxIndex--;
     var finalArray;
@@ -188,8 +188,21 @@ class TourstopScreen extends React.Component {
     }
     this.state={tourstops:finalArray,maxIndex:maxIndex}
     return this.state.tourstops.map(tourstops =>
-       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number)} array={finalArray} highlight={tourstops.highlight}/>
+       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number, tourstops.highlight)} array={finalArray} highlight={tourstops.highlight}/>
      );
+  }
+
+  addFloor(){
+    if(this.props.navigation.state.params.floor){
+      return(
+        <View style={styles.audioContent}>
+          <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')} />
+          <Text style={styles.floorText}>
+            {I18n.t('floor')} {this.props.navigation.state.params.floor}
+          </Text>
+        </View>
+      )
+    }
   }
 
   render() {
@@ -198,11 +211,11 @@ class TourstopScreen extends React.Component {
           <ImageBackground style={styles.headerImage} source={this.props.navigation.state.params.image}>
             <Text style={styles.headerImageText}>
               {this.props.navigation.state.params.title}
-            </Text> 
+            </Text>
           </ImageBackground>
 
           <View style={styles.playAllButtonContainer}>
-            <TouchableOpacity style={styles.playAllButton} onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number)}>
+            <TouchableOpacity style={styles.playAllButton} onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number, this.state.tourstops[0].highlight)}>
               <Image style={styles.playAllButtonIcon} source={require('../Images/PlayButton.png')}/>
               <Text style={styles.playAllButtonText}>
                 {I18n.t('playAll')}
@@ -211,12 +224,7 @@ class TourstopScreen extends React.Component {
           </View>
           <View style={styles.audioContentInfo}>
             <View style={styles.audioContentBox}>
-              <View style={styles.audioContent}>
-                <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')} />
-                <Text style={styles.floorText}>
-                  {I18n.t('floor')} {this.props.navigation.state.params.floor}
-                </Text>
-              </View>
+              { this.addFloor() }
               <View style={styles.audioContent}>
                 <Image style={styles.durationIcon} source={require('../Images/ClockIcon.png')} />
                 <Text style={styles.durationText}>

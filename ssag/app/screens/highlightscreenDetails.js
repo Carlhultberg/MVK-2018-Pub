@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import I18n from '../i18n/i18n';
 
 import {
   View,
@@ -17,7 +18,7 @@ const cellWidth = width;
 const cellHeight = height / 4;
 
 const styles = StyleSheet.create({
-  
+
   container: {
     height: 170,
     width: cellWidth,
@@ -91,6 +92,19 @@ class HighlightScreenDetails extends Component {
     }
   }
 
+  addFloor(){
+    if(this.props.floor){
+      return(
+        <View style={styles.timeBox}>
+          <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')}/>
+          <Text style={styles.textFloor}>
+            {I18n.t('floor')} {this.props.floor}
+          </Text>
+        </View>
+      )
+    }
+  }
+
 
   render() {
     return (
@@ -108,10 +122,7 @@ class HighlightScreenDetails extends Component {
                 <Text style={styles.textDuration}>
                   {this.props.duration}
                 </Text>
-                <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')}/>
-                <Text style={styles.textFloor}>
-                  {this.props.floor}
-                </Text>
+                { this.addFloor() }
               </View>
             </View>
           </ImageBackground>
