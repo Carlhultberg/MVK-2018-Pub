@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image, TouchableHighlight, Dimensions } from 'react-native';
 import AudioPlayer from './audioPlayer';
 import I18n from '../i18n/i18n';
 import { HEADER_TEXT_COLOR, HEADER_BACKGROUND_COLOR, BACKGROUND_COLOR, TEXT_COLOR, BORDER_COLOR_1, BUTTON_ON_PRESS_COLOR_1 } from '../styles';
+
+
 
 export default class SearchByNumberScreen extends Component {
 
@@ -200,6 +202,9 @@ export default class SearchByNumberScreen extends Component {
     }
 }
 
+const { width, height } = Dimensions.get('window');
+const cellHeight = height / 10;
+
 const s = StyleSheet.create({
 
     textHeader: {
@@ -231,17 +236,17 @@ const s = StyleSheet.create({
         borderBottomWidth: 1,
     },
     buttonContainer: {
-        height: 70,
-        width: 70,
+        height: cellHeight,
+        width: cellHeight,
         justifyContent: 'center',
-        borderRadius: 35,
+        borderRadius: cellHeight/2,
         borderColor: BORDER_COLOR_1,
         borderWidth: 1,
         margin: 8,
     },
     buttonNoContainer: {
-        height: 70,
-        width: 70,
+        height: cellHeight,
+        width: cellHeight,
         justifyContent: 'center',
         alignItems: 'center',
         margin: 10,
@@ -266,8 +271,8 @@ const s = StyleSheet.create({
         flexDirection: 'row',
     },
     filler: {
-        width: 70,
-        height: 70,
+        width: cellHeight,
+        height: cellHeight,
         margin: 10,
     },
 });
