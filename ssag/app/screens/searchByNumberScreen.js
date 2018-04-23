@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image, TouchableHighlight, Dimensions } from 'react-native';
 import AudioPlayer from './audioPlayer';
 import I18n from '../i18n/i18n';
-import { HEADER_TEXT_COLOR, HEADER_BACKGROUND_COLOR, BACKGROUND_COLOR, TEXT_COLOR, BORDER_COLOR_1, BUTTON_ON_PRESS_COLOR_1 } from '../styles';
+import { HEADER_TEXT_COLOR, HEADER_BACKGROUND_COLOR, BACKGROUND_COLOR, TEXT_COLOR, BORDER_COLOR_1, BUTTON_ON_PRESS_COLOR_1, AUDIO_PLAYER_HIGHT } from '../styles';
 
 
 
@@ -119,7 +119,7 @@ export default class SearchByNumberScreen extends Component {
                         {this.state.headerText}
                     </Text>
                 </View>
-                <View style={[s.digitRow, { flexDirection: 'row' }, { marginBottom: 30 }]}>
+                <View style={s.inputRow}>
                     <Text style={s.input}>
                         {this.state.text1}
                     </Text>
@@ -131,7 +131,7 @@ export default class SearchByNumberScreen extends Component {
                     </Text>
                 </View>
 
-                <View style={[s.digitRow, { flexDirection: 'row' }]}>
+                <View style={s.buttonRow}>
                     <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("1"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             1
@@ -149,7 +149,7 @@ export default class SearchByNumberScreen extends Component {
                     </TouchableHighlight>
                 </View>
 
-                <View style={[s.digitRow, { flexDirection: 'row' }]}>
+                <View style={s.buttonRow}>
                     <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("4"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             4
@@ -168,7 +168,7 @@ export default class SearchByNumberScreen extends Component {
                 </View>
 
 
-                <View style={[s.digitRow, { flexDirection: 'row' }]}>
+                <View style={s.buttonRow}>
                     <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("7"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             7
@@ -186,7 +186,7 @@ export default class SearchByNumberScreen extends Component {
                     </TouchableHighlight>
                 </View>
 
-                <View style={[s.notDigitRow, { flexDirection: 'row' }]}>
+                <View style={s.buttonRow}>
                     <View style={[s.filler]} />
                     <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("0"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
@@ -197,6 +197,7 @@ export default class SearchByNumberScreen extends Component {
                         <Image source={require('../assets/DeleteButton.png')} style={s.deleteButton} />
                     </TouchableOpacity>
                 </View>
+                <View style={{ height: AUDIO_PLAYER_HIGHT }} />
             </View>
         );
     }
@@ -262,7 +263,12 @@ const s = StyleSheet.create({
         resizeMode: 'contain',
         justifyContent: 'center',
     },
-    digitRow: {
+    inputRow: {
+        justifyContent: 'center',
+        flexDirection: 'row',
+        marginBottom: 30
+    },
+    buttonRow: {
         justifyContent: 'center',
         flexDirection: 'row',
     },
