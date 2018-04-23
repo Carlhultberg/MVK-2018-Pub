@@ -187,43 +187,51 @@ class TourstopScreen extends React.Component {
     }
     this.state = { tourstops: finalArray, maxIndex: maxIndex }
     return this.state.tourstops.map(tourstops =>
-      <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={() => this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number)} array={finalArray} highlight={tourstops.highlight} />
-    );
+       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number, tourstops.highlight)} array={finalArray} highlight={tourstops.highlight} currentlyPlaying={this.props.screenProps.audioNumber}/>
+     );
+  }
+
+  addFloor(){
+    if(this.props.navigation.state.params.floor){
+      return(
+        <View style={styles.audioContent}>
+          <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')} />
+          <Text style={styles.floorText}>
+            {I18n.t('floor')} {this.props.navigation.state.params.floor}
+          </Text>
+        </View>
+      )
+    }
   }
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <ImageBackground style={styles.headerImage} source={this.props.navigation.state.params.image}>
-          <Text style={styles.headerImageText}>
-            {this.props.navigation.state.params.title}
-          </Text>
-        </ImageBackground>
-
-        <View style={styles.playAllButtonContainer}>
-          <TouchableOpacity style={styles.playAllButton} onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number)}>
-            <Image style={styles.playAllButtonIcon} source={require('../Images/PlayButton.png')} />
-            <Text style={styles.playAllButtonText}>
-              {I18n.t('playAll')}
+        <ScrollView style={styles.container}>
+          <ImageBackground style={styles.headerImage} source={this.props.navigation.state.params.image}>
+            <Text style={styles.headerImageText}>
+              {this.props.navigation.state.params.title}
             </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.audioContentInfo}>
-          <View style={styles.audioContentBox}>
-            <View style={styles.audioContent}>
-              <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')} />
-              <Text style={styles.floorText}>
-                {I18n.t('floor')} {this.props.navigation.state.params.floor}
+          </ImageBackground>
+
+          <View style={styles.playAllButtonContainer}>
+            <TouchableOpacity style={styles.playAllButton} onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number, this.state.tourstops[0].highlight)}>
+              <Image style={styles.playAllButtonIcon} source={require('../Images/PlayButton.png')}/>
+              <Text style={styles.playAllButtonText}>
+                {I18n.t('playAll')}
               </Text>
-            </View>
-            <View style={styles.audioContent}>
-              <Image style={styles.durationIcon} source={require('../Images/ClockIcon.png')} />
-              <Text style={styles.durationText}>
-                {this.props.navigation.state.params.duration} {I18n.t('min')}
-              </Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.audioContentInfo}>
+            <View style={styles.audioContentBox}>
+              { this.addFloor() }
+              <View style={styles.audioContent}>
+                <Image style={styles.durationIcon} source={require('../Images/ClockIcon.png')} />
+                <Text style={styles.durationText}>
+                  {this.props.navigation.state.params.duration} {I18n.t('min')}
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
         {this.renderTourStops({ songs: this.props.navigation.state.params.songs })}
         <View style={styles.filler} />
       </ScrollView>

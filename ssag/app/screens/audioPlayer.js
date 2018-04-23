@@ -60,6 +60,7 @@ class AudioPlayer extends Component {
     if (this.props.logo == require('../assets/PauseButton.png')) {
       this.props.audio.play();
     }
+    this.highlighted(this.props.highlight);
   }
 
   PlayPause = () => {
@@ -74,10 +75,12 @@ class AudioPlayer extends Component {
 
   Next = () => {
     this.props.nextSong();
+    this.highlighted(this.props.highlight);
   }
 
   Previous = () => {
     this.props.previousSong();
+    this.highlighted(this.props.highlight);
   }
 
   componentDidMount() {
@@ -94,7 +97,7 @@ class AudioPlayer extends Component {
     }
   }
 
-  render() {
+  render(){
     return (
       <View style={s.container}>
         <View style={s.audioTitleContainer}>

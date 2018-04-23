@@ -70,10 +70,10 @@ export default class SearchByNumberScreen extends Component {
                 if (String(exhibitionAudios[String(i)]) == searchString) {
                     startIndex = i;
                 }
-                array.push({ text: json[lang][String(exhibitionAudios[String(i)])].name, number: String(exhibitionAudios[String(i)]), thisIndex: i, filePath: json[lang][String(exhibitionAudios[String(i)])].filepath });
+                array.push({text: json[lang][String(exhibitionAudios[String(i)])].name, number: String(exhibitionAudios[String(i)]), thisIndex: i, filePath: json[lang][String(exhibitionAudios[String(i)])].filepath, highlight: json[lang][String(exhibitionAudios[String(i)])].highlight});
                 maxIndex++;
-            }
-            this.props.screenProps.addAudioPlayer(track.filepath, array, startIndex, maxIndex, track.name, searchString);
+              }
+            this.props.screenProps.addAudioPlayer(track.filepath, array, startIndex, maxIndex, track.name, searchString, track.highlight);
             this.clearDigitWithDelay();
             this.renderTourStop(theme);
         }

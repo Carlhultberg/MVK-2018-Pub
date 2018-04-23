@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import I18n from '../i18n/i18n';
+
 import {
   View,
   ImageBackground,
@@ -86,6 +88,20 @@ class HighlightScreenDetails extends Component {
     }
   }
 
+  addFloor(){
+    if(this.props.floor){
+      return(
+        <View style={styles.timeBox}>
+          <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')}/>
+          <Text style={styles.textFloor}>
+            {I18n.t('floor')} {this.props.floor}
+          </Text>
+        </View>
+      )
+    }
+  }
+
+
   render() {
     return (
       <View style={styles.container}>
@@ -102,10 +118,7 @@ class HighlightScreenDetails extends Component {
                 <Text style={styles.textDuration}>
                   {this.props.duration}
                 </Text>
-                <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')} />
-                <Text style={styles.textFloor}>
-                  {this.props.floor}
-                </Text>
+                { this.addFloor() }
               </View>
             </View>
           </ImageBackground>
