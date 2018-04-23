@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import {StyleSheet, Image, View, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, Image, View, TouchableOpacity, Text } from 'react-native';
 import { Player, MediaStates } from 'react-native-audio-toolkit';
 import { AUDIO_PLAYER_COLOR, HIGHLIGHTS_TEXT, HIGHLIGHTS, TEXT_COLOR_2 } from '../styles';
 
 const s = StyleSheet.create({
 
-
   container: {
-    flex: 1, 
+    flex: 1,
     justifyContent: 'flex-end',
     backgroundColor: AUDIO_PLAYER_COLOR,
     borderColor: '#000000',
@@ -18,16 +17,15 @@ const s = StyleSheet.create({
     flexDirection: 'row',
     height: 30,
     justifyContent: 'center',
-    //backgroundColor: 'red',
   },
   audioTitleNumber: {
-    color: TEXT_COLOR_2, 
+    color: TEXT_COLOR_2,
     fontSize: 15,
     marginLeft: 4,
     marginRight: 4,
   },
   audioTitleName: {
-    color: TEXT_COLOR_2, 
+    color: TEXT_COLOR_2,
     fontSize: 15,
   },
   audioPlayer: {
@@ -35,40 +33,37 @@ const s = StyleSheet.create({
     alignItems: 'center',
     height: 40,
     shadowColor: '#0000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     elevation: 2,
     position: 'relative',
-    flexDirection: 'row'            
+    flexDirection: 'row'
   },
   audioIcon: {
-    height: 30, 
-    width: 30,            
+    height: 30,
+    width: 30,
   },
   highlightContainer: {
     borderRadius: 4,
-    //marginTop: 8,
-    //marginLeft: 4,
     marginRight: 8,
   },
-
 });
 
-
 class AudioPlayer extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
     };
   }
-  componentWillMount(){
-    if (this.props.logo == require('../assets/PauseButton.png')){
+
+  componentWillMount() {
+    if (this.props.logo == require('../assets/PauseButton.png')) {
       this.props.audio.play();
     }
   }
 
   PlayPause = () => {
-    if (this.props.logo == require('../assets/PauseButton.png') ){
+    if (this.props.logo == require('../assets/PauseButton.png')) {
       this.props.audio.pause();
       this.props.changeLogo();
     } else {
@@ -85,27 +80,26 @@ class AudioPlayer extends Component {
     this.props.previousSong();
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.highlighted(this.props.highlight);
-    //this.highlighted(1);
   }
 
-  highlighted (h){
-    if(h==1){
-      this.setState({textColorHighlight: HIGHLIGHTS_TEXT});
-      this.setState({bgColorHighlight: HIGHLIGHTS});
+  highlighted(h) {
+    if (h == 1) {
+      this.setState({ textColorHighlight: HIGHLIGHTS_TEXT });
+      this.setState({ bgColorHighlight: HIGHLIGHTS });
     }
-    else{
-      this.setState({textColorHighlight: TEXT_COLOR_2});
+    else {
+      this.setState({ textColorHighlight: TEXT_COLOR_2 });
     }
   }
-  
-  render(){
+
+  render() {
     return (
       <View style={s.container}>
         <View style={s.audioTitleContainer}>
-          <View style={[s.highlightContainer, {backgroundColor: this.state.bgColorHighlight }]}>
-            <Text style={[s.audioTitleNumber, {color: this.state.textColorHighlight }]}>
+          <View style={[s.highlightContainer, { backgroundColor: this.state.bgColorHighlight }]}>
+            <Text style={[s.audioTitleNumber, { color: this.state.textColorHighlight }]}>
               {this.props.audioNumber}
             </Text>
           </View>
@@ -115,10 +109,10 @@ class AudioPlayer extends Component {
         </View>
         <View style={s.audioPlayer}>
           <TouchableOpacity onPress={this.Previous}>
-            <Image style={{height: 30, width: 30, transform: [{rotate: '180deg'}]}} source={require('../assets/SkipButton.png')} />
+            <Image style={{ height: 30, width: 30, transform: [{ rotate: '180deg' }] }} source={require('../assets/SkipButton.png')} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={ this.PlayPause }>
-           <Image style={s.audioIcon} source={ this.props.logo } />
+          <TouchableOpacity onPress={this.PlayPause}>
+            <Image style={s.audioIcon} source={this.props.logo} />
           </TouchableOpacity>
           <TouchableOpacity onPress={this.Next}>
             <Image style={s.audioIcon} source={require('../assets/SkipButton.png')} />
@@ -127,6 +121,6 @@ class AudioPlayer extends Component {
       </View>
     );
   };
-  }
+}
 
 export default AudioPlayer;

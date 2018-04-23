@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AudioPlayer from './audioPlayer';
 import I18n, { languageRealm, realm, languageR } from '../i18n/i18n';
 import RNRestart from 'react-native-restart';
 import Realm from 'realm';
-
+import { OFF_BLACK, BACKGROUND_COLOR, TEXT_COLOR, SELECTED, AUDIO_PLAYER_HIGHT } from '../styles';
 import {
   Text,
   Image,
@@ -15,22 +15,16 @@ import {
   AsyncStorage,
 } from 'react-native';
 
-
-
-
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
-const cellHeight = height * 2/3 ;
-const buttonHeight = height * 1/18;
-
-import { OFF_BLACK, BACKGROUND_COLOR, TEXT_COLOR, SELECTED, AUDIO_PLAYER_HIGHT } from '../styles';
+const cellHeight = height * 2 / 3;
+const buttonHeight = height * 1 / 18;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: BACKGROUND_COLOR,
   },
-
   button: {
     height: 50,
     width: width,
@@ -40,15 +34,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: BACKGROUND_COLOR,
   },
-  text:{
+  text: {
     fontWeight: 'bold',
     fontSize: 20,
     color: TEXT_COLOR
   },
-  image:{
+  image: {
     width: 50,
-    height:50,
-    //tintColor: TEXT_COLOR
+    height: 50,
   },
 });
 
@@ -60,42 +53,40 @@ class Language extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.languageSelectBG();
   }
 
   languageSelectBG() {
     var isSelected = String(I18n.locale);
-    if(isSelected === 'en'){
-      this.setState({bgColorSelectedEn: SELECTED});
-      this.setState({bgColorSelectedSv: BACKGROUND_COLOR});
-    }else if(isSelected === 'sv'){
-      this.setState({bgColorSelectedEn: BACKGROUND_COLOR});
-      this.setState({bgColorSelectedSv: SELECTED});
+    if (isSelected === 'en') {
+      this.setState({ bgColorSelectedEn: SELECTED });
+      this.setState({ bgColorSelectedSv: BACKGROUND_COLOR });
+    } else if (isSelected === 'sv') {
+      this.setState({ bgColorSelectedEn: BACKGROUND_COLOR });
+      this.setState({ bgColorSelectedSv: SELECTED });
     }
-
   }
 
-
-  restart(language){
+  restart(language) {
     realm.write(() => {
       languageR[0].name = language;
     });
     RNRestart.Restart();
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <ScrollView style={styles.container}>
         <View>
-          <TouchableOpacity onPress={() =>  this.restart('en')  }>
+          <TouchableOpacity onPress={() => this.restart('en')}>
             <View style={[styles.button, { backgroundColor: this.state.bgColorSelectedEn }]}>
               <Text style={styles.text}>
                 English
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.restart('sv') }>
+          <TouchableOpacity onPress={() => this.restart('sv')}>
             <View style={[styles.button, { backgroundColor: this.state.bgColorSelectedSv }]}>
               <Text style={styles.text}>
                 Svenska
@@ -103,7 +94,7 @@ class Language extends Component {
             </View>
           </TouchableOpacity>
         </View>
-        <View style={{height: AUDIO_PLAYER_HIGHT}}/>
+        <View style={{ height: AUDIO_PLAYER_HIGHT }} />
       </ScrollView>
     );
   }

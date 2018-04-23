@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import I18n from '../i18n/i18n';
 
 import {
@@ -13,8 +13,8 @@ import {
 
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
-const cellHeight = height * 2/3 ;
-const buttonHeight = height * 1/18;
+const cellHeight = height * 2 / 3;
+const buttonHeight = height * 1 / 18;
 
 import { TEXT_COLOR, BACKGROUND_COLOR, DROPDOW_BORDER_BACKGROUND_COLOR, AUDIO_PLAYER_HIGHT } from '../styles';
 
@@ -38,23 +38,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    //backgroundColor: DROPDOW_BORDER_BACKGROUND_COLOR,
   },
-  text:{
+  text: {
     fontWeight: 'bold',
     fontSize: 20,
     color: TEXT_COLOR
   },
-  dropDownText:{
+  dropDownText: {
     fontSize: 18,
     color: TEXT_COLOR
   },
-  image:{
+  image: {
     width: 50,
-    height:50,
-    //tintColor: TEXT_COLOR
+    height: 50,
   },
-  inBetween:{
+  inBetween: {
     height: 4,
   },
 });
@@ -69,22 +67,21 @@ class AmenitiesScreenDetails extends Component {
     };
   }
 
-  renderFloors(){
+  renderFloors() {
     var array = [];
-    for(var i=0;i<Object.keys(this.state.floors).length;i++){
-      array.push({floorNum: this.state.floors[String(i)]});
+    for (var i = 0; i < Object.keys(this.state.floors).length; i++) {
+      array.push({ floorNum: this.state.floors[String(i)] });
     }
     return array.map(floor =>
-       <Text key={floor.floorNum}>{floor.floorNum}  </Text>
-     );
+      <Text key={floor.floorNum}>{floor.floorNum}  </Text>
+    );
   }
 
-
-  render(){
-    if(this.state.dropDown){
-      return(
+  render() {
+    if (this.state.dropDown) {
+      return (
         <View>
-          <TouchableOpacity onPress = {() => this.setState({dropDown: false})}>
+          <TouchableOpacity onPress={() => this.setState({ dropDown: false })}>
             <View style={styles.button}>
               <Text style={styles.text}>
                 {I18n.t(this.state.string)}
@@ -96,18 +93,18 @@ class AmenitiesScreenDetails extends Component {
               {I18n.t('floor')} {this.renderFloors()}
             </Text>
           </View>
-          <View style={styles.inBetween}/>
+          <View style={styles.inBetween} />
         </View>
       );
-    }else{
-      return(
-        <TouchableOpacity onPress = {() => this.setState({dropDown: true})}>
+    } else {
+      return (
+        <TouchableOpacity onPress={() => this.setState({ dropDown: true })}>
           <View style={styles.button}>
             <Text style={styles.text}>
               {I18n.t(this.state.string)}
             </Text>
           </View>
-          <View style={styles.inBetween}/>
+          <View style={styles.inBetween} />
         </TouchableOpacity>
       );
     }

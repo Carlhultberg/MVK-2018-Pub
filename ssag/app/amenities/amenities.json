@@ -1,51 +1,50 @@
 {
-  "0":{
-      "type": "Toilets",
-      "string": "amenities_ToiletsTitle",
-      "floors": {
-          "0": "1",
-          "1": "2",
-          "2": "3"
-      },
-  },
-  "1":{
-      "type": "Cloakroom",
-      "string": "amenities_CloakroomTitle",
-      "floors": {
-          "0": "1",
-          "1": "2",
-      },
-  },
-  "2":{
-      "type": "Baby changing tables",
-      "string": "amenities_BabyChangingTablesTitle",
-      "floors": {
-          "0": "1",
-          "1": "3",
-          "2": "5"
-      },
-  },
-  "3":{
-      "type": "Lunch Room",
-      "string": "amenities_PackedLunchRoomTitle",
-      "floors": {
-          "0": "1",
-          "1": "5",
-      },
-  },
-  "4":{
-      "type": "Play Area",
-      "string": "amenities_PlayAreaTitle",
-      "floors": {
-          "0": "3",
-
-      },
-  },
-  "5":{
-      "type": "Information",
-      "string": "amenities_InformationTitle",
-      "floors": {
-          "0": "1",
-      },
-  },
+    "0": {
+        "type": "Toilets",
+        "string": "amenities_ToiletsTitle",
+        "floors": {
+            "0": "1",
+            "1": "2",
+            "2": "3"
+        }
+    },
+    "1": {
+        "type": "Cloakroom",
+        "string": "amenities_CloakroomTitle",
+        "floors": {
+            "0": "1",
+            "1": "2"
+        }
+    },
+    "2": {
+        "type": "Baby changing tables",
+        "string": "amenities_BabyChangingTablesTitle",
+        "floors": {
+            "0": "1",
+            "1": "3",
+            "2": "5"
+        }
+    },
+    "3": {
+        "type": "Lunch Room",
+        "string": "amenities_PackedLunchRoomTitle",
+        "floors": {
+            "0": "1",
+            "1": "5"
+        }
+    },
+    "4": {
+        "type": "Play Area",
+        "string": "amenities_PlayAreaTitle",
+        "floors": {
+            "0": "3"
+        }
+    },
+    "5": {
+        "type": "Information",
+        "string": "amenities_InformationTitle",
+        "floors": {
+            "0": "1"
+        }
+    }
 }

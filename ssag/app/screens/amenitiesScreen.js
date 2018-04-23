@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import I18n from '../i18n/i18n';
 import AmenitiesScreenDetails from './amenitiesScreenDetails'
 
@@ -14,10 +14,10 @@ import {
 
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
-const cellHeight = height * 2/3 ;
-const buttonHeight = height * 1/18;
+const cellHeight = height * 2 / 3;
+const buttonHeight = height * 1 / 18;
 
-import {BACKGROUND_COLOR, AUDIO_PLAYER_HIGHT } from '../styles';
+import { BACKGROUND_COLOR, AUDIO_PLAYER_HIGHT } from '../styles';
 
 const s = StyleSheet.create({
   container: {
@@ -36,8 +36,8 @@ class AmenitiesScreen extends Component {
     var json = require('../amenities/amenities.json');
     var array = [];
     var json_length = Object.keys(json).length;
-    for(var i=0; i<json_length; i++){
-      array.push({number: String(i), string: json[String(i)]["string"], floors: json[String(i)]["floors"], dropDown: false});
+    for (var i = 0; i < json_length; i++) {
+      array.push({ number: String(i), string: json[String(i)]["string"], floors: json[String(i)]["floors"], dropDown: false });
     }
     this.state = {
       amenities: array,
@@ -46,17 +46,17 @@ class AmenitiesScreen extends Component {
 
   renderAmenities() {
     return this.state.amenities.map(amenity =>
-      <AmenitiesScreenDetails key={amenity.number} number={amenity.number} string={amenity.string} floors={amenity.floors} dropDown={amenity.dropDown}/>
+      <AmenitiesScreenDetails key={amenity.number} number={amenity.number} string={amenity.string} floors={amenity.floors} dropDown={amenity.dropDown} />
     );
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <ScrollView style={s.container}>
         <View>
-          { this.renderAmenities() }
+          {this.renderAmenities()}
         </View>
-        <View style={s.filler}/>
+        <View style={s.filler} />
       </ScrollView>
 
     );

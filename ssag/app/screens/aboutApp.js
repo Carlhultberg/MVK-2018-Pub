@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import AudioPlayer from './audioPlayer';
 import I18n, { languageRealm, realm, languageR } from '../i18n/i18n';
 import RNRestart from 'react-native-restart';
@@ -15,18 +15,15 @@ import {
   AsyncStorage,
 } from 'react-native';
 
-
-
-
 const { width, height } = Dimensions.get('window');
 const cellWidth = width;
-const cellHeight = height * 2/3 ;
-const buttonHeight = height * 1/18;
+const cellHeight = height * 2 / 3;
+const buttonHeight = height * 1 / 18;
 
 import { TEXT_COLOR, BACKGROUND_COLOR, AUDIO_PLAYER_HIGHT } from '../styles';
 
 const s = StyleSheet.create({
-  
+
   scrollContainer: {
     backgroundColor: BACKGROUND_COLOR,
   },
@@ -34,13 +31,13 @@ const s = StyleSheet.create({
     marginLeft: 16,
     marginRight: 16,
   },
-  textHeader:{
+  textHeader: {
     marginTop: 16,
     fontSize: 20,
     color: TEXT_COLOR,
     fontWeight: 'bold',
   },
-  text:{
+  text: {
     fontSize: 20,
     color: TEXT_COLOR
   },
@@ -55,16 +52,16 @@ class AboutApp extends Component {
     super(props);
 
     this.state = {
-        aboutTheAppProjectManagerNordicMuseumBody: '[Project Manager name here]',
-        aboutTheAppDevelopmentAndDesignBody: 'Maria Lindblad\nTommy Samuelsson\nCarl Hultberg\nDiar Sabri\nLars Lundin\nBurhan Hashi',
-        aboutTheAppAdvisoryTeamBody: '[Advisory name here]',
-        aboutTheAppAppIconBody: 'Ann-Sofia Marminge Design',
-        aboutTheAppTranslationsBody: 'BTI Studios'
+      aboutTheAppProjectManagerNordicMuseumBody: '[Project Manager name here]',
+      aboutTheAppDevelopmentAndDesignBody: 'Maria Lindblad\nTommy Samuelsson\nCarl Hultberg\nDiar Sabri\nLars Lundin\nBurhan Hashi',
+      aboutTheAppAdvisoryTeamBody: '[Advisory name here]',
+      aboutTheAppAppIconBody: 'Ann-Sofia Marminge Design',
+      aboutTheAppTranslationsBody: 'BTI Studios'
     };
-}
+  }
 
-  render(){
-    return(
+  render() {
+    return (
       <ScrollView style={s.scrollContainer}>
         <View style={s.container}>
           <Text style={s.textHeader}>
@@ -115,7 +112,7 @@ class AboutApp extends Component {
           <Text style={s.text}>
             {I18n.t('aboutTheAppPhotoCreditsBody')}
           </Text>
-          <View style={s.filler}/>
+          <View style={s.filler} />
         </View>
       </ScrollView>
     );

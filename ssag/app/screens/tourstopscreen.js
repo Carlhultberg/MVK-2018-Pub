@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: BACKGROUND_COLOR_2,
   },
-    headerImage: {
+  headerImage: {
     // position: 'absolute',
     top: 0,
     left: 0,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   headerImageText: {
-    fontSize: 25, 
+    fontSize: 25,
     color: TEXT_COLOR_2,
   },
   playAllButtonContainer: {
@@ -163,71 +163,70 @@ class TourstopScreen extends React.Component {
     var highlightArray = [];
     var maxIndex = 0;
     var indexKeeper = 0;
-    console.log(songs.songs[0]);
-    for(var i=0;i<Object.keys(songs.songs).length;i++){
-      if(json[lang][songs.songs[String(i)]].highlight==="1"){
-        highlightArray.push({text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight});
+    for (var i = 0; i < Object.keys(songs.songs).length; i++) {
+      if (json[lang][songs.songs[String(i)]].highlight === "1") {
+        highlightArray.push({ text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight });
         indexKeeper++;
       }
       maxIndex++;
     }
-    for(var i=0;i<Object.keys(songs.songs).length;i++){
-      if(json[lang][songs.songs[String(i)]].highlight==="0"){
-        array.push({text: json[lang][songs.songs[String(i)]].name, number:songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight});
+    for (var i = 0; i < Object.keys(songs.songs).length; i++) {
+      if (json[lang][songs.songs[String(i)]].highlight === "0") {
+        array.push({ text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight });
         indexKeeper++;
       }
     }
-    
+
 
     maxIndex--;
     var finalArray;
-    if(highlightArray.length===0){
+    if (highlightArray.length === 0) {
       finalArray = array;
     } else {
       finalArray = highlightArray.concat(array);
     }
-    this.state={tourstops:finalArray,maxIndex:maxIndex}
+    this.state = { tourstops: finalArray, maxIndex: maxIndex }
     return this.state.tourstops.map(tourstops =>
-       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number)} array={finalArray} highlight={tourstops.highlight}/>
-     );
+      <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={() => this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number)} array={finalArray} highlight={tourstops.highlight} />
+    );
   }
 
   render() {
     return (
-        <ScrollView style={styles.container}>
-          <ImageBackground style={styles.headerImage} source={this.props.navigation.state.params.image}>
-            <Text style={styles.headerImageText}>
-              {this.props.navigation.state.params.title}
-            </Text> 
-          </ImageBackground>
+      <ScrollView style={styles.container}>
+        <ImageBackground style={styles.headerImage} source={this.props.navigation.state.params.image}>
+          <Text style={styles.headerImageText}>
+            {this.props.navigation.state.params.title}
+          </Text>
+        </ImageBackground>
 
-          <View style={styles.playAllButtonContainer}>
-            <TouchableOpacity style={styles.playAllButton} onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number)}>
-              <Image style={styles.playAllButtonIcon} source={require('../Images/PlayButton.png')}/>
-              <Text style={styles.playAllButtonText}>
-                {I18n.t('playAll')}
+        <View style={styles.playAllButtonContainer}>
+          <TouchableOpacity style={styles.playAllButton} onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number)}>
+            <Image style={styles.playAllButtonIcon} source={require('../Images/PlayButton.png')} />
+            <Text style={styles.playAllButtonText}>
+              {I18n.t('playAll')}
+            </Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.audioContentInfo}>
+          <View style={styles.audioContentBox}>
+            <View style={styles.audioContent}>
+              <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')} />
+              <Text style={styles.floorText}>
+                {I18n.t('floor')} {this.props.navigation.state.params.floor}
               </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.audioContentInfo}>
-            <View style={styles.audioContentBox}>
-              <View style={styles.audioContent}>
-                <Image style={styles.floorIcon} source={require('../Images/FloorIcon.png')} />
-                <Text style={styles.floorText}>
-                  {I18n.t('floor')} {this.props.navigation.state.params.floor}
-                </Text>
-              </View>
-              <View style={styles.audioContent}>
-                <Image style={styles.durationIcon} source={require('../Images/ClockIcon.png')} />
-                <Text style={styles.durationText}>
-                  {this.props.navigation.state.params.duration} {I18n.t('min')}
-                </Text>
-              </View>
+            </View>
+            <View style={styles.audioContent}>
+              <Image style={styles.durationIcon} source={require('../Images/ClockIcon.png')} />
+              <Text style={styles.durationText}>
+                {this.props.navigation.state.params.duration} {I18n.t('min')}
+              </Text>
             </View>
           </View>
-            {this.renderTourStops({songs:this.props.navigation.state.params.songs})}
-          <View style={styles.filler}/>
-        </ScrollView>
+        </View>
+        {this.renderTourStops({ songs: this.props.navigation.state.params.songs })}
+        <View style={styles.filler} />
+      </ScrollView>
 
     );
   }

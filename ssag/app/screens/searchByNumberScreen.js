@@ -1,12 +1,10 @@
-import React, { Component } from  'react';
-import {StyleSheet, View, Text, TouchableOpacity, TextInput, Image, TouchableHighlight} from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, TouchableOpacity, TextInput, Image, TouchableHighlight } from 'react-native';
 import AudioPlayer from './audioPlayer';
 import I18n from '../i18n/i18n';
 import { HEADER_TEXT_COLOR, HEADER_BACKGROUND_COLOR, BACKGROUND_COLOR, TEXT_COLOR, BORDER_COLOR_1, BUTTON_ON_PRESS_COLOR_1 } from '../styles';
-//import App from "../App";
 
 export default class SearchByNumberScreen extends Component {
-
 
     constructor(props) {
         super(props);
@@ -21,38 +19,36 @@ export default class SearchByNumberScreen extends Component {
     }
 
     addDigit(digit) {
-        if (this.state.text1 === ' '){
-            this.setState({text1: digit});
-        }else if (this.state.text2 === ' ') {
-            this.setState({text2: digit});
-        }else if (this.state.text3 === ' '){
-            this.setState({text3: digit})
-            //this.setState({searchString: this.state.text1 + this.state.text2 + digit})
+        if (this.state.text1 === ' ') {
+            this.setState({ text1: digit });
+        } else if (this.state.text2 === ' ') {
+            this.setState({ text2: digit });
+        } else if (this.state.text3 === ' ') {
+            this.setState({ text3: digit })
             this.searchForTrack(this.state.text1 + this.state.text2 + digit);
-
         }
     }
 
-    learnMore = (title,image,duration,floor,songs) => {
-      this.props.navigation.navigate('TourstopScreenSearch', { title,image,duration,floor,songs});
+    learnMore = (title, image, duration, floor, songs) => {
+        this.props.navigation.navigate('TourstopScreenSearch', { title, image, duration, floor, songs });
     }
 
     renderTourStop(theme) {
-      var json = require('../soundInfo/exhibitionInfo.json');
-      var lang = String(I18n.locale);
-      var json_length = Object.keys(json).length;
-      var required;
-      if(json[lang][String(theme)]["image"] == "0"){
-        required = require('../Images/stockholm1.png');
-      }else if(json[lang][String(theme)]["image"] == "1"){
-        required = require('../Images/oldStockholm3.png');
-      }else if(json[lang][String(theme)]["image"] == "2"){
-        required = require('../Images/stockholm2.png');
-      }
-      this.learnMore(json[lang][String(theme)]["name"], required, json[lang][String(theme)]["duration"], json[lang][String(theme)]["floor"], json[lang][String(theme)]["sounds"]);
+        var json = require('../soundInfo/exhibitionInfo.json');
+        var lang = String(I18n.locale);
+        var json_length = Object.keys(json).length;
+        var required;
+        if (json[lang][String(theme)]["image"] == "0") {
+            required = require('../Images/stockholm1.png');
+        } else if (json[lang][String(theme)]["image"] == "1") {
+            required = require('../Images/oldStockholm3.png');
+        } else if (json[lang][String(theme)]["image"] == "2") {
+            required = require('../Images/stockholm2.png');
+        }
+        this.learnMore(json[lang][String(theme)]["name"], required, json[lang][String(theme)]["duration"], json[lang][String(theme)]["floor"], json[lang][String(theme)]["sounds"]);
     }
 
-    searchForTrack(searchString){
+    searchForTrack(searchString) {
         var jsonExh = require('../soundInfo/exhibitionInfo.json');
         var json = require('../soundInfo/soundInfo.json');
         var lang = String(I18n.locale);
@@ -60,62 +56,58 @@ export default class SearchByNumberScreen extends Component {
         var maxIndex = -1;
         var startIndex = 0;
         var track = json[lang][String(searchString)];
-        if(typeof track === 'undefined'){
-            this.setState({headerText: I18n.t('tryAgain')});
+        if (typeof track === 'undefined') {
+            this.setState({ headerText: I18n.t('tryAgain') });
             this.resetHeaderWithDelay();
             this.clearDigitWithDelay();
-        }else{
-          var theme = json[lang][String(searchString)].theme;
-          var exhibitionAudios = jsonExh[lang][String(theme)].sounds;
-          var json_length = Object.keys(exhibitionAudios).length;
-          for(var i=0;i<json_length;i++){
-            if(String(exhibitionAudios[String(i)]) == searchString){
-              startIndex = i;
+        } else {
+            var theme = json[lang][String(searchString)].theme;
+            var exhibitionAudios = jsonExh[lang][String(theme)].sounds;
+            var json_length = Object.keys(exhibitionAudios).length;
+            for (var i = 0; i < json_length; i++) {
+                if (String(exhibitionAudios[String(i)]) == searchString) {
+                    startIndex = i;
+                }
+                array.push({ text: json[lang][String(exhibitionAudios[String(i)])].name, number: String(exhibitionAudios[String(i)]), thisIndex: i, filePath: json[lang][String(exhibitionAudios[String(i)])].filepath });
+                maxIndex++;
             }
-            array.push({text: json[lang][String(exhibitionAudios[String(i)])].name, number: String(exhibitionAudios[String(i)]), thisIndex: i, filePath: json[lang][String(exhibitionAudios[String(i)])].filepath});
-            maxIndex++;
-          }
             this.props.screenProps.addAudioPlayer(track.filepath, array, startIndex, maxIndex, track.name, searchString);
             this.clearDigitWithDelay();
             this.renderTourStop(theme);
         }
-
     }
 
-
-
-    resetHeaderWithDelay(){
+    resetHeaderWithDelay() {
         setTimeout(() => {
-            this.setState({headerText: I18n.t('searchScreen_Title')});
-          }, 1500)
+            this.setState({ headerText: I18n.t('searchScreen_Title') });
+        }, 1500)
     }
 
-    clearDigitWithDelay(){
+    clearDigitWithDelay() {
         setTimeout(() => {
             this.clearDigit();
-          }, 1500)
+        }, 1500)
     }
 
     clearDigit() {
-        this.setState({text3: ' '});
-        this.setState({text2: ' '});
-        this.setState({text1: ' '});
+        this.setState({ text3: ' ' });
+        this.setState({ text2: ' ' });
+        this.setState({ text1: ' ' });
     }
 
     removeDigit() {
-        if (!(this.state.text3 === ' ')){
-            this.setState({text3: ' '});
-        }else if (!(this.state.text2 === ' ')) {
-            this.setState({text2: ' '});
-        }else if (!(this.state.text1 === ' ')){
-            this.setState({text1: ' '});
+        if (!(this.state.text3 === ' ')) {
+            this.setState({ text3: ' ' });
+        } else if (!(this.state.text2 === ' ')) {
+            this.setState({ text2: ' ' });
+        } else if (!(this.state.text1 === ' ')) {
+            this.setState({ text1: ' ' });
         }
     }
 
     readyToSearch() {
         return this.state.searchString;
     }
-
 
     render() {
         return (
@@ -125,39 +117,37 @@ export default class SearchByNumberScreen extends Component {
                         {this.state.headerText}
                     </Text>
                 </View>
-
-                <View style={[s.digitRow,  { flexDirection: 'row' }, {marginBottom: 30} ]}>
-                  <Text style={s.input}>
-                      {this.state.text1}
-                  </Text>
-                  <Text style={s.input}>
-                      {this.state.text2}
-                  </Text>
-                  <Text style={s.input}>
-                      {this.state.text3}
-                  </Text>
+                <View style={[s.digitRow, { flexDirection: 'row' }, { marginBottom: 30 }]}>
+                    <Text style={s.input}>
+                        {this.state.text1}
+                    </Text>
+                    <Text style={s.input}>
+                        {this.state.text2}
+                    </Text>
+                    <Text style={s.input}>
+                        {this.state.text3}
+                    </Text>
                 </View>
 
-                <View style={[s.digitRow,  { flexDirection: 'row' }]}>
-                  <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("1"); }} style={s.buttonContainer}>
-                      <Text style={s.buttonText}>
-                          1
+                <View style={[s.digitRow, { flexDirection: 'row' }]}>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("1"); }} style={s.buttonContainer}>
+                        <Text style={s.buttonText}>
+                            1
                       </Text>
-                  </TouchableHighlight>
-                  <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("2"); }} style={s.buttonContainer}>
-                      <Text style={s.buttonText}>
-                          2
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("2"); }} style={s.buttonContainer}>
+                        <Text style={s.buttonText}>
+                            2
                       </Text>
-                  </TouchableHighlight>
-                  <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("3"); }} style={s.buttonContainer}>
-                      <Text style={s.buttonText}>
-                          3
+                    </TouchableHighlight>
+                    <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("3"); }} style={s.buttonContainer}>
+                        <Text style={s.buttonText}>
+                            3
                       </Text>
-                  </TouchableHighlight>
+                    </TouchableHighlight>
                 </View>
 
-
-                <View style={[s.digitRow,  { flexDirection: 'row' } ]}>
+                <View style={[s.digitRow, { flexDirection: 'row' }]}>
                     <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("4"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             4
@@ -176,7 +166,7 @@ export default class SearchByNumberScreen extends Component {
                 </View>
 
 
-                <View style={[s.digitRow,  { flexDirection: 'row' } ]}>
+                <View style={[s.digitRow, { flexDirection: 'row' }]}>
                     <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("7"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
                             7
@@ -194,8 +184,7 @@ export default class SearchByNumberScreen extends Component {
                     </TouchableHighlight>
                 </View>
 
-
-                <View style={[s.notDigitRow,  { flexDirection: 'row' } ]}>
+                <View style={[s.notDigitRow, { flexDirection: 'row' }]}>
                     <View style={[s.filler]} />
                     <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_1} onPress={() => { this.addDigit("0"); }} style={s.buttonContainer}>
                         <Text style={s.buttonText}>
@@ -217,8 +206,6 @@ const s = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         color: HEADER_TEXT_COLOR,
-        //justifyContent: 'center',
-        //alignItems: 'center',
     },
     headerBorder: {
         width: 450,
@@ -229,11 +216,9 @@ const s = StyleSheet.create({
         marginBottom: 10,
         elevation: 4,
     },
-
     container: {
         flex: 1,
         backgroundColor: BACKGROUND_COLOR,
-        //justifyContent: 'center',
         alignItems: 'center',
     },
     input: {
@@ -245,8 +230,7 @@ const s = StyleSheet.create({
         margin: 10,
         borderBottomWidth: 1,
     },
-
-    buttonContainer:{
+    buttonContainer: {
         height: 70,
         width: 70,
         justifyContent: 'center',
@@ -255,16 +239,14 @@ const s = StyleSheet.create({
         borderWidth: 1,
         margin: 8,
     },
-
-    buttonNoContainer:{
+    buttonNoContainer: {
         height: 70,
         width: 70,
         justifyContent: 'center',
         alignItems: 'center',
         margin: 10,
     },
-
-    buttonText:{
+    buttonText: {
         color: TEXT_COLOR,
         fontSize: 35,
         textAlign: 'center',
@@ -273,27 +255,19 @@ const s = StyleSheet.create({
         height: 25,
         width: 35,
         resizeMode: 'contain',
-        //alignItems: 'center',
         justifyContent: 'center',
     },
     digitRow: {
         justifyContent: 'center',
         flexDirection: 'row',
-        //height: 60,
-        //width: 100,
     },
-
     notDigitRow: {
         justifyContent: 'center',
         flexDirection: 'row',
-        //height: 60,
-        //width: 100,
     },
-
     filler: {
         width: 70,
         height: 70,
         margin: 10,
     },
-
 });
