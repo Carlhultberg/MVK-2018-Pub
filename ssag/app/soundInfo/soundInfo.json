@@ -40,21 +40,21 @@
         "001": {
             "name": "Paintings",
             "filepath": "en_001.mp3",
-            "duration": "2m3s",
+            "duration": "212",
             "theme": "2",
             "highlight": "1"
         },
         "002": {
             "name": "Statues",
             "filepath": "en_002.mp3",
-            "duration": "4m2s",
+            "duration": "213",
             "theme": "2",
             "highlight": "1"
         },
         "003": {
             "name": "Ceramics",
             "filepath": "en_003.mp3",
-            "duration": "3m7s",
+            "duration": "214",
             "theme": "1",
             "highlight": "0"
         },

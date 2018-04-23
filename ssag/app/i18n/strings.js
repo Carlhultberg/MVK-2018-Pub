@@ -2,6 +2,7 @@ export const strings = {
   en: {
     // 1. IN-APP STRINGS
     min: 'min',
+    sek: 'sec',
     bluetoothButton_OnLabel: 'Bluetooth is on',
     bluetoothButton_OffLabel: 'Turn Bluetooth on',
     bluetoothAlert_Header: 'Bluetooth',
@@ -162,13 +163,14 @@ export const strings = {
 
     // 5. CHAPTER HEADERS
 
-  
+
 
     //6. TRANSCRIPTS
   },
   sv: {
     // 1. IN-APP STRINGS
     min: 'min',
+    sek: 'sek',
     audioContentList_ChapterSingular: 'Kapitel',
     audioContentList_ChapterPlural: 'Kapitel',
     toggleSpeedButton_NormalLabel: '1',

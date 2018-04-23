@@ -165,14 +165,14 @@ class TourstopScreen extends React.Component {
     var indexKeeper = 0;
     for (var i = 0; i < Object.keys(songs.songs).length; i++) {
       if (json[lang][songs.songs[String(i)]].highlight === "1") {
-        highlightArray.push({ text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight });
+        highlightArray.push({ text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight, duration: json[lang][songs.songs[String(i)]].duration });
         indexKeeper++;
       }
       maxIndex++;
     }
     for (var i = 0; i < Object.keys(songs.songs).length; i++) {
       if (json[lang][songs.songs[String(i)]].highlight === "0") {
-        array.push({ text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight });
+        array.push({ text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight, duration: json[lang][songs.songs[String(i)]].duration });
         indexKeeper++;
       }
     }
@@ -187,7 +187,7 @@ class TourstopScreen extends React.Component {
     }
     this.state = { tourstops: finalArray, maxIndex: maxIndex }
     return this.state.tourstops.map(tourstops =>
-       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number, tourstops.highlight)} array={finalArray} highlight={tourstops.highlight} currentlyPlaying={this.props.screenProps.audioNumber}/>
+       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} duration={tourstops.duration} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number, tourstops.highlight, tourstops.duration)} array={finalArray} highlight={tourstops.highlight} currentlyPlaying={this.props.screenProps.audioNumber}/>
      );
   }
 
@@ -214,7 +214,7 @@ class TourstopScreen extends React.Component {
           </ImageBackground>
 
           <View style={styles.playAllButtonContainer}>
-            <TouchableOpacity style={styles.playAllButton} onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number, this.state.tourstops[0].highlight)}>
+            <TouchableOpacity style={styles.playAllButton} onPress={() => this.props.screenProps.addAudioPlayer(this.state.tourstops[0].filePath, this.state.tourstops, 0, this.state.maxIndex, this.state.tourstops[0].text, this.state.tourstops[0].number, this.state.tourstops[0].highlight, this.state.tourstops[0].duration)}>
               <Image style={styles.playAllButtonIcon} source={require('../Images/PlayButton.png')}/>
               <Text style={styles.playAllButtonText}>
                 {I18n.t('playAll')}

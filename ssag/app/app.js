@@ -20,6 +20,7 @@ class App extends Component {
       audioName: '',
       audioNumber: '',
       highlight: '',
+      duration: '',
     };
     this.createAudio = this.createAudio.bind(this);
     this.addAudioPlayer = this.addAudioPlayer.bind(this);
@@ -36,13 +37,13 @@ class App extends Component {
     this.setState({ audio: new Player(newAudio, { continuesToPlayInBackground: true }).prepare().on('ended', () => { this.nextSong() }) });
   }
 
-  addAudioPlayer(path, array, index, maxIndex, text, number, highlightNum){
+  addAudioPlayer(path, array, index, maxIndex, text, number, highlightNum, duration){
     if(this.state.audio !== ''){
       this.state.audio.destroy();
       this.setState({ audioNumber: '' });
     }
     this.createAudio(path);
-    this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex, audioName: text, audioNumber: number, highlight: highlightNum});
+    this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex, audioName: text, audioNumber: number, highlight: highlightNum, duration: duration});
     setTimeout(()=>this.state.audio.play(),20);
   }
 
@@ -67,6 +68,7 @@ class App extends Component {
             audioName = {this.state.audioName}
             audioNumber = {this.state.audioNumber}
             highlight = {this.state.highlight}
+            duration = {this.state.duration}
           />
         </View>
       )
@@ -82,7 +84,8 @@ class App extends Component {
       let audioName = this.state.array[String(this.state.index+1)].text;
       let audioNumber = this.state.array[String(this.state.index+1)].number;
       let highlight = this.state.array[String(this.state.index+1)].highlight;
-      this.addAudioPlayer(newFilePath, this.state.array, this.state.index+1, this.state.maxIndex, audioName, audioNumber, highlight);
+      let duration = this.state.array[String(this.state.index+1)].duration;
+      this.addAudioPlayer(newFilePath, this.state.array, this.state.index+1, this.state.maxIndex, audioName, audioNumber, highlight, duration);
     }
   }
 
@@ -95,7 +98,8 @@ class App extends Component {
       let audioName = this.state.array[String(this.state.index-1)].text;
       let audioNumber = this.state.array[String(this.state.index-1)].number;
       let highlight = this.state.array[String(this.state.index-1)].highlight;
-      this.addAudioPlayer(newFilePath, this.state.array, this.state.index-1, this.state.maxIndex, audioName, audioNumber, highlight);
+      let duration = this.state.array[String(this.state.index-1)].duration;
+      this.addAudioPlayer(newFilePath, this.state.array, this.state.index-1, this.state.maxIndex, audioName, audioNumber, highlight, duration);
     }
   }
 

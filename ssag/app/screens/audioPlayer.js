@@ -16,7 +16,7 @@ const s = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     height: 30,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   audioTitleNumber: {
     color: TEXT_COLOR_2,
@@ -46,6 +46,11 @@ const s = StyleSheet.create({
   highlightContainer: {
     borderRadius: 4,
     marginRight: 8,
+  },
+  audioDurationContainer: {
+    backgroundColor: '#E9B5AB',
+    height: 10,
+
   },
 });
 
@@ -100,6 +105,8 @@ class AudioPlayer extends Component {
   render(){
     return (
       <View style={s.container}>
+        <View style={s.audioDurationContainer}>
+        </View>
         <View style={s.audioTitleContainer}>
           <View style={[s.highlightContainer, { backgroundColor: this.state.bgColorHighlight }]}>
             <Text style={[s.audioTitleNumber, { color: this.state.textColorHighlight }]}>
@@ -107,7 +114,7 @@ class AudioPlayer extends Component {
             </Text>
           </View>
           <Text style={s.audioTitleName}>
-            {this.props.audioName}
+            {this.props.audioName} {this.props.duration}
           </Text>
         </View>
         <View style={s.audioPlayer}>

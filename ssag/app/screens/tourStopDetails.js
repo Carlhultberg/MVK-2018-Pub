@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { TEXT_COLOR, BORDER_COLOR_3, BACKGROUND_COLOR_2, HIGHLIGHTS, HIGHLIGHTS_TEXT, SELECTED } from '../styles';
+import I18n from '../i18n/i18n';
 import {
   StyleSheet,
   View,
@@ -40,6 +41,16 @@ const s = StyleSheet.create({
   row: {
     flexDirection: 'row',
   },
+  tourStopContainer: {
+    flexDirection: 'row',
+    justifyContent: "space-between",
+  },
+  duration: {
+    marginTop: 8,
+    fontSize: 18,
+    color: TEXT_COLOR,
+    marginRight: 5,
+  },
 });
 
 
@@ -48,21 +59,30 @@ class TourStopDetails extends Component {
     super(props);
     this.state = {
       bgColor: BACKGROUND_COLOR_2,
+      min: Math.floor(this.props.duration / 60),
+      sec: this.props.duration % 60,
     };
   }
 
 
   renderTourStopContent(){
     return(
-      <View style={s.row}>
-        <View style={[s.highlightContainer, { backgroundColor: this.state.bgColorHighlight }]}>
-          <Text style={[s.textNumber, { color: this.state.textColorHighlight }]}>
-            {this.props.number}
+      <View style={s.tourStopContainer}>
+        <View style={s.row}>
+          <View style={[s.highlightContainer, { backgroundColor: this.state.bgColorHighlight }]}>
+            <Text style={[s.textNumber, { color: this.state.textColorHighlight }]}>
+              {this.props.number}
+            </Text>
+          </View>
+          <Text style={s.textName}>
+            {this.props.text}
           </Text>
         </View>
-        <Text style={s.textName}>
-          {this.props.text}
-        </Text>
+        <View>
+          <Text style={s.duration}>
+            {this.state.min} {I18n.t('min')} {this.state.sec} {I18n.t('sek')}
+          </Text>
+        </View>
       </View>
     )
   }
