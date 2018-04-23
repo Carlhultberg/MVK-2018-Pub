@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { View, AsyncStorage } from 'react-native';
 import { Tabs } from './rootscreen';
 import { Player, MediaStates } from 'react-native-audio-toolkit';
@@ -7,7 +7,7 @@ import RNRestart from 'react-native-restart';
 import AudioPlayer from './screens/audioPlayer';
 import { NAV_BAR_HIGHT, AUDIO_PLAYER_HIGHT } from './styles';
 
-class App extends Component{
+class App extends Component {
   constructor() {
     super()
     this.state = {
@@ -28,12 +28,12 @@ class App extends Component{
     this.previousSong = this.previousSong.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     SplashScreen.hide();
   }
 
-  createAudio(newAudio){
-    this.setState({ audio: new Player(newAudio,{continuesToPlayInBackground:true}).prepare().on('ended', () =>{this.nextSong()})});
+  createAudio(newAudio) {
+    this.setState({ audio: new Player(newAudio, { continuesToPlayInBackground: true }).prepare().on('ended', () => { this.nextSong() }) });
   }
 
   addAudioPlayer(path, array, index, maxIndex, text, number, highlightNum){
@@ -45,17 +45,16 @@ class App extends Component{
     setTimeout(()=>this.state.audio.play(),20);
   }
 
-
-  changeLogo(){
-    if(this.state.logo == require('./assets/PauseButton.png')){
+  changeLogo() {
+    if (this.state.logo == require('./assets/PauseButton.png')) {
       this.setState({ logo: require('./assets/PlayButton.png') });
-    }else{
+    } else {
       this.setState({ logo: require('./assets/PauseButton.png') });
     }
   }
 
-  bottomComponent(){
-    if(this.state.bottomScreen){
+  bottomComponent() {
+    if (this.state.bottomScreen) {
       return (
         <View style={{ height: AUDIO_PLAYER_HIGHT, position: 'absolute', left: 0, right: 0, bottom: NAV_BAR_HIGHT }}>
           <AudioPlayer
@@ -73,8 +72,8 @@ class App extends Component{
     }
   }
 
-  nextSong(){
-    if(this.state.index==this.state.maxIndex){
+  nextSong() {
+    if (this.state.index == this.state.maxIndex) {
       this.state.audio.destroy();
       this.setState({ bottomScreen: false, audio: ''  });
     }else{
@@ -86,8 +85,8 @@ class App extends Component{
     }
   }
 
-  previousSong(){
-    if(this.state.index==0){
+  previousSong() {
+    if (this.state.index == 0) {
       this.state.audio.destroy();
       this.setState({ bottomScreen: false, audio: ''  });
     }else{
@@ -99,12 +98,11 @@ class App extends Component{
     }
   }
 
-
-  render(){
+  render() {
     return (
-      <View style={{flex: 1}}>
+      <View style={{ flex: 1 }}>
         <Tabs
-          screenProps = {{
+          screenProps={{
             currentAudio: this.state.audio,
             bottomScreen: this.state.bottomScreen,
             logo: this.state.logo,
@@ -113,9 +111,9 @@ class App extends Component{
             changeLogo: this.changeLogo,
             nextSong: this.nextSong,
             previousSong: this.previousSong,
-          }}/>
-          { this.bottomComponent() }
-        </View>
+          }} />
+        {this.bottomComponent()}
+      </View>
     );
   }
 }

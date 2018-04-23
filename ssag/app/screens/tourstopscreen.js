@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: BACKGROUND_COLOR_2,
   },
-    headerImage: {
+  headerImage: {
     // position: 'absolute',
     top: 0,
     left: 0,
@@ -163,17 +163,16 @@ class TourstopScreen extends React.Component {
     var highlightArray = [];
     var maxIndex = 0;
     var indexKeeper = 0;
-    console.log(songs.songs[0]);
-    for(var i=0;i<Object.keys(songs.songs).length;i++){
-      if(json[lang][songs.songs[String(i)]].highlight==="1"){
-        highlightArray.push({text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight});
+    for (var i = 0; i < Object.keys(songs.songs).length; i++) {
+      if (json[lang][songs.songs[String(i)]].highlight === "1") {
+        highlightArray.push({ text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight });
         indexKeeper++;
       }
       maxIndex++;
     }
-    for(var i=0;i<Object.keys(songs.songs).length;i++){
-      if(json[lang][songs.songs[String(i)]].highlight==="0"){
-        array.push({text: json[lang][songs.songs[String(i)]].name, number:songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight});
+    for (var i = 0; i < Object.keys(songs.songs).length; i++) {
+      if (json[lang][songs.songs[String(i)]].highlight === "0") {
+        array.push({ text: json[lang][songs.songs[String(i)]].name, number: songs.songs[String(i)], thisIndex: indexKeeper, filePath: json[lang][songs.songs[String(i)]].filepath, highlight: json[lang][songs.songs[String(i)]].highlight });
         indexKeeper++;
       }
     }
@@ -181,12 +180,12 @@ class TourstopScreen extends React.Component {
 
     maxIndex--;
     var finalArray;
-    if(highlightArray.length===0){
+    if (highlightArray.length === 0) {
       finalArray = array;
     } else {
       finalArray = highlightArray.concat(array);
     }
-    this.state={tourstops:finalArray,maxIndex:maxIndex}
+    this.state = { tourstops: finalArray, maxIndex: maxIndex }
     return this.state.tourstops.map(tourstops =>
        <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number, tourstops.highlight)} array={finalArray} highlight={tourstops.highlight}/>
      );
@@ -233,9 +232,9 @@ class TourstopScreen extends React.Component {
               </View>
             </View>
           </View>
-            {this.renderTourStops({songs:this.props.navigation.state.params.songs})}
-          <View style={styles.filler}/>
-        </ScrollView>
+        {this.renderTourStops({ songs: this.props.navigation.state.params.songs })}
+        <View style={styles.filler} />
+      </ScrollView>
 
     );
   }

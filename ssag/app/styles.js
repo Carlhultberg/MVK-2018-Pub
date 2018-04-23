@@ -1,8 +1,6 @@
-
 import {
   StyleSheet,
 } from 'react-native';
-
 
 export const HEADER_TEXT_COLOR = '#1A1A1A';
 export const HEADER_BACKGROUND_COLOR = '#EDEDED';
@@ -19,7 +17,6 @@ export const TEXT_COLOR_2 = '#F7F7F7';
 export const BORDER_COLOR_1 = '#808080';
 export const BORDER_COLOR_2 = '#EDEDED';
 export const BORDER_COLOR_3 = '#F7F7F7';
-
 
 export const BUTTON_ON_PRESS_COLOR_1 = '#FAE3E7';
 export const BUTTON_ON_PRESS_COLOR_2 = '#EDEDED';
@@ -42,10 +39,6 @@ export const GRAY = '#7D7D7D';
 export const LIGHT_GRAY = '#EDEDED';
 export const OFF_BLACK = '#1A1A1A';
 export const OFF_WHITE = '#F7F7F7';
-
-
-
-
 
 export const globalStyles = StyleSheet.create({
   body: {

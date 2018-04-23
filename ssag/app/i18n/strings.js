@@ -244,7 +244,7 @@ export const strings = {
     //..
     //..
     //..
-  
+
 
     //6. TRANSCRIPTS
   },
