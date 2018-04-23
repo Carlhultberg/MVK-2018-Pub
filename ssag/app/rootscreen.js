@@ -11,8 +11,9 @@ import AboutApp from './screens/aboutApp';
 import AboutMuseum from './screens/aboutMuseum';
 import AmenitiesScreen from './screens/amenitiesScreen';
 import I18n from './i18n/i18n';
+//import Icon from 'react-native-vector-icons/Ionicons';
 import { HEADER_BACKGROUND_COLOR, NAV_BAR_TEXT, NAV_BAR_BACKGROUND, ACTION, NAV_BAR_HIGHT } from './styles';
-// import NearMeScreen from './screens/nearMeScreen';
+//import NearMeScreen from './screens/nearMeScreen';
 
 export const BrowserStack = StackNavigator({
   Browser: {
@@ -153,9 +154,11 @@ export const Tabs = TabNavigator({
   Browser: {
     screen: BrowserStack,
     navigationOptions: {
+      
       headerStyle: { backgroundColor: HEADER_BACKGROUND_COLOR },
       tabBarLabel: I18n.t('storiesScreen_Title'),
-      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/storiesTab.png')} />),
+      tabBarIcon: ({ tintcolor, focused }) => {
+        return <Image source={focused ? require('./assets/storiesTabSelected.png') : require('./assets/storiesTab.png')} />},
     },
   },
   Search: {
@@ -163,7 +166,8 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       headerStyle: { backgroundColor: HEADER_BACKGROUND_COLOR },
       tabBarLabel: I18n.t('searchScreen_Title'),
-      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/searchTab.png')} />),
+      tabBarIcon: ({ tintcolor, focused}) => {
+        return <Image source={focused ? require('./assets/searchTabSelected.png') : require('./assets/searchTab.png')} />},
     },
   },
   Info: {
@@ -171,10 +175,12 @@ export const Tabs = TabNavigator({
     navigationOptions: {
       headerStyle: { backgroundColor: HEADER_BACKGROUND_COLOR },
       tabBarLabel: I18n.t('museumScreen_Title'),
-      tabBarIcon: ({ tintcolor }) => (<Image source={require('./assets/museumTab.png')} />),
-    },
-  },
-}, {
+      tabBarIcon: ({ tintcolor, focused }) => {
+        return <Image source={focused ? require('./assets/museumTabSelected.png') : require('./assets/museumTab.png')} />},
+     },  
+  }, 
+ },
+  {
     tabBarPosition: 'bottom',
     swipeEnabled: false,
     animationEnabled: false,
@@ -185,6 +191,8 @@ export const Tabs = TabNavigator({
       showIcon: true,
       upperCaseLabel: false,
       pressColor: ACTION,
+      activeTintColor: 'tomato',
+      inactiveTintColor: 'gray',
       renderIndicator: () => null,
       style: {
         backgroundColor: NAV_BAR_BACKGROUND,
