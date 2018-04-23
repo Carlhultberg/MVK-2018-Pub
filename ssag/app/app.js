@@ -39,6 +39,7 @@ class App extends Component {
   addAudioPlayer(path, array, index, maxIndex, text, number, highlightNum){
     if(this.state.audio !== ''){
       this.state.audio.destroy();
+      this.setState({ audioNumber: '' });
     }
     this.createAudio(path);
     this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex, audioName: text, audioNumber: number, highlight: highlightNum});
@@ -75,7 +76,7 @@ class App extends Component {
   nextSong() {
     if (this.state.index == this.state.maxIndex) {
       this.state.audio.destroy();
-      this.setState({ bottomScreen: false, audio: ''  });
+      this.setState({ bottomScreen: false, audio: '', audioNumber: ''  });
     }else{
       let newFilePath = this.state.array[String(this.state.index+1)].filePath;
       let audioName = this.state.array[String(this.state.index+1)].text;
@@ -88,7 +89,7 @@ class App extends Component {
   previousSong() {
     if (this.state.index == 0) {
       this.state.audio.destroy();
-      this.setState({ bottomScreen: false, audio: ''  });
+      this.setState({ bottomScreen: false, audio: '', audioNumber: ''  });
     }else{
       let newFilePath = this.state.array[String(this.state.index-1)].filePath;
       let audioName = this.state.array[String(this.state.index-1)].text;
@@ -111,6 +112,7 @@ class App extends Component {
             changeLogo: this.changeLogo,
             nextSong: this.nextSong,
             previousSong: this.previousSong,
+            audioNumber: this.state.audioNumber,
           }} />
         {this.bottomComponent()}
       </View>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TEXT_COLOR, BORDER_COLOR_3, BACKGROUND_COLOR_2, HIGHLIGHTS, HIGHLIGHTS_TEXT, } from '../styles';
+import { TEXT_COLOR, BORDER_COLOR_3, BACKGROUND_COLOR_2, HIGHLIGHTS, HIGHLIGHTS_TEXT, SELECTED } from '../styles';
 import {
   StyleSheet,
   View,
@@ -18,7 +18,7 @@ const s = StyleSheet.create({
     width: cellWidth,
     borderBottomWidth: 1,
     borderBottomColor: BORDER_COLOR_3,
-    backgroundColor: BACKGROUND_COLOR_2,
+    //backgroundColor: BACKGROUND_COLOR_2,
   },
   highlightContainer: {
     borderRadius: 4,
@@ -47,7 +47,39 @@ class TourStopDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      bgColor: BACKGROUND_COLOR_2,
     };
+  }
+
+
+  renderTourStopContent(){
+    return(
+      <View style={s.row}>
+        <View style={[s.highlightContainer, { backgroundColor: this.state.bgColorHighlight }]}>
+          <Text style={[s.textNumber, { color: this.state.textColorHighlight }]}>
+            {this.props.number}
+          </Text>
+        </View>
+        <Text style={s.textName}>
+          {this.props.text}
+        </Text>
+      </View>
+    )
+  }
+  renderTourStop(){
+    if(this.props.currentlyPlaying == this.props.number){
+      return(
+        <View style={[s.audioListContainer, { backgroundColor: SELECTED }]}>
+          { this.renderTourStopContent() }
+        </View>
+      )
+    }else{
+      return(
+        <View style={[s.audioListContainer, { backgroundColor: BACKGROUND_COLOR_2 }]}>
+          { this.renderTourStopContent() }
+        </View>
+      )
+    }
   }
 
   componentDidMount() {
@@ -67,19 +99,8 @@ class TourStopDetails extends Component {
   render() {
     return (
       <View>
-        <TouchableOpacity onPress={() => this.props.addAudioPlayer()}>
-          <View style={s.audioListContainer}>
-            <View style={s.row}>
-              <View style={[s.highlightContainer, { backgroundColor: this.state.bgColorHighlight }]}>
-                <Text style={[s.textNumber, { color: this.state.textColorHighlight }]}>
-                  {this.props.number}
-                </Text>
-              </View>
-              <Text style={s.textName}>
-                {this.props.text}
-              </Text>
-            </View>
-          </View>
+        <TouchableOpacity onPress={() => this.props.addAudioPlayer() }>
+          { this.renderTourStop() }
         </TouchableOpacity>
       </View>
     );

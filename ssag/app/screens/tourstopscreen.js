@@ -187,7 +187,7 @@ class TourstopScreen extends React.Component {
     }
     this.state = { tourstops: finalArray, maxIndex: maxIndex }
     return this.state.tourstops.map(tourstops =>
-       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number, tourstops.highlight)} array={finalArray} highlight={tourstops.highlight}/>
+       <TourStopDetails key={tourstops.text} text={tourstops.text} number={tourstops.number} thisIndex={tourstops.thisIndex} addAudioPlayer={()=>this.props.screenProps.addAudioPlayer(tourstops.filePath, finalArray, tourstops.thisIndex, maxIndex, tourstops.text, tourstops.number, tourstops.highlight)} array={finalArray} highlight={tourstops.highlight} currentlyPlaying={this.props.screenProps.audioNumber}/>
      );
   }
 
