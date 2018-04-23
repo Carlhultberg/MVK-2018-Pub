@@ -191,8 +191,6 @@ export const Tabs = TabNavigator({
       showIcon: true,
       upperCaseLabel: false,
       pressColor: ACTION,
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray',
       renderIndicator: () => null,
       style: {
         backgroundColor: NAV_BAR_BACKGROUND,

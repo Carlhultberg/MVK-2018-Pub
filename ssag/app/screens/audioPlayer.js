@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image, View, TouchableOpacity, Text } from 'react-native';
 import { Player, MediaStates } from 'react-native-audio-toolkit';
-import { AUDIO_PLAYER_COLOR, HIGHLIGHTS_TEXT, HIGHLIGHTS, TEXT_COLOR_2 } from '../styles';
+import { AUDIO_PLAYER_COLOR, HIGHLIGHTS_TEXT, HIGHLIGHTS, TEXT_COLOR_2, ACTION, SELECTED } from '../styles';
 
 const s = StyleSheet.create({
 
@@ -11,6 +11,14 @@ const s = StyleSheet.create({
     backgroundColor: AUDIO_PLAYER_COLOR,
     borderColor: '#000000',
     borderBottomWidth: 1,
+  },
+  progressBarContainer: {
+    backgroundColor: SELECTED,
+    height: 10,
+  },
+  audioDurationContainer: {
+    backgroundColor: ACTION,
+    height: 10,
   },
   audioTitleContainer: {
     alignItems: 'center',
@@ -46,11 +54,6 @@ const s = StyleSheet.create({
   highlightContainer: {
     borderRadius: 4,
     marginRight: 8,
-  },
-  audioDurationContainer: {
-    backgroundColor: '#E9B5AB',
-    height: 10,
-
   },
 });
 
@@ -90,6 +93,7 @@ class AudioPlayer extends Component {
 
   componentDidMount() {
     this.highlighted(this.props.highlight);
+    this.prog(173);
   }
 
   highlighted(h) {
@@ -101,11 +105,17 @@ class AudioPlayer extends Component {
       this.setState({ textColorHighlight: TEXT_COLOR_2 });
     }
   }
+//02:53
+//173 sec
+  prog(time){
+    this.setState({progBarWidth: time});
+  }
 
   render(){
     return (
       <View style={s.container}>
-        <View style={s.audioDurationContainer}>
+        <View style={s.progressBarContainer}> 
+          <View style={[s.audioDurationContainer, {width: this.state.progBarWidth}]}/>
         </View>
         <View style={s.audioTitleContainer}>
           <View style={[s.highlightContainer, { backgroundColor: this.state.bgColorHighlight }]}>
