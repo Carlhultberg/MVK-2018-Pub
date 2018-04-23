@@ -18,15 +18,15 @@ export const BORDER_COLOR_1 = '#808080';
 export const BORDER_COLOR_2 = '#EDEDED';
 export const BORDER_COLOR_3 = '#F7F7F7';
 
-export const BUTTON_ON_PRESS_COLOR_1 = '#FAE3E7';
+export const BUTTON_ON_PRESS_COLOR_1 = '#E9B5AB';
 export const BUTTON_ON_PRESS_COLOR_2 = '#EDEDED';
 export const DROPDOW_BORDER_BACKGROUND_COLOR = "#BAB6BA";
 
 export const HIGHLIGHTS_TEXT = '#F7F7F7';
 export const HIGHLIGHTS = '#FFC200';
 
-export const ACTION = '#E52484';
-export const SELECTED = '#FAE3E7';
+export const ACTION = '#C9472D';
+export const SELECTED = '#E9B5AB';
 export const BORDERCOLOR = '#808080';
 export const BORDERCOLOR2 = '#EDEDED';
 

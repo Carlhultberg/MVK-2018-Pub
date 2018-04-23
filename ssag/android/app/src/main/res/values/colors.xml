@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="pink">#FF69B4</color>
+    <color name="pink">#C9472D</color>
     <color name="black">#000000</color>
     <color name="navigationBar">#1A1A1A</color>
-    <color name="primary_dark">#FF69B4</color>
+    <color name="primary_dark">#C9472D</color>
     <color name="background">#ffffff</color>
-    <color name="background_splash">#FF69B4</color>
+    <color name="background_splash">#C9472D</color>
     <color name="statusBar">#EDEDED</color>
 </resources>
