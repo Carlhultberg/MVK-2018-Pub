@@ -203,7 +203,7 @@ export default class SearchByNumberScreen extends Component {
     }
 }
 
-const { width, height } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 const cellHeight = height / 10;
 
 const s = StyleSheet.create({
@@ -228,10 +228,10 @@ const s = StyleSheet.create({
         alignItems: 'center',
     },
     input: {
-        width: 40,
-        height: 50,
+        width: (cellHeight/2)+8,
+        height: (cellHeight/2)+8,
         color: TEXT_COLOR,
-        fontSize: 40,
+        fontSize: cellHeight/2,
         textAlign: 'center',
         margin: 10,
         borderBottomWidth: 1,
@@ -254,19 +254,19 @@ const s = StyleSheet.create({
     },
     buttonText: {
         color: TEXT_COLOR,
-        fontSize: 35,
+        fontSize: cellHeight/2,
         textAlign: 'center',
     },
     deleteButton: {
-        height: 25,
-        width: 35,
+        height: cellHeight/2,
+        width: cellHeight/2,
         resizeMode: 'contain',
         justifyContent: 'center',
     },
     inputRow: {
         justifyContent: 'center',
         flexDirection: 'row',
-        marginBottom: 30
+        marginBottom: cellHeight/2
     },
     buttonRow: {
         justifyContent: 'center',
