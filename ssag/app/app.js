@@ -43,7 +43,7 @@ class App extends Component {
       this.setState({ audioNumber: '' });
     }
     this.createAudio(path);
-    this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex, audioName: text, audioNumber: number, highlight: highlightNum, duration: duration});
+    this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex, audioName: text, audioNumber: number, duration: duration, highlight: highlightNum });
     setTimeout(()=>this.state.audio.play(),20);
   }
 

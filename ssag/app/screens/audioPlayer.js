@@ -65,7 +65,6 @@ class AudioPlayer extends Component {
     if (this.props.logo == require('../assets/PauseButton.png')) {
       this.props.audio.play();
     }
-    this.highlighted(this.props.highlight);
   }
 
   PlayPause = () => {
@@ -80,25 +79,29 @@ class AudioPlayer extends Component {
 
   Next = () => {
     this.props.nextSong();
-    this.highlighted(this.props.highlight);
   }
 
   Previous = () => {
     this.props.previousSong();
-    this.highlighted(this.props.highlight);
   }
 
-  componentDidMount() {
-    this.highlighted(this.props.highlight);
-  }
-
-  highlighted(h) {
-    if (h == 1) {
-      this.setState({ textColorHighlight: HIGHLIGHTS_TEXT });
-      this.setState({ bgColorHighlight: HIGHLIGHTS });
-    }
-    else {
-      this.setState({ textColorHighlight: TEXT_COLOR_2 });
+  renderNumber(){
+    if (this.props.highlight == 1){
+      return(
+        <View style={[s.highlightContainer, { backgroundColor: HIGHLIGHTS }]}>
+          <Text style={[s.audioTitleNumber, { color: HIGHLIGHTS_TEXT }]}>
+            {this.props.audioNumber}
+          </Text>
+        </View>
+      )
+    }else {
+      return(
+        <View style={[s.highlightContainer, { backgroundColor: AUDIO_PLAYER_COLOR }]}>
+          <Text style={[s.audioTitleNumber, { color: TEXT_COLOR_2 }]}>
+            {this.props.audioNumber}
+          </Text>
+        </View>
+      )
     }
   }
 
@@ -108,13 +111,9 @@ class AudioPlayer extends Component {
         <View style={s.audioDurationContainer}>
         </View>
         <View style={s.audioTitleContainer}>
-          <View style={[s.highlightContainer, { backgroundColor: this.state.bgColorHighlight }]}>
-            <Text style={[s.audioTitleNumber, { color: this.state.textColorHighlight }]}>
-              {this.props.audioNumber}
-            </Text>
-          </View>
+          { this.renderNumber() }
           <Text style={s.audioTitleName}>
-            {this.props.audioName} {this.props.duration}
+            {this.props.audioName}
           </Text>
         </View>
         <View style={s.audioPlayer}>
