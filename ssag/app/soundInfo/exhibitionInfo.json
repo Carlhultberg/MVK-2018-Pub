@@ -2,7 +2,7 @@
     "sv": {
         "0": {
             "name": "HÖJDPUNKTER",
-            "duration": "37",
+            "duration": "13",
             "floor": "",
             "sounds": {
                 "0": "001",
@@ -12,7 +12,7 @@
         },
         "1": {
             "name": "HAMNEN",
-            "duration": "37",
+            "duration": "8",
             "floor": "0",
             "sounds": {
                 "0": "003",
@@ -22,7 +22,7 @@
         },
         "2": {
             "name": "STALLET",
-            "duration": "23",
+            "duration": "17",
             "floor": "1",
             "sounds": {
                 "0": "001",
@@ -35,7 +35,7 @@
     "en": {
         "0": {
             "name": "HIGHLIGHT",
-            "duration": "37",
+            "duration": "13",
             "floor": "",
             "sounds": {
                 "0": "001",
@@ -45,7 +45,7 @@
         },
         "1": {
             "name": "THE HARBOR",
-            "duration": "37",
+            "duration": "8",
             "floor": "0",
             "sounds": {
                 "0": "003",
@@ -55,7 +55,7 @@
         },
         "2": {
             "name": "THE STABLE",
-            "duration": "23",
+            "duration": "17",
             "floor": "1",
             "sounds": {
                 "0": "001",

@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Image, View, TouchableOpacity, Text } from 'react-native';
+import { StyleSheet, Image, View, TouchableOpacity, Text, Dimensions, } from 'react-native';
 import { Player, MediaStates } from 'react-native-audio-toolkit';
 import { AUDIO_PLAYER_COLOR, HIGHLIGHTS_TEXT, HIGHLIGHTS, TEXT_COLOR_2, ACTION, SELECTED } from '../styles';
+
+const { width, height } = Dimensions.get('window');
+const cellWidth = width;
 
 const s = StyleSheet.create({
 
@@ -24,7 +27,14 @@ const s = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     height: 30,
-    justifyContent: "center",
+    justifyContent: "space-between",
+  },
+  audioTitleCenter: {
+    flexDirection: 'row',
+  },
+  audioTitleEdge: {
+    marginLeft: 4,
+    marginRight: 4,
   },
   audioTitleNumber: {
     color: TEXT_COLOR_2,
@@ -61,6 +71,8 @@ class AudioPlayer extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      progBarWidth: 0,
+      timePast: 0,
     };
   }
 
@@ -108,25 +120,64 @@ class AudioPlayer extends Component {
     }
   }
   componentDidMount() {
-    this.prog(173);
+    this.lineInterval = setInterval(() => {
+      if (this.props.logo == require('../assets/PauseButton.png')) {
+        this.prog1();
+      }
+    }, 500);
+    this.numbersInterval = setInterval(() => {
+      if (this.props.logo == require('../assets/PauseButton.png')) {
+        this.prog2();
+      }
+    }, 1000);
   }
-//02:53
-//173 sec
-  prog(time){
-    this.setState({progBarWidth: time});
+
+  prog1(){
+    this.setState({progBarWidth: this.state.progBarWidth + 0.5 });
   }
+
+  prog2(){
+    this.setState({timePast: this.state.timePast + 1});
+  }
+
+  componentWillUpdate(newProps){
+    if(newProps.audioNumber !== this.props.audioNumber){
+      this.setState({progBarWidth: 0, timePast: 0 });
+    }
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.lineInterval);
+    clearInterval(this.numbersInterval);
+  }
+
+  pad(n) {
+    return (n < 10) ? ("0" + n) : n;
+}
 
   render(){
     return (
       <View style={s.container}>
         <View style={s.progressBarContainer}>
-          <View style={[s.audioDurationContainer, {width: this.state.progBarWidth}]}/>
+          <View style={[s.audioDurationContainer, {width: (cellWidth / this.props.duration) * this.state.progBarWidth}]}/>
         </View>
         <View style={s.audioTitleContainer}>
-          { this.renderNumber() }
-          <Text style={s.audioTitleName}>
-            {this.props.audioName}
-          </Text>
+          <View style={s.audioTitleEdge}>
+            <Text style={s.audioTitleName}>
+              {this.pad(Math.floor(this.state.timePast / 60))}:{this.pad(this.state.timePast % 60)}
+            </Text>
+          </View>
+          <View style={s.audioTitleCenter}>
+            { this.renderNumber() }
+            <Text style={s.audioTitleName}>
+              {this.props.audioName}
+            </Text>
+          </View>
+          <View style={s.audioTitleEdge}>
+            <Text style={s.audioTitleName}>
+              {this.pad(Math.floor(this.props.duration / 60))}:{this.pad(this.props.duration % 60)}
+            </Text>
+          </View>
         </View>
         <View style={s.audioPlayer}>
           <TouchableOpacity onPress={this.Previous}>
