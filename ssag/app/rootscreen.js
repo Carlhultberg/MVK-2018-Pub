@@ -154,7 +154,12 @@ export const Tabs = TabNavigator({
   Browser: {
     screen: BrowserStack,
     navigationOptions: {
-      
+      //tabBarOnPress: {scene: { previousTabScreen, previousTabScreen }},
+      /*tabBarOnPress: (Browser, SearchByNumberStack) => {
+        //alert('test')
+        //this.props.navigation.state.key
+      //jumpToIndex(scene.index);
+    },*/
       headerStyle: { backgroundColor: HEADER_BACKGROUND_COLOR },
       tabBarLabel: I18n.t('storiesScreen_Title'),
       tabBarIcon: ({ tintcolor, focused }) => {

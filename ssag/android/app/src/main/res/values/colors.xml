@@ -7,4 +7,5 @@
     <color name="background">#ffffff</color>
     <color name="background_splash">#C9472D</color>
     <color name="statusBar">#EDEDED</color>
+    <color name="colorScrollEdge">#C9472D</color>
 </resources>
