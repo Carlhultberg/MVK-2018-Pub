@@ -141,7 +141,14 @@ class AudioPlayer extends Component {
 
   pad(n) {
     return (n < 10) ? ("0" + n) : n;
-}
+  }
+
+  millisecondsToTime(time){
+      m = this.pad(Math.floor(time / 60000))
+      s = this.pad(((time - (time % 1000)) / 1000) % 60000)
+      return m + ':' + s
+  }
+
 
   render(){
     return (
@@ -152,7 +159,7 @@ class AudioPlayer extends Component {
         <View style={s.audioTitleContainer}>
           <View style={s.audioTitleEdge}>
             <Text style={s.audioTitleName}>
-              {this.state.timeProg}
+                {this.millisecondsToTime(this.state.timeProg)}
             </Text>
           </View>
           <View style={s.audioTitleCenter}>
@@ -184,4 +191,3 @@ class AudioPlayer extends Component {
 }
 
 export default AudioPlayer;
-//{this.pad(Math.floor(this.state.progBarWidth / 60000))}:{this.pad(this.state.progBarWidth % 60000)}
