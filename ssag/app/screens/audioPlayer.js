@@ -119,36 +119,24 @@ class AudioPlayer extends Component {
       )
     }
   }
+
+  prog(){
+    this.setState({
+      timeProg: this.props.audio.currentTime,
+      progBarWidth: (this.props.audio.currentTime/this.props.audio.duration) * cellWidth,
+    });
+  }
+
   componentDidMount() {
-    this.lineInterval = setInterval(() => {
+    this.interval = setInterval(() => {
       if (this.props.logo == require('../assets/PauseButton.png')) {
-        this.prog1();
+        this.prog();
       }
-    }, 500);
-    this.numbersInterval = setInterval(() => {
-      if (this.props.logo == require('../assets/PauseButton.png')) {
-        this.prog2();
-      }
-    }, 1000);
-  }
-
-  prog1(){
-    this.setState({progBarWidth: this.state.progBarWidth + 0.5 });
-  }
-
-  prog2(){
-    this.setState({timePast: this.state.timePast + 1});
-  }
-
-  componentWillUpdate(newProps){
-    if(newProps.audioNumber !== this.props.audioNumber){
-      this.setState({progBarWidth: 0, timePast: 0 });
-    }
+    }, 100);
   }
 
   componentWillUnmount() {
-    clearInterval(this.lineInterval);
-    clearInterval(this.numbersInterval);
+    clearInterval(this.interval);
   }
 
   pad(n) {
@@ -159,12 +147,12 @@ class AudioPlayer extends Component {
     return (
       <View style={s.container}>
         <View style={s.progressBarContainer}>
-          <View style={[s.audioDurationContainer, {width: (cellWidth / this.props.duration) * this.state.progBarWidth}]}/>
+          <View style={[s.audioDurationContainer, {width: this.state.progBarWidth}]}/>
         </View>
         <View style={s.audioTitleContainer}>
           <View style={s.audioTitleEdge}>
             <Text style={s.audioTitleName}>
-              {this.pad(Math.floor(this.state.timePast / 60))}:{this.pad(this.state.timePast % 60)}
+              {this.state.timeProg}
             </Text>
           </View>
           <View style={s.audioTitleCenter}>
@@ -196,3 +184,4 @@ class AudioPlayer extends Component {
 }
 
 export default AudioPlayer;
+//{this.pad(Math.floor(this.state.progBarWidth / 60000))}:{this.pad(this.state.progBarWidth % 60000)}
