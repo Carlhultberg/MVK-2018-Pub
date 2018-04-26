@@ -17,11 +17,11 @@ const s = StyleSheet.create({
   },
   progressBarContainer: {
     backgroundColor: SELECTED,
-    height: 10,
+    height: 4,
   },
   audioDurationContainer: {
     backgroundColor: ACTION,
-    height: 10,
+    height: 4,
   },
   audioTitleContainer: {
     alignItems: 'center',
@@ -144,11 +144,11 @@ class AudioPlayer extends Component {
   }
 
   millisecondsToTime(time){
-      m = this.pad(Math.floor(time / 60000))
-      s = this.pad(((time - (time % 1000)) / 1000) % 60000)
-      return m + ':' + s
+    return this.pad(Math.floor(time / 60000)) + ':' + this.pad(((time - (time % 1000)) / 1000) % 60000)
   }
-
+  // info(){
+  //   alert(this.props.audio.duration);
+  // }
 
   render(){
     return (
@@ -159,7 +159,7 @@ class AudioPlayer extends Component {
         <View style={s.audioTitleContainer}>
           <View style={s.audioTitleEdge}>
             <Text style={s.audioTitleName}>
-                {this.millisecondsToTime(this.state.timeProg)}
+              { this.millisecondsToTime(this.state.timeProg) }
             </Text>
           </View>
           <View style={s.audioTitleCenter}>

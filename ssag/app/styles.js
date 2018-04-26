@@ -30,7 +30,7 @@ export const SELECTED = '#E9B5AB';
 export const BORDERCOLOR = '#808080';
 export const BORDERCOLOR2 = '#EDEDED';
 
-export const AUDIO_PLAYER_HIGHT = 80;
+export const AUDIO_PLAYER_HIGHT = 74;
 export const NAV_BAR_HIGHT = 56;
 
 export const LIGHT_BLUE = '#EDD6DD';
