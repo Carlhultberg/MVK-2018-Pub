@@ -144,7 +144,7 @@ class AudioPlayer extends Component {
   }
 
   millisecondsToTime(time){
-    return this.pad(Math.floor(time / 60000)) + ':' + this.pad(((time - (time % 1000)) / 1000) % 60000)
+    return this.pad(Math.floor(time / 60000)) + ':' + this.pad(((time - (time % 1000)) / 1000) % 60)
   }
   // info(){
   //   alert(this.props.audio.duration);
@@ -170,7 +170,7 @@ class AudioPlayer extends Component {
           </View>
           <View style={s.audioTitleEdge}>
             <Text style={s.audioTitleName}>
-              {this.pad(Math.floor(this.props.duration / 60))}:{this.pad(this.props.duration % 60)}
+            { this.millisecondsToTime(this.props.audio.duration) }
             </Text>
           </View>
         </View>
