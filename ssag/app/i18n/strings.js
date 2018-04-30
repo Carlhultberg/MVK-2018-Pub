@@ -228,7 +228,7 @@ export const strings = {
     nearMeScreen_StoriesMessageNone: 'Det finns inga teman i närheten av dig.',
     nearMeScreen_StoriesMessagePlural: 'Det finns x teman i närheten av dig.',
     nearMeScreen_StoriesMessageSingular: 'Det finns ett tema i närheten av dig.',
-    tryAgain: 'Försök igen x',
+    tryAgain: 'Försök igen',
     bluetoothButton_OffLabel: 'Slå på Bluetooth',
     nearMeScreen_StoriesMessage: 'När du är på museet visar vi dig teman som finns i närheten av dig.',
     tutorialScreen_NearMe: 'När du är på museet visar vi dig teman som finns i närheten av dig. För att använda denna funktion behöver vi två saker från dig…',

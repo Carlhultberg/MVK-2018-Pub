@@ -72,6 +72,9 @@ class Language extends Component {
     realm.write(() => {
       languageR[0].name = language;
     });
+    if(this.props.screenProps.currentAudio !== ''){
+      this.props.screenProps.currentAudio.destroy();
+    }
     RNRestart.Restart();
   }
 
