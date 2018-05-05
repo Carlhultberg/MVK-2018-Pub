@@ -19,5 +19,5 @@ Follow this guide https://facebook.github.io/react-native/docs/signed-apk-androi
 
 
 Current APK can be found at
-https://uploadfiles.io/20qxa
-Since Github only allows files up to 100mb it's not possible to upload it here directly.
+https://drive.google.com/open?id=16oiJhXUVUhW8zqMnEdBgMgNkW0BzBgzB
+since Github only allows files up to 100mb it's not possible to upload it here directly.
