@@ -12,3 +12,15 @@ SSAG: Project master directory
      * i18n: Language support
               
     
+
+To create a release apk (android):
+
+1. Open a terminal and change current directory to /MVK-2018-Pub/ssag/android
+2. Type ./gradlew assembleRelease
+3. Done
+4. APK should be created in /MVK-2018-Pub/ssag/android/app/build/outputs/apk/
+
+Troubleshooting:
+
+If you get the error "Couldn't find preset "react-native" relative to directory" you might have to remove the file .babelrc from the root directory. That is, from /MVK-2018-Pub/.babelrc .
+
