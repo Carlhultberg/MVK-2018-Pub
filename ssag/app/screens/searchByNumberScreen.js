@@ -214,7 +214,7 @@ const s = StyleSheet.create({
         color: HEADER_TEXT_COLOR,
     },
     headerBorder: {
-        width: 450,
+        width: "100%",
         height: 56,
         backgroundColor: HEADER_BACKGROUND_COLOR,
         justifyContent: 'center',

@@ -3,6 +3,7 @@
     <color name="pink">#C9472D</color>
     <color name="black">#000000</color>
     <color name="navigationBar">#1A1A1A</color>
+    <color name="navigationBarSplash">#C9472D</color>
     <color name="primary_dark">#C9472D</color>
     <color name="background">#ffffff</color>
     <color name="background_splash">#C9472D</color>

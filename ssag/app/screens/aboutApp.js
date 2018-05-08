@@ -52,8 +52,9 @@ class AboutApp extends Component {
     super(props);
 
     this.state = {
-      aboutTheAppProjectManagerNordicMuseumBody: '[Project Manager name here]',
+      aboutTheAppProjectManagerNordicMuseumBody: 'Gustav Kjellberg',
       aboutTheAppDevelopmentAndDesignBody: 'Maria Lindblad\nTommy Samuelsson\nCarl Hultberg\nDiar Sabri\nLars Lundin\nBurhan Hashi',
+      aboutTheAppDocumentationBody: 'Gustaf Lidfeldt\nJesper Öberg\nSebastian Franzén\nBjörn Aurell Hansson',
       aboutTheAppAdvisoryTeamBody: '[Advisory name here]',
       aboutTheAppAppIconBody: 'Ann-Sofia Marminge Design',
       aboutTheAppTranslationsBody: 'BTI Studios'
@@ -87,6 +88,12 @@ class AboutApp extends Component {
           </Text>
           <Text style={s.text}>
             {this.state.aboutTheAppDevelopmentAndDesignBody}
+          </Text>
+          <Text style={s.textHeader}>
+            {I18n.t('aboutTheAppDocumentationHeader')}
+          </Text>
+          <Text style={s.text}>
+            {this.state.aboutTheAppDocumentationBody}
           </Text>
           <Text style={s.textHeader}>
             {I18n.t('aboutTheAppAdvisoryTeamHeader')}
