@@ -3,7 +3,7 @@
 ## About the application
 This application was developed by collaboration between 11 students from The Royal Institute of Technology (KTH) and The City Museum in Stockholm. The applications purpose is to provide the museums visitors with a digital audio guide.
 
-For questions regarding the project please email Gustav Kjellberg at mailto:gustav.kjellberg@hotmail.com
+For questions regarding the project please email Gustav Kjellberg at gustav.kjellberg@hotmail.com
 
 Project Map:
 ---
