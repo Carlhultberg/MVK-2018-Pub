@@ -23,10 +23,6 @@ SSAG: Project master directory
 Follow this guide https://facebook.github.io/react-native/docs/signed-apk-android.html
 
 
-Current APK can be found at
-https://drive.google.com/open?id=16oiJhXUVUhW8zqMnEdBgMgNkW0BzBgzB
-since Github only allows files up to 100mb it's not possible to upload it here directly.
-
 ## Known bugs
 
 * Stressing the media player by rapidly pressing forward in a tracklist longer than 2 tracks the application crash.
