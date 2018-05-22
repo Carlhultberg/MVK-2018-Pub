@@ -52,13 +52,13 @@ class HighlightScreen extends Component {
   sourceFinder(imgIndex) {
     switch (imgIndex) {
       case "0":
-        return require('../Images/stockholm1.png');
+        return require('../Images/highlights.png');
         break;
       case "1":
-        return require('../Images/oldStockholm3.png');
+        return require('../Images/highlights.png');
         break;
       case "2":
-        return require('../Images/stockholm2.png');
+        return require('../Images/highlights.png');
         break;
     }
   }

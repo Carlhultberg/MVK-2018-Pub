@@ -53,7 +53,7 @@ class InfoScreen extends Component {
   render() {
     return (
       <ScrollView>
-        <Image style={{ height: cellHeight, width: cellWidth }} source={require('../Images/museum1.png')} />
+        <Image style={{ height: cellHeight, width: cellWidth }} source={require('../Images/museumPlaceholder.png')} />
         <View style={styles.container}>
           <TouchableHighlight underlayColor={BUTTON_ON_PRESS_COLOR_2} onPress={() => this.props.navigation.navigate('Language')}>
             <View style={styles.button}>

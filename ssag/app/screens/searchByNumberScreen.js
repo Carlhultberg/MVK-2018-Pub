@@ -45,11 +45,11 @@ export default class SearchByNumberScreen extends Component {
         var json_length = Object.keys(json).length;
         var required;
         if (json[lang][String(theme)]["image"] == "0") {
-            required = require('../Images/stockholm1.png');
+            required = require('../Images/highlights.png');
         } else if (json[lang][String(theme)]["image"] == "1") {
-            required = require('../Images/oldStockholm3.png');
+            required = require('../Images/highlights.png');
         } else if (json[lang][String(theme)]["image"] == "2") {
-            required = require('../Images/stockholm2.png');
+            required = require('../Images/highlights.png');
         }
         this.learnMore(json[lang][String(theme)]["name"], required, json[lang][String(theme)]["duration"], json[lang][String(theme)]["floor"], json[lang][String(theme)]["sounds"]);
     }
