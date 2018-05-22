@@ -48,6 +48,7 @@ class App extends Component {
     }
     this.createAudio(path);
     this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex, audioName: text, audioNumber: number, duration: duration, highlight: highlightNum });
+    //this.state.audio.play;
     setTimeout(()=>this.state.audio.play(),150);
   }
 

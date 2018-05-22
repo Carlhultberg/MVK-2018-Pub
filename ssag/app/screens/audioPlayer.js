@@ -125,10 +125,18 @@ class AudioPlayer extends Component {
   }
 
   prog(){
-    this.setState({
-      timeProg: this.props.audio.currentTime,
-      progBarWidth: (this.props.audio.currentTime/this.props.audio.duration) * cellWidth,
-    });
+    if (this.props.audio.currentTime < 0) {
+      this.setState({
+        timeProg: this.props.audio.currentTime,
+        progBarWidth: 0,
+      });
+    }
+    else {
+      this.setState({
+        timeProg: this.props.audio.currentTime,
+        progBarWidth: (this.props.audio.currentTime/this.props.audio.duration) * cellWidth,
+      });
+    }
   }
 
   componentDidMount() {
@@ -144,6 +152,9 @@ class AudioPlayer extends Component {
   }
 
   pad(n) {
+    if (n < 0){
+      n = 0;
+    }
     return (n < 10) ? ("0" + n) : n;
   }
 
