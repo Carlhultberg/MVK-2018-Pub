@@ -30,7 +30,7 @@ since Github only allows files up to 100mb it's not possible to upload it here d
 ## Known bugs
 
 * Stressing the media player by rapidly pressing forward in a tracklist longer than 2 tracks the application crash.
-* Some of the times when the application is opened for the very first time it takes to presses to play an arbitary track. The reason for this is unknown and in not considered critical.
+* Some of the times when the application is opened for the very first time it takes to presses to play an arbitary track. The reason for this is unknown and is not considered critical.
 * Known React navigation feature/bug results in multiple stack windows when when a new view is pressed very quickly.
 
 ## The MIT License
