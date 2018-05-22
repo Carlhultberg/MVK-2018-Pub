@@ -2,35 +2,35 @@
     "sv": {
         "001": {
             "name": "Tavlor",
-            "filepath": "sv_placeholder.m4a",
+            "filepath": "sv_placeholder.mp3",
             "duration": "372",
             "theme": "2",
             "highlight": "1"
         },
         "002": {
             "name": "Statyer",
-            "filepath": "sv_placeholder.m4a",
+            "filepath": "sv_placeholder.mp3",
             "duration": "425",
             "theme": "2",
             "highlight": "1"
         },
         "003": {
             "name": "Keramik",
-            "filepath": "sv_placeholder.m4a",
+            "filepath": "sv_placeholder.mp3",
             "duration": "344",
             "theme": "1",
             "highlight": "0"
         },
         "004": {
             "name": "Kejsare",
-            "filepath": "sv_placeholder.m4a",
+            "filepath": "sv_placeholder.mp3",
             "duration": "99",
             "theme": "1",
             "highlight": "0"
         },
         "005": {
             "name": "Fiskaren",
-            "filepath": "sv_placeholder.m4a",
+            "filepath": "sv_placeholder.mp3",
             "duration": "225",
             "theme": "2",
             "highlight": "0"
@@ -39,35 +39,35 @@
     "en": {
         "001": {
             "name": "Paintings",
-            "filepath": "en_placeholder.m4a",
+            "filepath": "en_placeholder.mp3",
             "duration": "372",
             "theme": "2",
             "highlight": "1"
         },
         "002": {
             "name": "Statues",
-            "filepath": "en_placeholder.m4a",
+            "filepath": "en_placeholder.mp3",
             "duration": "425",
             "theme": "2",
             "highlight": "1"
         },
         "003": {
             "name": "Ceramics",
-            "filepath": "en_placeholder.m4a",
+            "filepath": "en_placeholder.mp3",
             "duration": "344",
             "theme": "1",
             "highlight": "0"
         },
         "004": {
             "name": "Emperor",
-            "filepath": "en_placeholder.m4a",
+            "filepath": "en_placeholder.mp3",
             "duration": "99",
             "theme": "1",
             "highlight": "0"
         },
         "005": {
             "name": "The fisher",
-            "filepath": "en_placeholder.m4a",
+            "filepath": "en_placeholder.mp3",
             "duration": "225",
             "theme": "2",
             "highlight": "0"
