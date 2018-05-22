@@ -1,3 +1,7 @@
+// Copyright(c) 2018 Gustav Kjellberg, Gustaf Lidfeldt, Diar Sabri, Maria Lindblad,
+// Lars Lundin, Carl Hultberg, Bruhan Hashi, Sebastian Franzén, Jesper Öberg,
+// Björn Aurell Hansson, Tommy Samuelsson. gustav.kjellberg@hotmail.com
+
 import React, { Component } from 'react';
 import { View, AsyncStorage } from 'react-native';
 import { Tabs } from './rootscreen';
@@ -44,7 +48,7 @@ class App extends Component {
     }
     this.createAudio(path);
     this.setState({ bottomScreen: true, logo: require('./assets/PauseButton.png'), array: array, index: index, maxIndex: maxIndex, audioName: text, audioNumber: number, duration: duration, highlight: highlightNum });
-    // setTimeout(()=>this.state.audio.play(),150);
+    setTimeout(()=>this.state.audio.play(),150);
   }
 
   changeLogo() {

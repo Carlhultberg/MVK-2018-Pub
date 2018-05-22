@@ -1,3 +1,7 @@
+// Copyright(c) 2018 Gustav Kjellberg, Gustaf Lidfeldt, Diar Sabri, Maria Lindblad,
+// Lars Lundin, Carl Hultberg, Bruhan Hashi, Sebastian Franzén, Jesper Öberg,
+// Björn Aurell Hansson, Tommy Samuelsson. gustav.kjellberg@hotmail.com
+
 import React, { Component } from 'react';
 import { TabNavigator, StackNavigator } from 'react-navigation';
 import { Icon } from 'react-native-elements';
